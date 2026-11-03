@@ -1,0 +1,2 @@
+[functions.radio-stats]
+verify_jwt = false
