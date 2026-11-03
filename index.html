@@ -32,6 +32,10 @@
       <a href="#kapcsolat">Kapcsolat</a>
       <a class="nav-cta" href="#elo"><span class="pulse-dot"></span> Hallgasd élőben</a>
     </nav>
+    <div class="language-switch" role="group" aria-label="Nyelvválasztó">
+      <button type="button" class="language-button active" data-language="hu" aria-pressed="true" title="Magyar">HU</button>
+      <button type="button" class="language-button" data-language="en" aria-pressed="false" title="English">EN</button>
+    </div>
   </header>
 
   <main>
@@ -81,22 +85,6 @@
         <div><div class="eyebrow"><span class="live-dot"></span> MOST IS SZÓLUNK</div><h2>Válaszd ki a <span class="gradient-text">hangulatod!</span></h2></div>
         <span class="section-side-note">Két csatorna. Egy rádió. Végtelen zene.</span>
       </div>
-      <div class="program-now-next" aria-label="Aktuális és következő rádióműsor" aria-live="polite">
-        <article class="program-state-card program-state-current">
-          <div class="program-state-kicker"><span class="program-state-indicator"></span> MOST ADÁSBAN</div>
-          <div class="program-state-time" id="currentProgramTime">Műsoradatok betöltése…</div>
-          <h3 id="currentProgramTitle">Rádió69 műsor</h3>
-          <p id="currentProgramDetail">Az aktuális műsor hamarosan megjelenik.</p>
-          <span class="program-state-foot">ÉLŐ MŰSORREND</span>
-        </article>
-        <article class="program-state-card program-state-next">
-          <div class="program-state-kicker"><span class="program-state-next-icon">▶</span> KÖVETKEZIK</div>
-          <div class="program-state-time" id="nextProgramTime">Következő műsor keresése…</div>
-          <h3 id="nextProgramTitle">Hamarosan</h3>
-          <p id="nextProgramDetail">A következő műsor adatai hamarosan megjelennek.</p>
-          <span class="program-state-foot">NE MARADJ LE RÓLA</span>
-        </article>
-      </div>
       <div class="live-grid">
         <article class="player-card">
           <div class="player-topline"><span class="live-pill"><span class="live-dot"></span> ON AIR</span><span class="player-frequency">RÁDIÓ69 • ONLINE</span></div>
@@ -136,7 +124,7 @@
             <div class="volume-control"><span>VOL</span><input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" aria-label="Hangerő"></div>
           </div>
           <audio id="radioAudio" preload="none"></audio>
-          <div class="player-footnote">A lejátszás a gomb megnyomása után indul. Ha a stream címe megváltozott, a konfigurációban frissíthető.</div>
+          <div class="player-footnote">A lejátszás automatikusan megpróbál elindulni. Ha a böngésző blokkolja, használd a lejátszás gombot.</div>
         </article>
         <aside class="live-aside">
           <div class="aside-card aside-purple"><span class="aside-icon">♫</span><span class="aside-tag">NON-STOP HANGULAT</span><h3>Mindig találsz<br>egy jó számot.</h3><p>A 80-as évektől napjainkig, magyar és külföldi kedvencek.</p><div class="aside-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>

@@ -591,6 +591,360 @@ document.getElementById("copyAccount").addEventListener("click", async () => {
 });
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Magyar / angol nyelvválasztó. A választás a böngészőben megmarad.
+const RADIO69_I18N = {
+  en: {
+    "Rádió69 – A múlt és a jelen egy helyen!": "Rádió69 – The past and the present in one place!",
+    "A MÚLT ÉS A JELEN EGY HELYEN": "THE PAST AND THE PRESENT IN ONE PLACE",
+    "Élő rádió": "Live Radio",
+    "Műsoraink": "Our Shows",
+    "Műsorvezetők": "Presenters",
+    "Kívánságdoboz": "Music Requests",
+    "Partnerek": "Partners",
+    "Támogatás": "Support",
+    "Kapcsolat": "Contact",
+    "Hallgasd élőben": "Listen Live",
+    "ONLINE RÁDIÓ • BÉKÉS VÁRMEGYE": "ONLINE RADIO • BÉKÉS COUNTY",
+    "BÉKÉS VÁRMEGYE": "BÉKÉS COUNTY",
+    "DJ Sáv": "DJ Set",
+    "Nyelvválasztó": "Language selection",
+    "Magyar": "Hungarian",
+    "Digitális rádióstúdió hangkeverőpulttal és élő hanghullámmal": "Digital radio studio with an audio mixing console and live sound wave",
+    "Rádió69 online rádió – Remix, Hits és zenei műsorok": "Rádió69 online radio – Remix, Hits and music shows",
+    "A jó zene": "Good music",
+    "összeköt.": "brings us together.",
+    "A múlt és a jelen egy helyen! Kapcsold be a Rádió69-et, és legyen mindig veled a kedvenc zenéd.": "The past and the present in one place! Tune in to Rádió69 and take your favourite music with you, wherever you go.",
+    "Remix és Hits": "Remix & Hits",
+    "Két csatorna, rengeteg kedvenc": "Two channels, countless favourites",
+    "Non-stop zene": "Non-stop music",
+    "Veled otthon és útközben is": "With you at home and on the go",
+    "MOST IS SZÓLUNK": "WE'RE ON AIR",
+    "Válaszd ki a": "Choose your",
+    "hangulatod!": "vibe!",
+    "Két csatorna. Egy rádió. Végtelen zene.": "Two channels. One radio. Endless music.",
+    "ÉLŐ RÁDIÓ": "LIVE RADIO",
+    "Pörgős remixek, klubhangulat és kedvenc slágerek.": "Energetic remixes, club vibes and your favourite hits.",
+    "Slágerek • Kedvencek": "Hits • Favourites",
+    "MOST SZÓL": "NOW PLAYING",
+    "Adatok betöltése…": "Loading data…",
+    "Kapcsolódás a rádióhoz…": "Connecting to the radio…",
+    "A zeneszám adatai hamarosan megjelennek.": "Track information will appear here shortly.",
+    "hallgató": "listeners",
+    "Készen állsz?": "Ready?",
+    "Válassz csatornát, majd nyomd meg a lejátszást!": "Choose a channel, then press play!",
+    "Hangerő": "Volume",
+    "A lejátszás automatikusan megpróbál elindulni. Ha a böngésző blokkolja, használd a lejátszás gombot.": "Playback will try to start automatically. If your browser blocks it, press the play button.",
+    "A lejátszás a gomb megnyomása után indul. Ha a stream címe megváltozott, a konfigurációban frissíthető.": "Playback will try to start automatically. If your browser blocks it, use the play button. The stream address can be updated in the configuration.",
+    "NON-STOP HANGULAT": "NON-STOP VIBES",
+    "Mindig találsz": "There's always",
+    "egy jó számot.": "a great song waiting.",
+    "A 80-as évektől napjainkig, magyar és külföldi kedvencek.": "From the 1980s to today, with Hungarian and international favourites.",
+    "A RÁDIÓ VELED VAN": "THE RADIO GOES WITH YOU",
+    "Otthon. Útközben.": "At home. On the go.",
+    "Munka közben.": "At work.",
+    "Fedezd fel a műsorokat": "Explore our shows",
+    "MINDEN NAPRA EGY JÓ HANGULAT": "A GOOD VIBE FOR EVERY DAY",
+    "Mi szól a": "What's playing on",
+    "Rádió69-en?": "Rádió69?",
+    "Ismerd meg műsorainkat, és találd meg a kedvencedet a heti kínálatban!": "Discover our shows and find your favourites in the weekly schedule!",
+    "A LEGJOBB SLÁGEREK": "THE BEST HITS",
+    "Csak zene! Csak a legjobbak! A 80-as évektől napjainkig, éjjel-nappal.": "Music only! The very best, from the 1980s to today, day and night.",
+    "Hallgatom": "Listen",
+    "PÖRGŐS ÜTEMEK": "UPBEAT RHYTHMS",
+    "Klubhangulat, friss remixek és táncolható kedvencek – folyamatosan.": "Club vibes, fresh remixes and dancefloor favourites – around the clock.",
+    "A DJ-K VESZIK ÁT AZ IRÁNYÍTÁST": "THE DJS TAKE OVER",
+    "Pörgős mixek és energikus zenei blokkok a Rádió69 DJ-itől.": "Up-tempo mixes and energetic music sessions from the Rádió69 DJs.",
+    "Mikor hallható?": "When can you hear it?",
+    "HETI PROGRAM": "WEEKLY SCHEDULE",
+    "Heti": "Weekly",
+    "műsorrend": "schedule",
+    "Válaszd ki a napot!": "Choose a day!",
+    "Hétfő": "Monday",
+    "Kedd": "Tuesday",
+    "Szerda": "Wednesday",
+    "Csütörtök": "Thursday",
+    "Péntek": "Friday",
+    "Szombat": "Saturday",
+    "Vasárnap": "Sunday",
+    "Hétfői műsoraink": "Monday's shows",
+    "Keddi műsoraink": "Tuesday's shows",
+    "Szerdai műsoraink": "Wednesday's shows",
+    "Csütörtöki műsoraink": "Thursday's shows",
+    "Pénteki műsoraink": "Friday's shows",
+    "Szombati műsoraink": "Saturday's shows",
+    "Vasárnapi műsoraink": "Sunday's shows",
+    "A műsorrend tájékoztató jellegű; az esetleges változásokról a Rádió69 felületein adunk hírt.": "The schedule is for guidance only. Any changes will be announced on Rádió69's channels.",
+    "AKIK A HANGULATOT HOZZÁK": "THE PEOPLE BEHIND THE VIBE",
+    "Ismerd meg a": "Meet the",
+    "csapatot!": "team!",
+    "Műsorvezetők és DJ-k, akik gondoskodnak róla, hogy mindig legyen mit hallgatnod.": "Meet the presenters and DJs who make sure there's always something great to listen to.",
+    "MŰSORVEZETŐK": "PRESENTERS",
+    "MŰSORVEZETŐ": "PRESENTER",
+    "Műsorvezető": "Presenter",
+    "Műsorvezető • Zene Doboz • Magyar TOP40": "Presenter • Zene Doboz • Hungarian TOP 40",
+    "Műsorvezető • Back in Time": "Presenter • Back in Time",
+    "Műsorvezető: Frenkl András": "Hosted by: Frenkl András",
+    "Műsorvezető: Szabolcsi Dávid": "Hosted by: Szabolcsi Dávid",
+    "Műsorvezető: Dombi Ákos": "Hosted by: Dombi Ákos",
+    "Műsorvezető: Berta István": "Hosted by: Berta István",
+    "Műsorvezető: Balu": "Hosted by: Balu",
+    "Kapcsolj ki, mi bekapcsolunk.": "Switch off and let us switch you on.",
+    "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)": "October 1 to May 31 • Hosted by: Szabolcsi Dávid (Dave)",
+    "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel.": "The Rádió69 DJs take over with energetic mixes.",
+    "Back in Time (Vissza az időben) 1970–2022": "Back in Time 1970–2022",
+    "DJ-K": "DJS",
+    "TE MONDOD, MI LEJÁTSZUK!": "YOU REQUEST IT, WE PLAY IT!",
+    "Küldd el a": "Send us your",
+    "kívánságod!": "request!",
+    "Van egy kedvenc számod? Írd meg nekünk, és lehet, hogy hamarosan a Rádió69-en hallhatod viszont!": "Have a favourite song? Send it to us and you might hear it on Rádió69 soon!",
+    "Neved": "Your name",
+    "A kért szám címe": "Requested song title",
+    "Weboldal": "Website",
+    "Kívánság küldése": "Send request",
+    "Küldd el online a zenei kívánságodat!": "Send us your music request online!",
+    "EGYÜTT HANGOSABB": "LOUDER TOGETHER",
+    "Partnereink": "Our Partners",
+    "Örülünk minden együttműködésnek! Partneri megkereséseket a lenti e-mail-címen várunk.": "We welcome every partnership! For business enquiries, contact us at the email address below.",
+    "RENDEZVÉNY DJ": "EVENT DJ",
+    "Legyél te is partnerünk!": "Become our partner!",
+    "Írj nekünk:": "Write to us:",
+    "KÖSZÖNJÜK, HOGY VELÜNK VAGY!": "THANK YOU FOR BEING WITH US!",
+    "Támogasd a": "Support",
+    "Rádió69-et!": "Rádió69!",
+    "Köszönjük, hogy támogatod rádiónkat, így még jobb műsorokat és zenei élményeket hozhatunk!": "Thank you for supporting our radio station. Your support helps us bring you even better shows and music experiences!",
+    "BANKI ÁTUTALÁS": "BANK TRANSFER",
+    "Közlemény: Támogatás": "Reference: Support",
+    "Számlaszám másolása ⧉": "Copy account number ⧉",
+    "LÉPJ VELÜNK KAPCSOLATBA": "GET IN TOUCH",
+    "Van egy jó": "Got a great",
+    "ötleted?": "idea?",
+    "Kérdésed van, együttműködnél velünk, vagy csak üzennél? Írj nekünk bátran!": "Have a question, want to work with us, or just want to say hello? Drop us a message!",
+    "TELEFON": "PHONE",
+    "ÁLTALÁNOS INFORMÁCIÓ": "GENERAL ENQUIRIES",
+    "KÖZVETLEN E-MAIL": "DIRECT EMAIL",
+    "PARTNERI MEGKERESÉS": "PARTNERSHIPS",
+    "RÁDIÓ VEZETŐ / TULAJDONOS": "RADIO MANAGER / OWNER",
+    "Írj nekünk!": "Send us a message!",
+    "Várjuk az üzenetedet.": "We look forward to hearing from you.",
+    "E-mail címed": "Your email address",
+    "Üzeneted": "Your message",
+    "Üzenet küldése": "Send message",
+    "Az üzeneted közvetlenül a Rádió69-hez érkezik.": "Your message will be sent directly to Rádió69.",
+    "Jó zenék. Jó hangulat. Rádió69.": "Great music. Great vibes. Rádió69.",
+    "Vissza az oldal tetejére ↑": "Back to top ↑",
+    "Rádió69. Minden jog fenntartva.": "Rádió69. All rights reserved.",
+    "A csatorna adata jelenleg nem érhető el": "Channel information is currently unavailable",
+    "A stream nem adott vissza adatot.": "The stream did not return any data.",
+    "A zeneszám címe nem érkezett meg.": "The track title was not provided.",
+    "A stream jelenleg nem küld zenecímet": "The stream is not currently sending track information",
+    "A zene szól, de a metaadat hiányzik.": "The music is playing, but track metadata is unavailable.",
+    "UTOLSÓ ELÉRHETŐ ADAT": "LAST AVAILABLE DATA",
+    "ÉLŐ ADAT": "LIVE DATA",
+    "A rádiós adatok nem olvashatók": "Radio data could not be read",
+    "A stream továbbra is működhet; a statisztikai hozzáférést ellenőrizni kell.": "The stream may still be working; access to the statistics needs to be checked.",
+    "ADATKAPCSOLATI HIBA": "DATA CONNECTION ERROR",
+    "Kapcsolódás a rádióhoz…": "Connecting to the radio…",
+    "Rádió69 Hits • élő adatok betöltése": "Rádió69 Hits • loading live data",
+    "Rádió69 Remix • élő adatok betöltése": "Rádió69 Remix • loading live data",
+    "ADATOK BETÖLTÉSE": "LOADING DATA",
+    "Lejátszás": "Play",
+    "Szüneteltetés": "Pause",
+    "Remix lejátszásának indítása": "Start Remix playback",
+    "Rádió69 Remix kiválasztva": "Rádió69 Remix selected",
+    "Rádió69 Hits kiválasztva": "Rádió69 Hits selected",
+    "Nyomd meg a lejátszást az élő adáshoz!": "Press play to listen live!",
+    "Ehhez a csatornához nincs streamcím beállítva.": "No stream URL is configured for this channel.",
+    "A kiválasztott csatorna streamcímét be kell állítani.": "The selected channel's stream URL needs to be configured.",
+    "Ehhez a csatornához nincs beállítva közvetlen streamcím.": "No direct stream URL is configured for this channel.",
+    "Kapcsolódás…": "Connecting…",
+    "Most szól a Rádió69": "Rádió69 is now playing",
+    "Remix • Élő adás": "Remix • Live",
+    "Hits • Élő adás": "Hits • Live",
+    "A böngésző blokkolta az automatikus hangindítást. Kattints a ▶ gombra a Remix elindításához!": "Your browser blocked autoplay. Click the ▶ button to start the Remix stream.",
+    "Ellenőrizd a kiválasztott csatorna streamcímét.": "Check the stream URL for the selected channel.",
+    "A lejátszás nem indult el": "Playback did not start",
+    "Ellenőrizd a kiválasztott csatorna stream URL-jét.": "Check the stream URL for the selected channel.",
+    "A stream nem indult el. Ellenőrizni kell a csatorna streamcímét és a HTTPS-kapcsolatot.": "The stream did not start. Check the channel stream URL and HTTPS connection.",
+    "Lejátszás szüneteltetve": "Playback paused",
+    "Nyomd meg a gombot a folytatáshoz!": "Press the button to resume playback!",
+    "A kiválasztott csatorna stream URL-jét.": "the selected channel's stream URL.",
+    "A Supabase elutasította a kérést. Ellenőrizd a radio-stats függvény JWT-ellenőrzését és a publikus kulcsot.": "Supabase rejected the request. Check JWT verification and the public key for the radio-stats function.",
+    "A Supabase proxy elérhető, de a rádiós Icecast-statisztika nem válaszolt.": "The Supabase proxy is available, but the radio Icecast statistics did not respond.",
+    "A Supabase publikus kulcsa hiányzik a weboldal beállításaiból.": "The Supabase public key is missing from the website configuration.",
+    "A státuszlekérés sikertelen. A böngésző fejlesztői konzoljában látható a pontos hiba.": "The status request failed. See the browser developer console for details.",
+    "Hiányzik a Supabase publishable key a supabase-config.js fájlból.": "The Supabase publishable key is missing from supabase-config.js.",
+    "A webes üzenetküldéshez még be kell állítani a Supabase projekt URL-jét és publikus kulcsát a supabase-config.js fájlban.": "To send messages from the website, configure the Supabase project URL and public key in supabase-config.js.",
+    "A szerver elutasította a beküldést. Ellenőrizd a Supabase kulcsot és az adatbázis jogosultságait.": "The server rejected the submission. Check the Supabase key and database permissions.",
+    "Az üzenettáblát még nem hoztuk létre a Supabase adatbázisban.": "The messages table has not yet been created in the Supabase database.",
+    "Most nem sikerült elküldeni az üzenetet. Kérjük, próbáld meg később.": "Your message could not be sent right now. Please try again later.",
+    "Nem sikerült elküldeni a kívánságot.": "The request could not be sent.",
+    "Nem sikerült elküldeni az üzenetet.": "The message could not be sent.",
+    "Küldés…": "Sending…",
+    "A kívánságodat továbbítjuk a Rádió69-nek…": "Your music request is being sent to Rádió69…",
+    "Köszönjük! A zenei kívánságod sikeresen megérkezett a Rádió69-hez.": "Thank you! Your music request has been received by Rádió69.",
+    "Az üzenetedet továbbítjuk a Rádió69-nek…": "Your message is being sent to Rádió69…",
+    "Köszönjük! Az üzeneted sikeresen megérkezett a Rádió69-hez.": "Thank you! Your message has been received by Rádió69.",
+    "A bankszámlaszám a vágólapra került.": "The account number has been copied to the clipboard.",
+    "Bankszámlaszám: 53500841-10044685": "Account number: 53500841-10044685",
+    "Menü megnyitása": "Open menu",
+    "Rádió69 kezdőlap": "Rádió69 homepage",
+    "Fő navigáció": "Main navigation",
+    "Rádiócsatorna kiválasztása": "Select a radio channel",
+    "Élő rádiós adatok": "Live radio data",
+    "Élő hallgatottság": "Live listener count",
+    "A hét napjai": "Days of the week",
+    "Partnereink és rendezvény DJ szolgáltatások": "Our partners and event DJ services",
+    "Partneri megkeresés küldése": "Send a partnership enquiry",
+    "Dave, műsorvezető": "Dave, presenter",
+    "Ákos, műsorvezető": "Ákos, presenter",
+    "Balu, műsorvezető": "Balu, presenter",
+    "DJ Effect – rendezvény DJ, disco, esküvő és céges rendezvény": "DJ Effect – event DJ, disco, weddings and corporate events",
+    "DJ Veronic – rendezvény DJ, disco, esküvő és céges rendezvény": "DJ Veronic – event DJ, disco, weddings and corporate events",
+    "Teljes neved": "Your full name",
+    "Hogy szólíthatunk?": "What should we call you?",
+    "Előadó – szám címe": "Artist – song title",
+    "nev@email.com": "name@email.com",
+    "Miben segíthetünk?": "How can we help?"
+  }
+};
+
+const RADIO69_LANGUAGE_KEY = "radio69-site-language";
+const RADIO69_TEXT_RECORDS = new WeakMap();
+const RADIO69_ATTRIBUTE_RECORDS = new WeakMap();
+const RADIO69_TRANSLATED_ATTRIBUTES = ["aria-label", "aria-description", "placeholder", "title", "alt"];
+let radio69Language = "hu";
+
+function radio69NormalizeText(value) {
+  return String(value ?? "").replace(/\s+/g, " ").trim();
+}
+
+function radio69TranslateValue(source, language) {
+  if (language !== "en") return source;
+  const key = radio69NormalizeText(source);
+  if (Object.prototype.hasOwnProperty.call(RADIO69_I18N.en, key)) {
+    return RADIO69_I18N.en[key];
+  }
+  // A műsorrendben a műsorvezető neve változó, ezért a címke mintázatát fordítjuk.
+  if (key.includes("Műsorvezető:")) {
+    return key
+      .replace(/Október 1\. és május 31\. között/g, "October 1 to May 31")
+      .replace(/Műsorvezető:\s*/g, "Hosted by: ");
+  }
+  if (/^Hétfői műsoraink$/.test(key)) return "Monday's shows";
+  return source;
+}
+
+function radio69ApplyTextNode(node) {
+  if (!node || node.nodeType !== Node.TEXT_NODE || !node.parentElement) return;
+  if (["SCRIPT", "STYLE", "NOSCRIPT"].includes(node.parentElement.tagName)) return;
+  let record = RADIO69_TEXT_RECORDS.get(node);
+  const current = node.nodeValue || "";
+  if (!record) {
+    record = { original: current, rendered: null };
+    RADIO69_TEXT_RECORDS.set(node, record);
+  } else if (current !== record.rendered) {
+    // A weboldal funkciói később is cserélhetnek dinamikus szövegeket.
+    record.original = current;
+  }
+  const original = record.original;
+  const leading = (original.match(/^\s*/) || [""])[0];
+  const trailing = (original.match(/\s*$/) || [""])[0];
+  const translated = radio69TranslateValue(original.trim(), radio69Language);
+  const nextValue = translated ? `${leading}${translated}${trailing}` : original;
+  record.rendered = nextValue;
+  if (node.nodeValue !== nextValue) node.nodeValue = nextValue;
+}
+
+function radio69ApplyAttributes(element) {
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) return;
+  let records = RADIO69_ATTRIBUTE_RECORDS.get(element);
+  if (!records) {
+    records = {};
+    RADIO69_ATTRIBUTE_RECORDS.set(element, records);
+  }
+  RADIO69_TRANSLATED_ATTRIBUTES.forEach((attribute) => {
+    if (!element.hasAttribute(attribute)) return;
+    const current = element.getAttribute(attribute) || "";
+    let record = records[attribute];
+    if (!record) record = records[attribute] = { original: current, rendered: null };
+    else if (current !== record.rendered) record.original = current;
+    const nextValue = radio69TranslateValue(record.original, radio69Language);
+    record.rendered = nextValue;
+    if (current !== nextValue) element.setAttribute(attribute, nextValue);
+  });
+}
+
+function radio69TranslateTree(root) {
+  if (!root) return;
+  if (root.nodeType === Node.TEXT_NODE) {
+    radio69ApplyTextNode(root);
+    return;
+  }
+  if (root.nodeType === Node.ELEMENT_NODE) radio69ApplyAttributes(root);
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let textNode;
+  while ((textNode = walker.nextNode())) radio69ApplyTextNode(textNode);
+  if (root.nodeType === Node.ELEMENT_NODE) {
+    root.querySelectorAll("*").forEach(radio69ApplyAttributes);
+  }
+}
+
+function radio69SetLanguage(language) {
+  radio69Language = language === "en" ? "en" : "hu";
+  document.documentElement.lang = radio69Language;
+  document.title = radio69Language === "en"
+    ? "Rádió69 – The past and the present in one place!"
+    : "Rádió69 – A múlt és a jelen egy helyen!";
+  const description = document.querySelector('meta[name="description"]');
+  if (description) {
+    description.content = radio69Language === "en"
+      ? "Rádió69 – online radio from Békés County, Hungary. Listen live to the Remix and Hits channels, discover our shows and meet the team!"
+      : "Rádió69 – online rádió Békés vármegyéből. Hallgasd élőben a Remix és Hits csatornát, nézd meg műsorainkat és ismerd meg a csapatot!";
+  }
+  radio69TranslateTree(document.body);
+  document.querySelectorAll(".language-button").forEach((button) => {
+    const active = button.dataset.language === radio69Language;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  const languageGroup = document.querySelector(".language-switch");
+  if (languageGroup) languageGroup.setAttribute("aria-label", radio69Language === "en" ? "Language selection" : "Nyelvválasztó");
+  try { localStorage.setItem(RADIO69_LANGUAGE_KEY, radio69Language); } catch { /* tárolás tiltva: a nyelvváltás ettől még működik */ }
+}
+
+let savedRadio69Language = "hu";
+try {
+  const saved = localStorage.getItem(RADIO69_LANGUAGE_KEY);
+  if (saved === "en" || saved === "hu") savedRadio69Language = saved;
+} catch { /* private browsing / storage blocked */ }
+
+document.querySelectorAll(".language-button").forEach((button) => {
+  button.addEventListener("click", () => radio69SetLanguage(button.dataset.language));
+});
+radio69SetLanguage(savedRadio69Language);
+
+// A később frissülő lejátszó-, statisztikai és űrlapszövegeket is lefordítjuk.
+const radio69LanguageObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.type === "characterData") {
+      radio69ApplyTextNode(mutation.target);
+      return;
+    }
+    if (mutation.type === "attributes") {
+      radio69ApplyAttributes(mutation.target);
+      return;
+    }
+    mutation.addedNodes.forEach((node) => radio69TranslateTree(node));
+  });
+});
+radio69LanguageObserver.observe(document.body, {
+  subtree: true,
+  childList: true,
+  characterData: true,
+  attributes: true,
+  attributeFilter: RADIO69_TRANSLATED_ATTRIBUTES
+});
+
 // Oldalbetöltéskor a Remix az alapértelmezett csatorna: automatikusan
 // megpróbáljuk elindítani a hangos streamet. Ha a böngésző ezt tiltja,
 // a fenti hibaág útmutatást ad a meglévő lejátszásgomb használatához.

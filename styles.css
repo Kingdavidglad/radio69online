@@ -667,54 +667,12 @@ body:before{
 @media(max-width:650px){.live-data-panel{padding:11px;gap:10px}.now-playing-box>strong{font-size:15px}.listener-stat{padding:9px}.listener-stat>strong{font-size:21px}}
 
 
-/* Dinamikus aktuális és következő műsor – Signal Energy */
-.program-now-next{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:14px;
-  margin:0 0 18px;
-}
-.program-state-card{
-  position:relative;
-  min-height:174px;
-  overflow:hidden;
-  padding:20px 22px 18px;
-  border:1px solid rgba(224,194,255,.2);
-  border-radius:15px;
-  background:radial-gradient(circle at 92% 4%,rgba(255,83,190,.18),transparent 38%),linear-gradient(130deg,#29183c,#171329 78%);
-  box-shadow:0 16px 34px rgba(0,0,0,.17);
-}
-.program-state-card:after{
-  content:"69";
-  position:absolute;
-  right:17px;
-  bottom:-24px;
-  font:700 105px/1 'Space Grotesk',sans-serif;
-  letter-spacing:-9px;
-  color:rgba(255,255,255,.035);
-  pointer-events:none;
-}
-.program-state-next{
-  background:radial-gradient(circle at 92% 4%,rgba(52,222,232,.16),transparent 40%),linear-gradient(130deg,#142f3c,#171329 78%);
-  border-color:rgba(81,226,232,.19);
-}
-.program-state-kicker,.program-state-time,.program-state-card h3,.program-state-card p,.program-state-foot{position:relative;z-index:1}
-.program-state-kicker{
-  display:flex;align-items:center;gap:8px;
-  color:#ff8bcc;font-size:8px;font-weight:900;letter-spacing:1.8px;
-}
-.program-state-next .program-state-kicker{color:#69e7ec}
-.program-state-indicator{width:7px;height:7px;border-radius:50%;background:#ff536d;box-shadow:0 0 0 4px rgba(255,83,109,.12),0 0 13px rgba(255,83,109,.65);animation:programPulse 1.5s ease-in-out infinite}
-.program-state-next-icon{font-size:9px;color:#6ce8ed}
-@keyframes programPulse{50%{opacity:.45;box-shadow:0 0 0 7px rgba(255,83,109,.04),0 0 5px rgba(255,83,109,.3)}}
-.program-state-time{display:block;margin-top:13px;color:#bfb0d3;font:700 9px/1.4 'Space Grotesk',sans-serif;letter-spacing:1.2px;text-transform:uppercase}
-.program-state-card h3{margin:5px 0 5px;color:#fff5ff;font:700 clamp(19px,2.1vw,25px)/1.15 'Space Grotesk',sans-serif;letter-spacing:-.65px}
-.program-state-next h3{color:#e9fdff}
-.program-state-card p{margin:0;color:#b4a5c6;font-size:9px;line-height:1.6;max-width:82%}
-.program-state-next p{color:#a5c8ce}
-.program-state-foot{display:block;margin-top:13px;color:rgba(255,255,255,.35);font-size:6px;font-weight:900;letter-spacing:1.8px}
-@media(max-width:760px){
-  .program-now-next{grid-template-columns:1fr;gap:9px;margin-bottom:14px}
-  .program-state-card{min-height:150px;padding:17px 18px}
-  .program-state-card h3{font-size:21px}
-}
+/* HU / EN language selector */
+.language-switch{display:inline-flex;align-items:center;gap:3px;flex:0 0 auto;padding:4px;border:1px solid rgba(219,190,255,.2);border-radius:999px;background:rgba(255,255,255,.035);margin-left:14px}
+.language-button{min-width:34px;padding:7px 9px;border:0;border-radius:999px;background:transparent;color:#a99bbd;font-size:9px;font-weight:900;letter-spacing:.5px;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.language-button:hover{color:#fff;background:rgba(255,255,255,.08)}
+.language-button.active{background:linear-gradient(110deg,#7c3aed,#d946ef);color:#fff;box-shadow:0 4px 13px rgba(124,58,237,.28)}
+.language-button:focus-visible{outline:2px solid #50e7ec;outline-offset:3px}
+@media(max-width:1100px){.language-switch{margin-left:8px}.language-button{min-width:30px;padding:7px 7px}}
+@media(max-width:850px){.language-switch{margin-left:auto}.site-header{gap:10px}.language-button{min-width:32px}}
+@media(max-width:390px){.language-switch{gap:1px;padding:3px}.language-button{min-width:28px;padding:6px 6px;font-size:8px}.site-header{gap:7px}}

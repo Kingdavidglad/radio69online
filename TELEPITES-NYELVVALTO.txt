@@ -1,0 +1,27 @@
+RÁDIÓ69 SIGNAL ENERGY – MAGYAR / ANGOL NYELVVÁLASZTÓ TELEPÍTÉSE
+
+A módosított csomag a teljes Signal Energy weboldalt tartalmazza.
+
+FELTÖLTÉS ÚJ GITHUB REPOSITORYBA
+1. Csomagold ki a ZIP-et.
+2. Nyisd meg a kicsomagolt radio69-signal-energy-ketnyelvu mappát.
+3. Jelöld ki a benne található fájlokat és húzd be őket az új GitHub repository Upload files oldalára.
+4. Fontos: az index.html, script.js, styles.css és supabase-config.js közvetlenül a repository gyökerébe kerüljön, ne egy radio69-signal-energy almappába.
+5. Commit changes.
+6. GitHub Pages esetén Settings → Pages → Deploy from a branch → main → /(root) → Save.
+
+NYELVVÁLASZTÓ
+- A fejlécben található HU és EN gombbal váltható a magyar és az angol nyelv.
+- Alapértelmezés a magyar nyelv.
+- A választott nyelv a böngészőben megmarad (localStorage).
+
+MEGTARTOTT FUNKCIÓK
+- Remix és Hits streamlejátszó.
+- Automatikus Remix-indítási kísérlet oldalbetöltéskor.
+- Ha a böngésző blokkolja a hangos automatikus lejátszást, a meglévő lejátszásgomb használható.
+- Supabase-alapú élő zenecím és hallgatottság.
+- Kívánságküldő és kapcsolatfelvételi űrlap.
+- Heti műsorrend, csapat, partnerek és támogatási információk.
+
+FONTOS
+A supabase-config.js fájl szükséges a statisztikákhoz és az űrlapokhoz. A benne található publishable key publikus kulcs; secret vagy service_role kulcsot ne helyezz el a weboldal fájljaiban. A Supabase adatbázist és a már telepített radio-stats Edge Functiont ehhez a nyelvi frissítéshez nem kell újratelepíteni. Android APK-t sem kell újra készíteni, mert ez a weboldal módosítása.

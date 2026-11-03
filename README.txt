@@ -53,7 +53,7 @@ A Signal Energy dizájn, a heti műsorrend és a két külön rádióstream vál
 - A weboldal az Icecast JSON státuszvégpontot olvassa: https://s03.diazol.hu:7162/status-json.xsl
 - Remix mount: /stream
 - Hits mount: /teszt
-- A kijelző 30 másodpercenként frissül, és csatornánként külön mutatja a hallgatók számát.
+- A kijelző 15 másodpercenként frissül, és csatornánként külön mutatja a hallgatók számát.
 - A zenecím és előadó csak akkor jelenik meg, ha a streamforrás ezeket az Icecast metaadatokat küldi.
 - A stream lejátszása az élő statisztikai lekéréstől függetlenül működik.
 
@@ -66,26 +66,13 @@ Az Icecast hivatalos dokumentációja szerint a /status-json.xsl végpont a forr
 ADATKAPCSOLATI HIBA JAVÍTÁSA
 A script.js most már apikey fejlécben küldi a Supabase publishable key-t a radio-stats Edge Functionnek. Ha továbbra is 401-es hiba jelenik meg, a Supabase Dashboardban az Edge Functions → radio-stats beállításainál kapcsold ki a Verify JWT ellenőrzést. A funkció nyilvános, csak olvasási célú rádiós státuszadatot szolgáltat.
 
+MAGYAR / ANGOL NYELVVÁLASZTÓ
+- A fejlécben HU / EN gombokkal választható a nyelv.
+- Alapértelmezett nyelv: magyar.
+- A kiválasztott nyelvet a böngésző megjegyzi, ezért a következő látogatáskor is megmarad.
+- Az oldal fő szövegei, navigációja, lejátszóüzenetei, műsorrendje, űrlapjai és visszajelzései angolul is megjelennek.
+- A rádióstreamek, az élő hallgatottság, a Supabase-kapcsolat és az automatikus Remix-indítás változatlanul működik.
+- A böngésző automatikus hangindítási szabályai továbbra is érvényesek; ha a böngésző tiltja, a lejátszás gombbal indítható a rádió.
 
-RADIO-STATS FUNKCIÓ TELEPÍTÉSE UTÁNI WEBOLDAL-FRISSÍTÉS
-A Supabase Edge Function telepítése után a radio69-modern/script.js fájlt is fel kell tölteni a weboldalra. A jelenlegi változat a Supabase radio-stats végpontot hívja meg az apikey fejlécben megadott Publishable key-jel.
-
-A Remix zenecímét közvetlenül a válasz radio69.remixMetadata objektumából olvassa ki, amely a mobilalkalmazásban már bevált 7160 /autodj forrásból érkezik. A Remix hallgatószámát a 7162 /stream forrásból tartja meg. A Hits zenecímét és hallgatószámát továbbra is a 7162 /teszt forrásból olvassa.
-
-FONTOS: a Supabase Dashboardban az Edge Functions → radio-stats beállításainál a Verify JWT legyen kikapcsolva, mert a weboldal sb_publishable_ típusú Publishable key-t küld az apikey fejlécben.
-
-TELEPÍTÉS MOST
-1. A Supabase radio-stats Edge Function már telepítve van; azt nem kell újra létrehozni.
-2. Töltsd fel a radio69-modern/script.js fájlt a tárhelyre a jelenlegi script.js helyére.
-3. A supabase-config.js fájlt, az index.html-t és a styles.css-t most nem kell lecserélni.
-4. Ellenőrizd, hogy a radio-stats funkciónál Verify JWT = OFF.
-5. Nyisd meg a weboldalt, majd Ctrl+F5-tel frissítsd.
-6. A böngésző Network paneljén a /functions/v1/radio-stats kérésnek 200-as választ kell adnia.
-
-
-AKTUÁLIS ÉS KÖVETKEZŐ MŰSOR
-A kezdőlapon a „Most adásban” és „Következik” panelek a heti műsorrendből számolódnak.
-A kijelzés a Europe/Budapest időzónát használja, 30 másodpercenként frissül, és az éjfélen átnyúló műsorblokkokat is kezeli.
-A Zsiványok Podcast csak október 1. és május 31. között szerepel az automatikus kijelzésben, a régi heti műsorrendben megadott szezon szerint.
-A szombati Hangposta és a vasárnapi Magyar Top 40 a Délutáni Lazító részeként jelenik meg a dinamikus kijelzőben, mert a forrásoldal „Benne” elemként tünteti fel őket.
-A megadott műsorkezdési időpontok a régi radio69.hu nyilvános műsorrendjéből származnak; a műsorblokkok időtartamát a következő meghirdetett kezdésig számolja a kijelző.
+GITHUB FELTÖLTÉS
+A ZIP tartalmát közvetlenül az új GitHub repository gyökerébe töltsd fel. Az index.html, script.js, styles.css és supabase-config.js ugyanabban a mappában legyen.
