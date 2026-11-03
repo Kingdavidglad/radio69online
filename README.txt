@@ -76,3 +76,12 @@ MAGYAR / ANGOL NYELVVÁLASZTÓ
 
 GITHUB FELTÖLTÉS
 A ZIP tartalmát közvetlenül az új GitHub repository gyökerébe töltsd fel. Az index.html, script.js, styles.css és supabase-config.js ugyanabban a mappában legyen.
+
+
+RÁDIÓ69 LOGÓK
+- A hivatalos Rádió69 logó bekerült az assets mappába.
+- radio69-horizontal.png: fejléc, lábléc, csatorna- és partnerlogó-helyek.
+- radio69-icon.png: böngészőikon (favicon).
+- radio69-logo.png: teljes, eredeti álló logó.
+- Az index.html, a script.js és a styles.css már az új logófájlokra hivatkozik.
+- Feltöltéskor az assets mappát is töltsd fel a repository gyökerébe.

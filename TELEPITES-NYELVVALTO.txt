@@ -4,7 +4,7 @@ A módosított csomag a teljes Signal Energy weboldalt tartalmazza.
 
 FELTÖLTÉS ÚJ GITHUB REPOSITORYBA
 1. Csomagold ki a ZIP-et.
-2. Nyisd meg a kicsomagolt radio69-signal-energy-ketnyelvu mappát.
+2. Nyisd meg a kicsomagolt radio69-signal-energy mappát.
 3. Jelöld ki a benne található fájlokat és húzd be őket az új GitHub repository Upload files oldalára.
 4. Fontos: az index.html, script.js, styles.css és supabase-config.js közvetlenül a repository gyökerébe kerüljön, ne egy radio69-signal-energy almappába.
 5. Commit changes.
@@ -25,3 +25,7 @@ MEGTARTOTT FUNKCIÓK
 
 FONTOS
 A supabase-config.js fájl szükséges a statisztikákhoz és az űrlapokhoz. A benne található publishable key publikus kulcs; secret vagy service_role kulcsot ne helyezz el a weboldal fájljaiban. A Supabase adatbázist és a már telepített radio-stats Edge Functiont ehhez a nyelvi frissítéshez nem kell újratelepíteni. Android APK-t sem kell újra készíteni, mert ez a weboldal módosítása.
+
+
+LOGÓFÁJLOK
+Az assets mappát is töltsd fel a GitHub repository gyökerébe. A hivatalos Rádió69 logók innen töltődnek be.

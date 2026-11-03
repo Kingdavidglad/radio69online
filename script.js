@@ -115,7 +115,7 @@ function updateChannelUi(channel) {
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  document.getElementById("channelTitle").innerHTML = `Rádió69 <em>${isHits ? "Hits" : "Remix"}</em>`;
+  document.getElementById("channelTitle").innerHTML = `<img class="channel-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"> <em>${isHits ? "Hits" : "Remix"}</em>`;
   document.getElementById("channelDescription").textContent = isHits
     ? "A 80-as évektől napjainkig – slágerek és kedvencek."
     : "Pörgős remixek, klubhangulat és kedvenc slágerek.";
