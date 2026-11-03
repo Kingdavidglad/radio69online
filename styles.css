@@ -698,3 +698,300 @@ body:before{
 @media(max-width:850px){.brand-logo{width:clamp(152px,25vw,186px);max-height:42px}.footer-brand .brand-logo{width:172px}.team-stamp{min-width:104px}}
 @media(max-width:650px){.brand-logo{width:clamp(142px,35vw,170px);max-height:38px}.footer-brand .brand-logo{width:158px}.studio-brand-logo{height:17px;max-width:90px}.ticker-brand-logo{height:19px;max-width:94px}.inline-brand-logo{height:15px;max-width:78px}.channel-brand-logo{height:22px;max-width:108px}.channel-tab-brand img{height:13px;max-width:66px}.channel-tab-brand span{font-size:9px}.schedule-brand img{height:14px;max-width:70px}.team-stamp{min-width:90px;padding:8px 9px}.team-stamp img{height:21px;max-width:86px}.partner-brand-logo{height:32px;max-width:145px}.partner-logo{display:flex!important}.partner-divider{display:block!important}}
 @media(max-width:390px){.brand-logo{width:138px;max-height:36px}.footer-brand .brand-logo{width:150px}.partner-brand-logo{height:27px;max-width:125px}.partner-logo{display:flex!important}}
+
+/* ==========================================================
+   MOBILE FIRST REFINEMENT — clearer layout and touch targets
+   Added without changing radio, statistics or language logic.
+   ========================================================== */
+@media (max-width: 650px) {
+  html { scroll-padding-top: 82px; }
+  body { font-size: 15px; line-height: 1.6; overflow-x: clip; }
+  .section-wrap { padding-left: 16px; padding-right: 16px; }
+
+  /* Compact, stable header: logo / menu / language selector */
+  .site-header {
+    width: 100%; max-width: none; height: 68px; min-height: 68px;
+    padding: 0 13px; gap: 9px; justify-content: initial;
+    display: flex; align-items: center;
+  }
+  .site-header .brand { flex: 1 1 auto; min-width: 0; }
+  .brand-logo { width: clamp(118px, 37vw, 148px); max-height: 35px; }
+  .menu-toggle {
+    flex: 0 0 42px; width: 42px; height: 42px; min-width: 42px;
+    border-radius: 12px; gap: 5px;
+  }
+  .menu-toggle span { width: 18px; }
+  .language-switch { margin-left: 0; padding: 3px; gap: 2px; }
+  .language-button { min-width: 31px; min-height: 34px; padding: 6px 7px; font-size: 11px; }
+  .main-nav {
+    top: calc(100% + 8px); left: 10px; right: 10px;
+    padding: 10px; gap: 2px; border-radius: 15px;
+    max-height: min(75vh, 560px); overflow-y: auto;
+    background: rgba(20, 12, 34, .98); backdrop-filter: blur(20px);
+  }
+  .main-nav>a:not(.nav-cta) {
+    display: flex; align-items: center; min-height: 46px;
+    padding: 11px 12px; font-size: 14px; border-radius: 9px;
+  }
+  .main-nav>a:not(.nav-cta):hover { background: rgba(255,255,255,.06); }
+  .nav-cta { min-height: 46px; margin: 7px 0 0; font-size: 13px; }
+
+  /* Hero: stronger message, less decorative height */
+  .hero {
+    min-height: 0; padding: 34px 16px 24px; gap: 4px;
+    grid-template-columns: minmax(0,1fr);
+  }
+  .eyebrow { font-size: 9px; letter-spacing: 1.45px; line-height: 1.5; }
+  .eyebrow-line { width: 24px; }
+  .hero h1 {
+    font-size: clamp(43px, 11.8vw, 58px); line-height: .99;
+    letter-spacing: -2.5px; margin: 16px 0 14px;
+  }
+  .hero-lead { max-width: 42ch; font-size: 15px; line-height: 1.65; }
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 20px; }
+  .hero-actions .button { min-height: 48px; padding: 11px 10px; justify-content: center; font-size: 12px; text-align: center; }
+  .hero-proof { display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 5px 10px; margin-top: 21px; align-items: center; }
+  .hero-proof .proof-divider { display: none; }
+  .hero-proof > span:not(.proof-icon):not(.proof-divider) { min-width: 0; }
+  .hero-proof small { display: block; font-size: 11px; line-height: 1.4; }
+  .hero-proof b { font-size: 13px; }
+  .proof-icon { width: 32px; height: 32px; }
+  .hero-art { height: 220px; min-height: 0; margin: 7px -3px 0; overflow: hidden; }
+  .studio-visual { height: 210px; max-width: 100%; border-radius: 16px; }
+  .studio-screen { top: 15px; left: 7%; right: 7%; height: 78px; padding: 8px 10px; }
+  .screen-top { font-size: 6px; letter-spacing: .8px; }
+  .screen-wave { height: 34px; gap: 3px; padding: 4px 0 2px; }
+  .screen-wave i { width: 3px; }
+  .screen-data { margin-top: 4px; font-size: 5px; letter-spacing: .35px; }
+  .console-unit { left: 5%; right: 5%; bottom: 20px; height: 91px; }
+  .console-heading { height: 20px; padding: 0 9px; font-size: 5px; letter-spacing: .55px; }
+  .console-channels { height: 64px; padding: 5px 8px 6px; gap: 4px; }
+  .console-strip span, .console-strip b { font-size: 5px; }
+  .console-strip:after { width: 8px; height: 11px; left: calc(50% - 4px); }
+  .studio-caption { left: 8%; right: 8%; bottom: 5px; font-size: 5px; letter-spacing: .6px; }
+  .studio-brand-logo { height: 13px; max-width: 76px; }
+  .hero-sticker { font-size: 6px; padding: 5px 7px; letter-spacing: .7px; }
+  .sticker-top { top: 8px; right: 2%; }
+  .sticker-bottom { display: none; }
+  .hero-eq { bottom: 3px; right: 6%; }
+
+  /* Brand ticker remains decorative, not dominant */
+  .broadcast-ticker .ticker-track { min-height: 40px; }
+  .ticker-track span { gap: 12px; padding: 0 14px; font-size: 8px; letter-spacing: 1.1px; }
+  .ticker-brand-logo { height: 17px; max-width: 80px; }
+  .ticker-track b { font-size: 12px; }
+
+  /* Live section: prioritize the channel, track and listener counts */
+  .live-section { padding-top: 28px; padding-bottom: 48px; }
+  .section-heading { margin-bottom: 18px; }
+  .heading-row { gap: 8px; }
+  .section-heading h2 { font-size: clamp(27px, 8vw, 34px); line-height: 1.13; letter-spacing: -1.2px; margin: 9px 0 0; }
+  .section-intro { font-size: 13px; line-height: 1.65; }
+  .live-grid { grid-template-columns: minmax(0,1fr); gap: 13px; }
+  .player-card { padding: 16px; border-radius: 17px; }
+  .player-topline { gap: 8px; }
+  .live-pill { font-size: 10px; padding: 7px 9px; letter-spacing: 1px; }
+  .player-frequency { font-size: 9px; letter-spacing: .6px; }
+  .inline-brand-logo { height: 15px; max-width: 76px; }
+  .player-main { gap: 13px; padding: 20px 0 17px; align-items: center; }
+  .player-disc { width: 72px; height: 72px; flex: 0 0 72px; border-width: 5px; }
+  .player-disc-center { width: 28px; height: 28px; font-size: 10px; }
+  .mini-label { font-size: 9px; letter-spacing: 1.35px; }
+  .player-info { min-width: 0; }
+  .player-info h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; font-size: 23px; line-height: 1.15; margin: 5px 0; letter-spacing: -.6px; }
+  .channel-brand-logo { height: 19px; max-width: 94px; }
+  .player-info p { font-size: 12px; line-height: 1.45; }
+  .playing-bars { height: 15px; margin-top: 9px; }
+  .playing-bars i { height: 11px; }
+  .channel-tabs { grid-template-columns: 1fr; gap: 8px; }
+  .channel-tab {
+    min-height: 62px; padding: 10px 12px; gap: 11px;
+    border-radius: 12px;
+  }
+  .tab-icon { width: 36px; height: 36px; flex-basis: 36px; font-size: 16px; }
+  .channel-tab b { font-size: 13px; }
+  .channel-tab small { font-size: 11px; line-height: 1.35; }
+  .channel-tab-brand { gap: 7px; }
+  .channel-tab-brand img { height: 16px; max-width: 76px; }
+  .channel-tab-brand span { font-size: 12px; }
+  .tab-arrow { font-size: 18px; }
+
+  .live-data-panel { grid-template-columns: minmax(0,1fr); padding: 12px; gap: 12px; margin-top: 13px; border-radius: 13px; }
+  .live-data-topline { align-items: center; flex-wrap: wrap; gap: 5px 10px; }
+  .now-playing-label { font-size: 10px; letter-spacing: 1px; }
+  .live-data-topline>small { font-size: 10px; letter-spacing: .2px; }
+  .now-playing-box { gap: 5px; }
+  .now-playing-box>strong { font-size: clamp(16px,4.7vw,19px); line-height: 1.3; }
+  .now-playing-box>span { font-size: 12px; line-height: 1.45; }
+  .listener-boxes { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .listener-stat { padding: 11px; border-radius: 10px; }
+  .listener-channel { font-size: 10px; letter-spacing: 1px; }
+  .listener-stat>strong { font-size: 27px; margin-top: 5px; }
+  .listener-stat>small { font-size: 10px; }
+
+  .player-controls {
+    display: grid; grid-template-columns: 54px minmax(0,1fr);
+    gap: 8px 12px; padding-top: 15px; margin-top: 15px;
+  }
+  .play-button { width: 52px; height: 52px; font-size: 17px; grid-row: span 2; }
+  .control-copy { align-self: end; }
+  .control-copy b { font-size: 13px; line-height: 1.3; }
+  .control-copy small { font-size: 11px; line-height: 1.45; margin-top: 3px; }
+  .volume-control { grid-column: 2; justify-self: start; gap: 9px; font-size: 10px; }
+  .volume-control input { width: min(150px, 45vw); min-height: 24px; }
+  .player-footnote { font-size: 10px; line-height: 1.55; margin-top: 12px; }
+
+  .live-aside { grid-template-columns: 1fr; gap: 9px; }
+  .aside-card { min-height: 0; padding: 17px; border-radius: 14px; }
+  .aside-icon, .headphone-art { font-size: 22px; }
+  .aside-tag { font-size: 9px; letter-spacing: 1.2px; }
+  .aside-card h3 { font-size: 20px; margin: 7px 0; }
+  .aside-card p { font-size: 12px; line-height: 1.55; }
+  .text-link { font-size: 12px; margin-top: 10px; }
+
+  /* Shows and weekly schedule */
+  .shows-section { padding-bottom: 48px; }
+  .shows-section>.section-heading h2 { font-size: clamp(27px, 8vw, 34px); }
+  .show-feature-grid { grid-template-columns: 1fr; gap: 9px; }
+  .show-feature { min-height: 0; padding: 17px; border-radius: 14px; }
+  .feature-icon { font-size: 21px; margin-bottom: 7px; }
+  .feature-kicker { font-size: 9px; letter-spacing: 1.1px; }
+  .show-feature h3 { font-size: 21px; margin: 6px 0; }
+  .show-feature p { max-width: 38ch; font-size: 12px; line-height: 1.55; margin-bottom: 10px; }
+  .feature-play { min-height: 34px; font-size: 12px; }
+  .feature-decoration { font-size: 36px; right: 12px; bottom: 8px; }
+  .schedule-header { display: block; margin: 34px 0 13px; }
+  .schedule-header h3 { font-size: 27px; margin: 7px 0; line-height: 1.15; }
+  .schedule-caption { display: block; font-size: 12px; padding: 0; }
+  .day-tabs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px; margin: 0 0 10px; }
+  .day-tab { min-height: 42px; padding: 8px 3px; border-radius: 9px; font-size: 11px; line-height: 1.2; }
+  .schedule-panel { padding: 14px; border-radius: 14px; }
+  .schedule-panel-top { align-items: flex-start; flex-wrap: wrap; gap: 8px; padding-bottom: 11px; }
+  .schedule-panel-top b { font-size: 14px; line-height: 1.3; }
+  .schedule-brand { font-size: 8px; }
+  .schedule-brand img { height: 14px; max-width: 68px; }
+  .schedule-list { grid-template-columns: 1fr; }
+  .schedule-item { grid-template-columns: 58px minmax(0,1fr); gap: 10px; padding: 12px 0; }
+  .schedule-time { font-size: 13px; }
+  .schedule-name { font-size: 13px; line-height: 1.35; }
+  .schedule-detail { font-size: 11px; line-height: 1.45; }
+  .schedule-note { font-size: 10px; line-height: 1.5; margin-top: 12px; }
+
+  /* Team cards: enough room for names and descriptions */
+  .team-section { padding-bottom: 48px; }
+  .team-section .section-heading h2 { font-size: 30px; }
+  .team-subtitle { font-size: 10px; letter-spacing: 1.3px; margin: 18px 0 11px; }
+  .hosts-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .person-photo { height: clamp(145px, 45vw, 190px); }
+  .person-info { padding: 11px; }
+  .person-info h3 { font-size: 16px; }
+  .person-info p { font-size: 10px; line-height: 1.45; }
+  .person-sign { font-size: 9px; line-height: 1.3; }
+  .host-card:last-child { grid-column: 1 / -1; }
+  .host-card:last-child .person-photo { height: 205px; }
+  .djs-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .dj-card { height: clamp(125px, 39vw, 165px); border-radius: 10px; }
+  .dj-card span { left: 8px; right: 8px; bottom: 8px; font-size: 9px; line-height: 1.2; }
+
+  /* Request, support and contact forms */
+  .wish-section { padding-bottom: 45px; }
+  .wish-card { grid-template-columns: 1fr; padding: 16px; gap: 0; border-radius: 16px; }
+  .wish-art { height: 132px; }
+  .wish-record { width: 118px; height: 118px; border-width: 5px; }
+  .wish-record:after { width: 42px; height: 42px; font-size: 14px; }
+  .wish-content h2 { font-size: 28px; line-height: 1.15; margin: 8px 0; }
+  .wish-content>p { font-size: 12px; line-height: 1.6; }
+  .wish-form { grid-template-columns: 1fr; gap: 7px; margin-top: 15px; }
+  .wish-form label, .contact-form-card label { font-size: 12px; line-height: 1.4; margin-top: 5px; }
+  .wish-form input, .contact-form-card input, .contact-form-card textarea {
+    min-height: 46px; padding: 12px; border-radius: 9px; font-size: 14px;
+  }
+  .wish-form input, .wish-form button, .wish-form .form-feedback { grid-column: 1; }
+  .wish-form button { width: 100%; min-height: 48px; justify-content: center; margin-top: 6px; font-size: 13px; }
+  .form-feedback { font-size: 11px; line-height: 1.5; }
+  .partners-section { padding-bottom: 44px; }
+  .partners-section .section-heading h2 { font-size: 30px; }
+  .partner-showcase-grid { grid-template-columns: 1fr; gap: 10px; }
+  .partner-showcase-card { min-height: 170px; }
+  .partner-strip { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px; border-radius: 13px; }
+  .partner-logo { display: flex !important; min-width: 0; }
+  .partner-brand-logo { height: 29px; max-width: 128px; }
+  .partner-divider { display: block !important; height: 33px; }
+  .partner-copy { flex: 1 1 calc(100% - 55px); min-width: 0; }
+  .partner-copy b { font-size: 12px; }
+  .partner-copy span { font-size: 11px; line-height: 1.4; }
+  .partner-arrow { width: 40px; height: 40px; flex: 0 0 40px; }
+
+  .support-section { padding-bottom: 45px; }
+  .support-card { grid-template-columns: 34px minmax(0,1fr); gap: 10px; padding: 16px; border-radius: 15px; }
+  .support-icon { font-size: 25px; }
+  .support-copy .eyebrow { font-size: 9px; letter-spacing: 1px; }
+  .support-copy h2 { font-size: 23px; line-height: 1.2; margin: 7px 0; }
+  .support-copy p { font-size: 12px; line-height: 1.55; }
+  .bank-box { grid-column: 1 / -1; margin-top: 4px; padding: 14px; }
+  .bank-box span { font-size: 10px; }
+  .bank-box b { font-size: 13px; }
+  .bank-box strong { font-size: clamp(16px,4.6vw,19px); overflow-wrap: anywhere; }
+  .bank-box small { font-size: 11px; }
+  .copy-account { min-height: 36px; font-size: 12px; }
+
+  .contact-section { grid-template-columns: 1fr; gap: 20px; padding-bottom: 45px; }
+  .contact-copy h2 { font-size: 34px; line-height: 1.1; }
+  .contact-copy>p { font-size: 13px; line-height: 1.6; }
+  .contact-details { grid-template-columns: 1fr; gap: 13px; margin-top: 19px; }
+  .contact-item { gap: 11px; }
+  .contact-item>span:first-child { height: 38px; width: 38px; flex-basis: 38px; font-size: 16px; }
+  .contact-item small { font-size: 10px; letter-spacing: .8px; }
+  .contact-item b { font-size: 13px; line-height: 1.3; margin-top: 2px; }
+  .social-links { flex-wrap: wrap; gap: 16px; margin-top: 19px; font-size: 12px; }
+  .contact-form-card { padding: 16px; border-radius: 15px; }
+  .form-card-top { margin-bottom: 14px; }
+  .form-card-top>span { width: 42px; height: 42px; font-size: 18px; }
+  .form-card-top b { font-size: 17px; }
+  .form-card-top small { font-size: 11px; }
+  .contact-form-card form { gap: 7px; }
+  .contact-form-card textarea { min-height: 120px; }
+  .contact-form-card button { width: 100%; min-height: 48px; justify-content: center; font-size: 13px; }
+
+  /* Footer is readable and easy to reach */
+  .footer-main { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 9px 12px; padding-bottom: 17px; }
+  .footer-brand .brand-logo { width: 142px; max-height: 36px; }
+  .footer-main>p { order: 3; grid-column: 1 / -1; flex-basis: auto; font-size: 11px; line-height: 1.4; }
+  .back-top { margin-left: 0; font-size: 11px; text-align: right; }
+  .site-footer { padding: 22px 16px 16px; }
+  .footer-bottom { display: grid; grid-template-columns: 1fr; gap: 7px; padding-top: 12px; font-size: 10px; line-height: 1.45; }
+  .toast { bottom: max(14px, env(safe-area-inset-bottom)); width: calc(100% - 28px); max-width: 430px; font-size: 12px; line-height: 1.4; }
+
+  /* Keep controls comfortable on touch screens */
+  button, .button, a { -webkit-tap-highlight-color: transparent; }
+  button, input, textarea { touch-action: manipulation; }
+  :focus-visible { outline-width: 3px; outline-offset: 3px; }
+}
+
+@media (max-width: 390px) {
+  .site-header { padding-left: 10px; padding-right: 10px; gap: 6px; }
+  .brand-logo { width: 116px; max-height: 33px; }
+  .menu-toggle { width: 40px; min-width: 40px; height: 40px; }
+  .language-button { min-width: 28px; padding-left: 5px; padding-right: 5px; }
+  .hero { padding-top: 28px; }
+  .hero h1 { font-size: clamp(40px, 11.5vw, 48px); letter-spacing: -2px; }
+  .hero-actions .button { font-size: 11px; }
+  .player-card { padding: 13px; }
+  .player-disc { width: 64px; height: 64px; flex-basis: 64px; }
+  .player-info h3 { font-size: 21px; }
+  .channel-tab { padding-left: 10px; padding-right: 10px; }
+  .day-tabs { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .day-tab { font-size: 10px; }
+  .hosts-grid { gap: 7px; }
+  .person-info { padding: 9px; }
+  .person-info p { font-size: 9px; }
+  .djs-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .dj-card { height: 155px; }
+  .contact-copy h2 { font-size: 31px; }
+}
+
+@media (min-width: 420px) and (max-width: 650px) {
+  .djs-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .hero-art { height: 238px; }
+  .studio-visual { height: 226px; }
+}

@@ -85,3 +85,12 @@ RÁDIÓ69 LOGÓK
 - radio69-logo.png: teljes, eredeti álló logó.
 - Az index.html, a script.js és a styles.css már az új logófájlokra hivatkozik.
 - Feltöltéskor az assets mappát is töltsd fel a repository gyökerébe.
+
+MOBILNÉZET – ÁTTEKINTHETŐBB ELRENDEZÉS
+- A legfeljebb 650 px széles képernyőkre külön mobiloptimalizált elrendezés került.
+- Nagyobb, könnyebben olvasható szövegek és érintési felületek.
+- Egyszerűsített fejléc, kényelmes HU/EN nyelvválasztó és lenyíló navigáció.
+- Kiemeltebb Remix/Hits csatornaválasztás és lejátszásvezérlés.
+- Külön, könnyebben áttekinthető zeneadat- és hallgatószám-kártyák.
+- Mobilon egyszerűbb heti műsorrend és jól olvasható űrlapok.
+- A rádióstreamek, a 15 másodperces statisztikafrissítés, a Supabase-kapcsolat, a nyelvváltás és az automatikus Remix-indítás JavaScript-logikája nem változott.
