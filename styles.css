@@ -30,7 +30,7 @@ button{color:inherit}
 .ambient-two{width:460px;height:460px;top:650px;right:-300px;background:#38c6d9}
 
 /* Header and brand */
-.site-header{height:84px;max-width:1440px;padding:0 42px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;background:rgba(8,13,20,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(204,222,240,.08)}
+.site-header{height:84px;max-width:1440px;padding:0 42px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;position:relative;top:auto;z-index:50;background:rgba(8,13,20,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(204,222,240,.08)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .brand-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#18283a,#101923);border:1px solid rgba(56,198,217,.35);display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.22)}
 .brand-mark svg{width:29px;fill:none;stroke:var(--cyan);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
@@ -997,9 +997,9 @@ body:before{
 
 /* Daily Hungarian name-day ticker below the main navigation */
 .name-day-ticker{
-  position:sticky;
-  top:84px;
-  z-index:49;
+  position:relative;
+  top:auto;
+  z-index:1;
   width:100%;
   overflow:hidden;
   min-height:40px;
@@ -1039,10 +1039,10 @@ body:before{
 .name-day-source:hover{color:#fff}
 @keyframes nameDayTickerTravel{to{transform:translateX(-50%)}}
 .name-day-ticker:hover .name-day-track{animation-play-state:running}
-@media(max-width:850px){.name-day-ticker{top:76px}}
+@media(max-width:850px){.name-day-ticker{top:auto}}
 @media(max-width:650px){
   /* The refined mobile header is 68px high; keep the ticker directly below it. */
-  .name-day-ticker{top:68px;min-height:37px}
+  .name-day-ticker{top:auto;min-height:37px}
   .name-day-track{min-height:37px;animation-duration:27s}
   .name-day-group{min-height:37px;gap:10px;padding:0 17px;font-size:9px;letter-spacing:.45px}
   .name-day-icon{font-size:14px}
@@ -1058,120 +1058,23 @@ body:before{
 }
 @media(prefers-reduced-motion:reduce){.name-day-track{animation:none!important;transform:none!important}}
 
-/* ==========================================================
-   RÁDIÓ69 – RÖGZÍTETT FEJLÉC ÉS NÉVNAPOS SÁV
-   A két felső sáv görgetés közben is a képernyőn marad.
-   ========================================================== */
+
+/* A fejléc, a névnapos sáv és a futósáv normál oldaltartalomként görgethető. */
 .site-header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 50% !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
   right: auto !important;
-  width: 100% !important;
-  max-width: 1440px !important;
-  margin: 0 !important;
-  transform: translateX(-50%) !important;
-  z-index: 10000 !important;
-}
-
-.name-day-ticker {
-  position: fixed !important;
-  top: 84px !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  z-index: 9999 !important;
-}
-
-/* A fix elemeknek helyet hagyunk, hogy ne takarják el a kezdő tartalmat. */
-body {
-  padding-top: 124px !important;
-}
-
-@media (max-width: 850px) {
-  .site-header {
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    max-width: none !important;
-    transform: none !important;
-  }
-
-  .name-day-ticker {
-    top: 76px !important;
-  }
-
-  body {
-    padding-top: 116px !important;
-  }
-}
-
-@media (max-width: 650px) {
-  .site-header {
-    height: 68px !important;
-    min-height: 68px !important;
-  }
-
-  .name-day-ticker {
-    top: 68px !important;
-    min-height: 37px !important;
-  }
-
-  body {
-    padding-top: 105px !important;
-  }
-}
-
-
-/* Rádió69 – végleges, átlátszatlan felső rögzített sávok */
-.site-header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  max-width: 1440px !important;
-  margin: 0 auto !important;
   transform: none !important;
-  z-index: 10001 !important;
-  background: #090714 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
 }
-
 .name-day-ticker {
-  position: fixed !important;
-  top: 84px !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  z-index: 10000 !important;
-  background: linear-gradient(100deg, #5830a8 0%, #ab2f99 54%, #6830ab 100%) !important;
-  opacity: 1 !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+}
+body {
+  padding-top: 0 !important;
 }
 
-@media (max-width: 850px) {
-  .site-header {
-    max-width: none !important;
-  }
-  .name-day-ticker {
-    top: 76px !important;
-  }
-  body {
-    padding-top: 116px !important;
-  }
-}
-
-@media (max-width: 650px) {
-  .site-header {
-    height: 68px !important;
-    min-height: 68px !important;
-  }
-  .name-day-ticker {
-    top: 68px !important;
-    min-height: 37px !important;
-  }
-  body {
-    padding-top: 105px !important;
-  }
-}
+/* Megjegyzés: a fejléc, a névnapos sáv és a futósáv normál oldaltartalom; görgetéskor együtt mozognak a lappal. */
