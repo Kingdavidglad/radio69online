@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/radio69-icon.png">
-  <link rel="stylesheet" href="styles.css?v=radio69-scroll-with-page-20261108">
+  <link rel="stylesheet" href="styles.css?v=radio69-weather-20261109">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -69,6 +69,28 @@
             <div class="screen-wave" aria-hidden="true">
               <i style="--bar:22%;--delay:.1s"></i><i style="--bar:45%;--delay:.2s"></i><i style="--bar:71%;--delay:.3s"></i><i style="--bar:36%;--delay:.4s"></i><i style="--bar:88%;--delay:.1s"></i><i style="--bar:56%;--delay:.5s"></i><i style="--bar:32%;--delay:.2s"></i><i style="--bar:79%;--delay:.3s"></i><i style="--bar:47%;--delay:.4s"></i><i style="--bar:94%;--delay:.2s"></i><i style="--bar:38%;--delay:.5s"></i><i style="--bar:68%;--delay:.3s"></i><i style="--bar:29%;--delay:.1s"></i><i style="--bar:83%;--delay:.4s"></i><i style="--bar:52%;--delay:.2s"></i><i style="--bar:73%;--delay:.3s"></i><i style="--bar:34%;--delay:.5s"></i><i style="--bar:91%;--delay:.2s"></i><i style="--bar:44%;--delay:.4s"></i><i style="--bar:66%;--delay:.1s"></i><i style="--bar:27%;--delay:.3s"></i><i style="--bar:78%;--delay:.2s"></i><i style="--bar:39%;--delay:.5s"></i><i style="--bar:59%;--delay:.1s"></i><i style="--bar:86%;--delay:.3s"></i><i style="--bar:48%;--delay:.2s"></i><i style="--bar:69%;--delay:.4s"></i><i style="--bar:31%;--delay:.5s"></i><i style="--bar:81%;--delay:.1s"></i><i style="--bar:55%;--delay:.3s"></i><i style="--bar:72%;--delay:.2s"></i><i style="--bar:40%;--delay:.4s"></i><i style="--bar:93%;--delay:.5s"></i><i style="--bar:51%;--delay:.1s"></i><i style="--bar:75%;--delay:.3s"></i><i style="--bar:33%;--delay:.2s"></i><i style="--bar:64%;--delay:.4s"></i><i style="--bar:43%;--delay:.5s"></i><i style="--bar:84%;--delay:.1s"></i></div>
             <div class="screen-data"><span>INPUT 01 — REMIX</span><span>STEREO / 48 KHZ</span><span>OUTPUT: ACTIVE</span></div>
+            <section class="radio-weather" id="radioWeather" aria-label="Békéscsaba aktuális időjárása" aria-live="polite">
+              <div class="radio-weather-heading">
+                <span class="radio-weather-place">BÉKÉSCSABA · AKTUÁLIS IDŐJÁRÁS</span>
+                <span class="radio-weather-updated" id="weatherUpdated">ADATOK BETÖLTÉSE…</span>
+              </div>
+              <div class="radio-weather-body">
+                <div class="radio-weather-summary">
+                  <span class="radio-weather-icon" id="weatherIcon" aria-hidden="true">⛅</span>
+                  <strong class="radio-weather-temperature" id="weatherTemperature">--°C</strong>
+                  <span class="radio-weather-description" id="weatherDescription">Időjárási adatok betöltése…</span>
+                </div>
+                <div class="radio-weather-details">
+                  <span><small>HŐÉRZET</small><b id="weatherFeelsLike">--°C</b></span>
+                  <span><small>SZÉL</small><b id="weatherWind">-- km/h</b></span>
+                  <span><small>PÁRA</small><b id="weatherHumidity">--%</b></span>
+                </div>
+              </div>
+              <div class="radio-weather-footer">
+                <span id="weatherMinMax">Mai max. --° · min. --°</span>
+                <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Időjárási adatok: Open-Meteo</a>
+              </div>
+            </section>
           </div>
           <div class="console-unit">
             <div class="console-heading"><span>MASTER CONTROL / AUDIO MIXER</span><span>CH 01 — 08</span></div>
@@ -221,5 +243,123 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="supabase-config.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Békéscsaba élő időjárása – Open-Meteo, frissítés 10 percenként.
+    (() => {
+      const elements = {
+        icon: document.getElementById("weatherIcon"),
+        temperature: document.getElementById("weatherTemperature"),
+        description: document.getElementById("weatherDescription"),
+        feelsLike: document.getElementById("weatherFeelsLike"),
+        wind: document.getElementById("weatherWind"),
+        humidity: document.getElementById("weatherHumidity"),
+        minMax: document.getElementById("weatherMinMax"),
+        updated: document.getElementById("weatherUpdated"),
+        panel: document.getElementById("radioWeather")
+      };
+
+      if (!elements.panel) return;
+
+      const weatherDescriptions = {
+        0: ["Derült", "☀️", "🌙"],
+        1: ["Többnyire derült", "🌤️", "🌙"],
+        2: ["Részben felhős", "⛅", "☁️"],
+        3: ["Borult", "☁️", "☁️"],
+        45: ["Ködös", "🌫️", "🌫️"],
+        48: ["Dérköd", "🌫️", "🌫️"],
+        51: ["Enyhe szitálás", "🌦️", "🌧️"],
+        53: ["Szitálás", "🌦️", "🌧️"],
+        55: ["Erős szitálás", "🌧️", "🌧️"],
+        56: ["Ónos szitálás", "🌧️", "🌧️"],
+        57: ["Erős ónos szitálás", "🌧️", "🌧️"],
+        61: ["Enyhe eső", "🌦️", "🌧️"],
+        63: ["Eső", "🌧️", "🌧️"],
+        65: ["Erős eső", "🌧️", "🌧️"],
+        66: ["Ónos eső", "🌧️", "🌧️"],
+        67: ["Erős ónos eső", "🌧️", "🌧️"],
+        71: ["Enyhe havazás", "🌨️", "🌨️"],
+        73: ["Havazás", "🌨️", "🌨️"],
+        75: ["Erős havazás", "❄️", "❄️"],
+        77: ["Hószemcsék", "🌨️", "🌨️"],
+        80: ["Helyenként zápor", "🌦️", "🌧️"],
+        81: ["Záporok", "🌦️", "🌧️"],
+        82: ["Heves záporok", "⛈️", "⛈️"],
+        85: ["Hózápor", "🌨️", "🌨️"],
+        86: ["Erős hózápor", "❄️", "❄️"],
+        95: ["Zivatar", "⛈️", "⛈️"],
+        96: ["Zivatar jégesővel", "⛈️", "⛈️"],
+        99: ["Erős zivatar, jégesővel", "⛈️", "⛈️"]
+      };
+
+      const setText = (element, value) => {
+        if (element) element.textContent = value;
+      };
+
+      async function refreshRadioWeather() {
+        const endpoint = new URL("https://api.open-meteo.com/v1/forecast");
+        endpoint.search = new URLSearchParams({
+          latitude: "46.6733",
+          longitude: "21.0877",
+          current: "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m",
+          daily: "temperature_2m_max,temperature_2m_min",
+          temperature_unit: "celsius",
+          wind_speed_unit: "kmh",
+          timezone: "Europe/Budapest",
+          forecast_days: "1"
+        }).toString();
+
+        try {
+          const response = await fetch(endpoint.toString(), { cache: "no-store" });
+          if (!response.ok) throw new Error(`Időjárás API hiba: ${response.status}`);
+
+          const data = await response.json();
+          const current = data.current;
+          const daily = data.daily;
+          if (!current || !daily) throw new Error("Hiányos időjárási adatok érkeztek.");
+
+          const code = Number(current.weather_code);
+          const info = weatherDescriptions[code] || ["Változó idő", "🌤️", "☁️"];
+          const isDay = Number(current.is_day) === 1;
+          const icon = isDay ? info[1] : info[2];
+          const round = value => Math.round(Number(value));
+
+          setText(elements.icon, icon);
+          setText(elements.temperature, `${round(current.temperature_2m)}°C`);
+          setText(elements.description, info[0]);
+          setText(elements.feelsLike, `${round(current.apparent_temperature)}°C`);
+          setText(elements.wind, `${round(current.wind_speed_10m)} km/h`);
+          setText(elements.humidity, `${round(current.relative_humidity_2m)}%`);
+
+          const max = daily.temperature_2m_max && daily.temperature_2m_max[0];
+          const min = daily.temperature_2m_min && daily.temperature_2m_min[0];
+          if (typeof max === "number" && Number.isFinite(max) &&
+              typeof min === "number" && Number.isFinite(min)) {
+            setText(elements.minMax, `Mai max. ${round(max)}° · min. ${round(min)}°`);
+          }
+
+          const timeLabel = typeof current.time === "string"
+            ? current.time.slice(11, 16)
+            : new Intl.DateTimeFormat("hu-HU", {
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZone: "Europe/Budapest"
+              }).format(new Date());
+          setText(elements.updated, `FRISSÍTVE ${timeLabel}`);
+          elements.panel.dataset.weatherState = "ready";
+        } catch (error) {
+          console.warn("A Rádió69 időjárásadatai most nem érhetők el:", error);
+          if (elements.panel.dataset.weatherState !== "ready") {
+            setText(elements.icon, "🌐");
+            setText(elements.description, "Az időjárási adatok átmenetileg nem érhetők el");
+            setText(elements.updated, "KAPCSOLÓDÁSI HIBA");
+          }
+          elements.panel.dataset.weatherState = "error";
+        }
+      }
+
+      refreshRadioWeather();
+      window.setInterval(refreshRadioWeather, 10 * 60 * 1000);
+    })();
+  </script>
 </body>
 </html>
