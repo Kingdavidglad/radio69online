@@ -1121,3 +1121,57 @@ body {
     padding-top: 105px !important;
   }
 }
+
+
+/* Rádió69 – végleges, átlátszatlan felső rögzített sávok */
+.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  transform: none !important;
+  z-index: 10001 !important;
+  background: #090714 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.name-day-ticker {
+  position: fixed !important;
+  top: 84px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 10000 !important;
+  background: linear-gradient(100deg, #5830a8 0%, #ab2f99 54%, #6830ab 100%) !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 850px) {
+  .site-header {
+    max-width: none !important;
+  }
+  .name-day-ticker {
+    top: 76px !important;
+  }
+  body {
+    padding-top: 116px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .site-header {
+    height: 68px !important;
+    min-height: 68px !important;
+  }
+  .name-day-ticker {
+    top: 68px !important;
+    min-height: 37px !important;
+  }
+  body {
+    padding-top: 105px !important;
+  }
+}
