@@ -1078,3 +1078,155 @@ body {
 }
 
 /* Megjegyzés: a fejléc, a névnapos sáv és a futósáv normál oldaltartalom; görgetéskor együtt mozognak a lappal. */
+
+
+/* ==========================================================
+   RÁDIÓ69 – ÉLŐ IDŐJÁRÁS A DIGITÁLIS STÚDIÓKÁRTYÁBAN
+   ========================================================== */
+.studio-screen {
+  height: 190px;
+  padding: 12px 16px 10px;
+}
+.screen-wave {
+  height: 46px;
+}
+.radio-weather {
+  position: relative;
+  z-index: 4;
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(210, 190, 255, .16);
+  color: #f7edff;
+}
+.radio-weather-heading,
+.radio-weather-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.radio-weather-place {
+  color: #83f2f0;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1.15px;
+}
+.radio-weather-updated {
+  color: #a99bbd;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  white-space: nowrap;
+}
+.radio-weather-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 1.15fr);
+  align-items: center;
+  gap: 13px;
+  margin-top: 4px;
+}
+.radio-weather-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.radio-weather-icon {
+  flex: 0 0 auto;
+  font-size: 25px;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(255, 202, 104, .22));
+}
+.radio-weather-temperature {
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+.radio-weather-description {
+  color: #c8bbdc;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.3;
+  min-width: 0;
+}
+.radio-weather-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.radio-weather-details > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 7px;
+  border: 1px solid rgba(222, 203, 255, .13);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .035);
+  min-width: 0;
+}
+.radio-weather-details small {
+  color: #a99bbc;
+  font-size: 6px;
+  font-weight: 900;
+  letter-spacing: .65px;
+}
+.radio-weather-details b {
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.radio-weather-footer {
+  margin-top: 5px;
+  color: #a99bbc;
+  font-size: 6px;
+  line-height: 1.2;
+}
+.radio-weather-footer a {
+  color: #78dfe7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+  .hero-art { height: 220px; }
+  .studio-visual { height: 210px; }
+  .studio-screen {
+    top: 8px;
+    left: 6%;
+    right: 6%;
+    height: 120px;
+    padding: 7px 9px 6px;
+  }
+  .screen-top { font-size: 6px; letter-spacing: .65px; }
+  .screen-wave { height: 15px; padding: 2px 0; }
+  .screen-data { display: none; }
+  .radio-weather { margin-top: 4px; padding-top: 4px; }
+  .radio-weather-heading { gap: 4px; }
+  .radio-weather-place { font-size: 5.5px; letter-spacing: .7px; }
+  .radio-weather-updated { font-size: 5px; letter-spacing: .25px; }
+  .radio-weather-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+    margin-top: 2px;
+  }
+  .radio-weather-summary { gap: 6px; min-height: 22px; }
+  .radio-weather-icon { font-size: 18px; }
+  .radio-weather-temperature { font-size: 19px; }
+  .radio-weather-description { font-size: 7px; }
+  .radio-weather-details { gap: 5px; }
+  .radio-weather-details > span { padding: 3px 5px; gap: 1px; border-radius: 5px; }
+  .radio-weather-details small { font-size: 5px; letter-spacing: .35px; }
+  .radio-weather-details b { font-size: 7px; }
+  .radio-weather-footer { margin-top: 3px; font-size: 5px; }
+  .console-unit { bottom: 16px; height: 60px; }
+  .console-heading { height: 16px; padding: 0 8px; font-size: 5px; }
+  .console-channels { height: 41px; padding: 3px 7px 4px; gap: 3px; }
+  .console-strip span, .console-strip b { font-size: 4px; }
+  .console-strip:after { width: 7px; height: 9px; }
+}
