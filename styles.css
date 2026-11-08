@@ -20,7 +20,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif;overflow-x:hidden;line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif;overflow-x:clip;line-height:1.55}
 body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 78% 8%,rgba(35,119,151,.13),transparent 34%),radial-gradient(ellipse at 8% 34%,rgba(46,77,133,.13),transparent 38%),linear-gradient(180deg,#080d14 0%,#0a111a 55%,#080d14 100%)}
 a{color:inherit;text-decoration:none}
 button,input,textarea{font:inherit}
@@ -1040,10 +1040,11 @@ body:before{
 .name-day-source{font-family:Manrope,Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.2px;color:rgba(255,255,255,.76);text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
 .name-day-source:hover{color:#fff}
 @keyframes nameDayTickerTravel{to{transform:translateX(-50%)}}
-.name-day-ticker:hover .name-day-track{animation-play-state:paused}
+.name-day-ticker:hover .name-day-track{animation-play-state:running}
 @media(max-width:850px){.name-day-ticker{top:76px}}
 @media(max-width:650px){
-  .name-day-ticker{top:72px;min-height:37px}
+  /* The refined mobile header is 68px high; keep the ticker directly below it. */
+  .name-day-ticker{top:68px;min-height:37px}
   .name-day-track{min-height:37px;animation-duration:27s}
   .name-day-group{min-height:37px;gap:10px;padding:0 17px;font-size:9px;letter-spacing:.45px}
   .name-day-icon{font-size:14px}
