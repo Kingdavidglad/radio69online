@@ -889,6 +889,152 @@ function radio69TranslateTree(root) {
   }
 }
 
+const RADIO69_NAME_DAY_API = "https://www.nevinfo.hu/api/v1/ma";
+const RADIO69_NAME_DAY_CACHE_PREFIX = "radio69-name-days:";
+const RADIO69_NAME_DAY_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+const RADIO69_NAME_DAY_CHECK_MS = 30 * 60 * 1000;
+let radio69NameDayDateKey = "";
+let radio69NameDayNames = [];
+let radio69NameDayState = "loading";
+
+function radio69GetBudapestDateKey() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Budapest",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function radio69UpdateNameDayLanguage() {
+  const label = document.getElementById("nameDayLabel");
+  const greeting = document.getElementById("nameDayGreeting");
+  const source = document.getElementById("nameDaySource");
+  const ticker = document.getElementById("nameDayTicker");
+  const names = document.getElementById("nameDayNames");
+  if (label) label.textContent = radio69Language === "en" ? "TODAY'S NAME DAYS" : "MAI NÉVNAPOSOK";
+  if (greeting) greeting.textContent = radio69Language === "en" ? "Happy name day!" : "Boldog névnapot!";
+  if (source) source.textContent = radio69Language === "en" ? "Source: Névinfo" : "Forrás: Névinfo";
+  if (ticker) ticker.setAttribute("aria-label", radio69Language === "en" ? "Today's name days" : "Mai névnapok");
+  if (names && radio69NameDayState === "loading") {
+    names.textContent = radio69Language === "en" ? "Loading name days…" : "Névnapok betöltése…";
+  } else if (names && radio69NameDayState === "unavailable" && radio69NameDayNames.length === 0) {
+    names.textContent = radio69Language === "en" ? "Name days are temporarily unavailable" : "A névnapok most nem tölthetők be";
+  }
+}
+
+function radio69RenderNameDayTicker() {
+  const track = document.getElementById("nameDayTrack");
+  const group = document.getElementById("nameDayGroup");
+  const namesElement = document.getElementById("nameDayNames");
+  if (!track || !group || !namesElement) return;
+
+  if (radio69NameDayNames.length) {
+    namesElement.textContent = radio69NameDayNames.join(" • ");
+  } else if (radio69NameDayState === "unavailable") {
+    namesElement.textContent = radio69Language === "en"
+      ? "Name days are temporarily unavailable"
+      : "A névnapok most nem tölthetők be";
+  } else {
+    namesElement.textContent = radio69Language === "en" ? "Loading name days…" : "Névnapok betöltése…";
+  }
+
+  // A második, képernyőolvasók elől rejtett példány biztosítja a folyamatos futást.
+  const oldCopy = track.querySelector(".name-day-group-copy");
+  if (oldCopy) oldCopy.remove();
+  const copy = group.cloneNode(true);
+  copy.removeAttribute("id");
+  copy.classList.add("name-day-group-copy");
+  copy.setAttribute("aria-hidden", "true");
+  copy.querySelectorAll("[id]").forEach((element) => element.removeAttribute("id"));
+  track.appendChild(copy);
+}
+
+function radio69ReadNameDayCache(dateKey) {
+  try {
+    const raw = localStorage.getItem(`${RADIO69_NAME_DAY_CACHE_PREFIX}${dateKey}`);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || !Array.isArray(parsed.names)) return null;
+    const names = parsed.names.map((name) => String(name || "").trim()).filter(Boolean);
+    if (!names.length) return null;
+    return { names, fetchedAt: Number(parsed.fetchedAt) || 0 };
+  } catch {
+    return null;
+  }
+}
+
+function radio69ApplyCachedNameDays(cache) {
+  if (!cache || !cache.names.length) return;
+  radio69NameDayNames = cache.names;
+  radio69NameDayState = "loaded";
+  radio69RenderNameDayTicker();
+}
+
+async function radio69RefreshNameDays(force = false) {
+  const dateKey = radio69GetBudapestDateKey();
+  const dateChanged = dateKey !== radio69NameDayDateKey;
+  if (dateChanged) {
+    radio69NameDayDateKey = dateKey;
+    radio69NameDayNames = [];
+    radio69NameDayState = "loading";
+    const dayCache = radio69ReadNameDayCache(dateKey);
+    if (dayCache) radio69ApplyCachedNameDays(dayCache);
+    else radio69RenderNameDayTicker();
+    force = true;
+  }
+
+  const cached = radio69ReadNameDayCache(dateKey);
+  if (!force && cached && Date.now() - cached.fetchedAt < RADIO69_NAME_DAY_CACHE_TTL_MS) return;
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 9000);
+  try {
+    const response = await fetch(RADIO69_NAME_DAY_API, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+      signal: controller.signal
+    });
+    if (!response.ok) throw new Error(`Névnap API HTTP ${response.status}`);
+    const payload = await response.json();
+    if (!Array.isArray(payload?.ma)) throw new Error("A névnap API válasza nem tartalmaz mai névnaplistát.");
+    const names = [...new Set(payload.ma.map((item) => String(item?.name || "").trim()).filter(Boolean))];
+    if (!names.length) throw new Error("A mai névnaplista üres.");
+
+    radio69NameDayNames = names;
+    radio69NameDayState = "loaded";
+    try {
+      localStorage.setItem(`${RADIO69_NAME_DAY_CACHE_PREFIX}${dateKey}`, JSON.stringify({ names, fetchedAt: Date.now() }));
+    } catch { /* a névnaplista tárolás nélkül is megjelenik */ }
+    radio69RenderNameDayTicker();
+  } catch (error) {
+    console.warn("A mai névnapok lekérése nem sikerült:", error);
+    if (cached?.names?.length) {
+      radio69ApplyCachedNameDays(cached);
+    } else {
+      radio69NameDayState = "unavailable";
+      radio69NameDayNames = [];
+      radio69RenderNameDayTicker();
+    }
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+function radio69InitNameDayTicker() {
+  radio69NameDayDateKey = radio69GetBudapestDateKey();
+  const cached = radio69ReadNameDayCache(radio69NameDayDateKey);
+  if (cached) radio69ApplyCachedNameDays(cached);
+  else radio69RenderNameDayTicker();
+  radio69UpdateNameDayLanguage();
+  radio69RefreshNameDays(!cached || Date.now() - cached.fetchedAt >= RADIO69_NAME_DAY_CACHE_TTL_MS);
+  setInterval(() => radio69RefreshNameDays(false), RADIO69_NAME_DAY_CHECK_MS);
+}
+
 function radio69SetLanguage(language) {
   radio69Language = language === "en" ? "en" : "hu";
   document.documentElement.lang = radio69Language;
@@ -902,6 +1048,7 @@ function radio69SetLanguage(language) {
       : "Rádió69 – online rádió Békés vármegyéből. Hallgasd élőben a Remix és Hits csatornát, nézd meg műsorainkat és ismerd meg a csapatot!";
   }
   radio69TranslateTree(document.body);
+  radio69UpdateNameDayLanguage();
   document.querySelectorAll(".language-button").forEach((button) => {
     const active = button.dataset.language === radio69Language;
     button.classList.toggle("active", active);
@@ -922,6 +1069,7 @@ document.querySelectorAll(".language-button").forEach((button) => {
   button.addEventListener("click", () => radio69SetLanguage(button.dataset.language));
 });
 radio69SetLanguage(savedRadio69Language);
+radio69InitNameDayTicker();
 
 // A később frissülő lejátszó-, statisztikai és űrlapszövegeket is lefordítjuk.
 const radio69LanguageObserver = new MutationObserver((mutations) => {

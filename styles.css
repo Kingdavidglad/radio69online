@@ -995,3 +995,66 @@ body:before{
   .hero-art { height: 238px; }
   .studio-visual { height: 226px; }
 }
+
+
+/* Daily Hungarian name-day ticker below the main navigation */
+.name-day-ticker{
+  position:sticky;
+  top:84px;
+  z-index:49;
+  width:100%;
+  overflow:hidden;
+  min-height:40px;
+  border-top:1px solid rgba(255,255,255,.13);
+  border-bottom:1px solid rgba(255,255,255,.13);
+  background:linear-gradient(100deg,rgba(88,48,168,.97),rgba(171,47,153,.97) 54%,rgba(104,48,171,.97));
+  box-shadow:0 8px 24px rgba(28,8,52,.25);
+}
+.name-day-track{
+  display:flex;
+  width:max-content;
+  min-height:40px;
+  animation:nameDayTickerTravel 32s linear infinite;
+  will-change:transform;
+}
+.name-day-group{
+  display:flex;
+  flex:0 0 max-content;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(10px,1.8vw,24px);
+  min-width:100vw;
+  min-height:40px;
+  padding:0 28px;
+  color:#fff;
+  white-space:nowrap;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:11px;
+  letter-spacing:.8px;
+}
+.name-day-icon{color:#70f2ed;font-size:17px;text-shadow:0 0 12px rgba(112,242,237,.65)}
+.name-day-label{font-weight:800;letter-spacing:1.35px;color:#fff1a8}
+.name-day-names{font-weight:800;color:#fff;font-size:12px;text-shadow:0 0 10px rgba(255,255,255,.12)}
+.name-day-separator{color:#72f3ed;font-size:15px}
+.name-day-greeting{font-weight:700;color:#ffe0f3}
+.name-day-source{font-family:Manrope,Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:.2px;color:rgba(255,255,255,.76);text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
+.name-day-source:hover{color:#fff}
+@keyframes nameDayTickerTravel{to{transform:translateX(-50%)}}
+.name-day-ticker:hover .name-day-track{animation-play-state:paused}
+@media(max-width:850px){.name-day-ticker{top:76px}}
+@media(max-width:650px){
+  .name-day-ticker{top:72px;min-height:37px}
+  .name-day-track{min-height:37px;animation-duration:27s}
+  .name-day-group{min-height:37px;gap:10px;padding:0 17px;font-size:9px;letter-spacing:.45px}
+  .name-day-icon{font-size:14px}
+  .name-day-label{letter-spacing:.7px}
+  .name-day-names{font-size:10px}
+  .name-day-separator{font-size:12px}
+  .name-day-source{font-size:8px}
+}
+@media(max-width:390px){
+  .name-day-group{gap:8px;padding:0 14px;font-size:8px}
+  .name-day-names{font-size:9px}
+  .name-day-source{font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){.name-day-track{animation:none!important;transform:none!important}}
