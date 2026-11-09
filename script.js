@@ -8,11 +8,13 @@ const RADIO_CONFIG = {
   // Icecast 2.4.4 JSON-statisztika: mindkét mount adata egy válaszban érkezik.
   statsUrl: "https://zmejdydtgxotkscluqlo.supabase.co/functions/v1/radio-stats",
   mounts: { remix: "/stream", hits: "/teszt" },
+  // Élő hallgatottsági és zeneszám-adatok frissítése 5 másodpercenként.
   statsRefreshMs: 5000,
   requestEmail: "info@radio69.hu"
 };
 
 const schedule = [
+  // Hétfő
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
@@ -21,6 +23,7 @@ const schedule = [
     ["18:00", "Back in Time (Vissza az időben) 1970–2022", "Műsorvezető: Balu"],
     ["20:00", "NightMix (ismétlés)", "Műsorvezető: Frenkl András"]
   ],
+  // Kedd
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
@@ -29,45 +32,50 @@ const schedule = [
     ["18:00", "MagyarOK", ""],
     ["20:00", "ClubChart (ismétlés)", "Műsorvezető: Frenkl András"]
   ],
+  // Szerda
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "Kangoo Jam (ismétlés)", ""],
     ["18:00", "Begurulva – Autó és kütyümustra", "Műsorvezető: Berta István"],
-    ["19:00", "Sztárportré", ""],
+    ["19:00", "Sztárportré", "Műsorvezető: Molnár Szabolcs"],
     ["20:00", "Zene Doboz (ismétlés)", "Műsorvezető: Szabolcsi Dávid"]
   ],
+  // Csütörtök
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "MagyarOK (ismétlés)", ""],
     ["18:00", "Retró körút", "Műsorvezető: Dombi Ákos"],
-    ["20:00", "Back in Time (Vissza az időben) 1970–2022 (ismétlés)", "Műsorvezető: Balu"]
+    ["20:00", "Back in Time (ismétlés)", "Műsorvezető: Balu"]
   ],
+  // Péntek
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "Magyar Top 40 (ismétlés)", "Műsorvezető: Szabolcsi Dávid (Dave)"],
     ["18:00", "Zsiványok Podcast", "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)"],
-    ["20:00", "Sztárportré (ismétlés)", ""],
+    ["20:00", "Sztárportré (ismétlés)", "Műsorvezető: Molnár Szabolcs"],
     ["21:00", "NightMix", "Műsorvezető: Frenkl András"]
   ],
+  // Szombat
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Hangposta – Kívánság műsor", ""],
-    ["16:00", "DJ Sáv", "A DJ Sáv a Rádió69 különleges zenei blokkja, ahol a rádió DJ-i veszik át az irányítást, és pörgős, energikus mixekkel gondoskodnak a hangulatról."]
+    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."]
   ],
+  // Vasárnap
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Magyar Top 40", "Műsorvezető: Szabolcsi Dávid (Dave)"],
-    ["16:00", "DJ Sáv", "A DJ Sáv a Rádió69 különleges zenei blokkja, ahol a rádió DJ-i veszik át az irányítást, és pörgős, energikus mixekkel gondoskodnak a hangulatról."],
+    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
     ["18:00", "ClubChart", "Műsorvezető: Frenkl András"],
     ["19:00", "Zsiványok Podcast (ismétlés)", "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)"],
     ["20:00", "Kangoo Jam", ""]
@@ -675,6 +683,8 @@ const RADIO69_I18N = {
     "Pénteki műsoraink": "Friday's shows",
     "Szombati műsoraink": "Saturday's shows",
     "Vasárnapi műsoraink": "Sunday's shows",
+    "Sztárportré": "Star Portrait",
+    "Sztárportré (ismétlés)": "Star Portrait (repeat)",
     "A műsorrend tájékoztató jellegű; az esetleges változásokról a Rádió69 felületein adunk hírt.": "The schedule is for guidance only. Any changes will be announced on Rádió69's channels.",
     "AKIK A HANGULATOT HOZZÁK": "THE PEOPLE BEHIND THE VIBE",
     "Ismerd meg a": "Meet the",
