@@ -8,7 +8,7 @@ const RADIO_CONFIG = {
   // Icecast 2.4.4 JSON-statisztika: mindkét mount adata egy válaszban érkezik.
   statsUrl: "https://zmejdydtgxotkscluqlo.supabase.co/functions/v1/radio-stats",
   mounts: { remix: "/stream", hits: "/teszt" },
-  statsRefreshMs: 15000,
+  statsRefreshMs: 5000,
   requestEmail: "info@radio69.hu"
 };
 
