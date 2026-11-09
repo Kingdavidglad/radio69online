@@ -211,6 +211,19 @@
   @media(max-width:1000px){.djs-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:11px!important}.dj-card:nth-child(6){grid-column-start:auto}}
   @media(max-width:640px){.djs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.dj-card{border-radius:11px!important}.dj-card:last-child{grid-column:1/-1;justify-self:center;width:calc((100% - 9px)/2)}}
 </style>
+
+<style id="radio69-presenter-gallery-refresh">
+  .hosts-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:13px!important}
+  .hosts-grid>.host-card{min-width:0!important;grid-column:auto!important}
+  .host-card .person-photo{height:auto!important;aspect-ratio:1447/2048!important;overflow:hidden!important}
+  .host-card .person-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+  .host-card .person-info{min-height:104px}
+  .host-card .person-info h3{font-size:clamp(13px,1.2vw,18px)!important;line-height:1.2!important;overflow-wrap:anywhere}
+  .host-card .person-info p{font-size:clamp(9px,.78vw,11px)!important;line-height:1.5!important}
+  @media(max-width:1050px){.hosts-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+  @media(max-width:640px){.hosts-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.hosts-grid>.host-card:last-child{grid-column:auto!important}.host-card .person-info{padding:11px!important;min-height:95px}.host-card .person-info h3{font-size:clamp(12px,3.3vw,16px)!important}.host-card .person-info p{font-size:9px!important}.host-card .person-sign{font-size:7px!important}}
+</style>
+
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -461,9 +474,11 @@
       <div class="section-heading heading-row"><div><div class="eyebrow">AKIK A HANGULATOT HOZZÁK</div><h2>Ismerd meg a <span class="gradient-text">csapatot!</span></h2><p class="section-intro">Műsorvezetők és DJ-k, akik gondoskodnak róla, hogy mindig legyen mit hallgatnod.</p></div><div class="team-stamp"><img src="assets/radio69-horizontal.png" alt="Rádió69"><b>ON AIR</b></div></div>
       <div class="team-subtitle"><span class="team-dot"></span> MŰSORVEZETŐK</div>
       <div class="hosts-grid">
-        <article class="person-card host-card"><div class="person-photo"><img src="https://radio69.hu/dave.jpg" alt="Dave, műsorvezető" loading="lazy"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>DAVE</h3><p>Műsorvezető • Zene Doboz • Magyar TOP40</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
-        <article class="person-card host-card"><div class="person-photo"><img src="https://radio69.hu/akos.jpg" alt="Ákos, műsorvezető" loading="lazy"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>ÁKOS</h3><p>Műsorvezető</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
-        <article class="person-card host-card"><div class="person-photo"><img src="https://radio69.hu/balu.jpg" alt="Balu, műsorvezető" loading="lazy"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>BALU</h3><p>Műsorvezető • Back in Time</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
+        <article class="person-card host-card"><div class="person-photo"><img src="assets/host-dave.jpg" alt="Dave, műsorvezető" loading="lazy" decoding="async" width="1447" height="2048"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>DAVE</h3><p>Műsorvezető • Zene Doboz • Magyar TOP40</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
+        <article class="person-card host-card"><div class="person-photo"><img src="assets/host-molnar-szabolcs.jpg" alt="Molnár Szabolcs, műsorvezető" loading="lazy" decoding="async" width="1447" height="2048"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>MOLNÁR SZABOLCS</h3><p>Műsorvezető • Sztárportré</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
+        <article class="person-card host-card"><div class="person-photo"><img src="assets/host-balu.jpg" alt="Balu, műsorvezető" loading="lazy" decoding="async" width="1447" height="2048"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>BALU</h3><p>Műsorvezető • Back in Time</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
+        <article class="person-card host-card"><div class="person-photo"><img src="assets/host-berta-istvan.jpg" alt="Berta István, műsorvezető" loading="lazy" decoding="async" width="1447" height="2048"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>BERTA ISTVÁN</h3><p>Műsorvezető • Begurulva</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
+        <article class="person-card host-card"><div class="person-photo"><img src="assets/host-dombi-akos.jpg" alt="Dombi Ákos, műsorvezető" loading="lazy" decoding="async" width="1447" height="2048"><span class="person-label">MŰSORVEZETŐ</span></div><div class="person-info"><h3>DOMBI ÁKOS</h3><p>Műsorvezető • Retró körút</p><span class="person-sign">Rádió69 crew ✦</span></div></article>
       </div>
       <div class="team-subtitle dj-subtitle"><span class="team-dot team-dot-pink"></span> DJ-K</div>
       <div class="djs-grid">
