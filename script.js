@@ -35,6 +35,7 @@ const schedule = [
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "Kangoo Jam (ismétlés)", ""],
     ["18:00", "Begurulva – Autó és kütyümustra", "Műsorvezető: Berta István"],
+    ["19:00", "Sztárportré", ""],
     ["20:00", "Zene Doboz (ismétlés)", "Műsorvezető: Szabolcsi Dávid"]
   ],
   [
@@ -43,7 +44,7 @@ const schedule = [
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "MagyarOK (ismétlés)", ""],
     ["18:00", "Retró körút", "Műsorvezető: Dombi Ákos"],
-    ["20:00", "Back in Time (ismétlés)", "Műsorvezető: Balu"]
+    ["20:00", "Back in Time (Vissza az időben) 1970–2022 (ismétlés)", "Műsorvezető: Balu"]
   ],
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
@@ -51,6 +52,7 @@ const schedule = [
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "Magyar Top 40 (ismétlés)", "Műsorvezető: Szabolcsi Dávid (Dave)"],
     ["18:00", "Zsiványok Podcast", "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)"],
+    ["20:00", "Sztárportré (ismétlés)", ""],
     ["21:00", "NightMix", "Műsorvezető: Frenkl András"]
   ],
   [
@@ -58,14 +60,14 @@ const schedule = [
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Hangposta – Kívánság műsor", ""],
-    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."]
+    ["16:00", "DJ Sáv", "A DJ Sáv a Rádió69 különleges zenei blokkja, ahol a rádió DJ-i veszik át az irányítást, és pörgős, energikus mixekkel gondoskodnak a hangulatról."]
   ],
   [
     ["07:00", "Vekker", "Műsorvezető: Frenkl András"],
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Magyar Top 40", "Műsorvezető: Szabolcsi Dávid (Dave)"],
-    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
+    ["16:00", "DJ Sáv", "A DJ Sáv a Rádió69 különleges zenei blokkja, ahol a rádió DJ-i veszik át az irányítást, és pörgős, energikus mixekkel gondoskodnak a hangulatról."],
     ["18:00", "ClubChart", "Műsorvezető: Frenkl András"],
     ["19:00", "Zsiványok Podcast (ismétlés)", "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)"],
     ["20:00", "Kangoo Jam", ""]
