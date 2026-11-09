@@ -202,6 +202,15 @@
   @media(prefers-reduced-motion:reduce){.r69-jokes-shell *{scroll-behavior:auto!important}}
 </style>
 
+<style id="radio69-dj-gallery-refresh">
+  .djs-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:14px!important}
+  .dj-card{height:auto!important;aspect-ratio:1000/1415!important;border-radius:14px!important}
+  .dj-card img{object-fit:cover!important;object-position:center center!important;filter:saturate(.94) contrast(1.02)!important}
+  .dj-card:nth-child(6){grid-column-start:2}
+  .dj-card span{font-size:clamp(9px,.85vw,12px)!important;letter-spacing:.8px!important}
+  @media(max-width:1000px){.djs-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:11px!important}.dj-card:nth-child(6){grid-column-start:auto}}
+  @media(max-width:640px){.djs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.dj-card{border-radius:11px!important}.dj-card:last-child{grid-column:1/-1;justify-self:center;width:calc((100% - 9px)/2)}}
+</style>
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -458,13 +467,15 @@
       </div>
       <div class="team-subtitle dj-subtitle"><span class="team-dot team-dot-pink"></span> DJ-K</div>
       <div class="djs-grid">
-        <article class="dj-card"><img src="https://radio69.hu/danil.jfif" alt="DaniL DJ" loading="lazy"><span>DANIL</span></article>
-        <article class="dj-card"><img src="https://radio69.hu/effect.jfif" alt="DJ Effect" loading="lazy"><span>DJ EFFECT</span></article>
-        <article class="dj-card"><img src="https://radio69.hu/djhlasznyik.jfif" alt="DJ Hlásznyik" loading="lazy"><span>DJ HLÁSZNYIK</span></article>
-        <article class="dj-card"><img src="https://radio69.hu/djveronic.jfif" alt="DJ Veronic" loading="lazy"><span>DJ VERONIC</span></article>
-        <article class="dj-card"><img src="https://radio69.hu/martinyo.jfif" alt="Martinyo DJ" loading="lazy"><span>MARTINYO</span></article>
-        <article class="dj-card"><img src="https://radio69.hu/djterence.jfif" alt="DJ Terence" loading="lazy"><span>DJ TERENCE</span></article>
-        <article class="dj-card"><img src="https://radio69.hu/frederrioe.jfif" alt="Frederrioe DJ" loading="lazy"><span>FREDERRIOE</span></article>
+        <article class="dj-card"><img src="assets/dj-adamo.jpg" alt="Adamo DJ" loading="lazy" decoding="async" width="1000" height="1415"><span>ADAMO</span></article>
+        <article class="dj-card"><img src="assets/dj-carver.jpg" alt="Carver DJ" loading="lazy" decoding="async" width="1000" height="1415"><span>CARVER</span></article>
+        <article class="dj-card"><img src="assets/dj-daniel.jpg" alt="Dániel DJ" loading="lazy" decoding="async" width="1000" height="1415"><span>DÁNIEL</span></article>
+        <article class="dj-card"><img src="assets/dj-effect.jpg" alt="DJ Effect" loading="lazy" decoding="async" width="1000" height="1415"><span>DJ EFFECT</span></article>
+        <article class="dj-card"><img src="assets/dj-stevek.jpg" alt="DJ Stevek" loading="lazy" decoding="async" width="1000" height="1415"><span>DJ STEVEK</span></article>
+        <article class="dj-card"><img src="assets/dj-hlasznyik.jpg" alt="DJ Hlásznyik" loading="lazy" decoding="async" width="1000" height="1415"><span>DJ HLÁSZNYIK</span></article>
+        <article class="dj-card"><img src="assets/dj-frigyes.jpg" alt="Frigyes DJ" loading="lazy" decoding="async" width="1000" height="1415"><span>FRIGYES</span></article>
+        <article class="dj-card"><img src="assets/dj-terence.jpg" alt="Terence DJ" loading="lazy" decoding="async" width="1000" height="1415"><span>TERENCE</span></article>
+        <article class="dj-card"><img src="assets/dj-veronic.jpg" alt="DJ Veronic" loading="lazy" decoding="async" width="1000" height="1415"><span>DJ VERONIC</span></article>
       </div>
     </section>
 
@@ -481,8 +492,8 @@
     <section class="partners-section section-wrap" id="partnerek">
       <div class="section-heading"><div class="eyebrow">EGYÜTT HANGOSABB</div><h2>Partnereink</h2><p class="section-intro">Örülünk minden együttműködésnek! Partneri megkereséseket a lenti e-mail-címen várunk.</p></div>
       <div class="partner-showcase-grid" aria-label="Partnereink és rendezvény DJ szolgáltatások">
-        <article class="partner-showcase-card"><img src="https://radio69.hu/Djeffect.jpg" alt="DJ Effect – rendezvény DJ, disco, esküvő és céges rendezvény" loading="lazy"><span>DJ EFFECT <small>RENDEZVÉNY DJ</small></span></article>
-        <article class="partner-showcase-card"><img src="https://radio69.hu/djveronic2.jpg" alt="DJ Veronic – rendezvény DJ, disco, esküvő és céges rendezvény" loading="lazy"><span>DJ VERONIC <small>RENDEZVÉNY DJ</small></span></article>
+        <article class="partner-showcase-card"><img src="assets/dj-effect.jpg" alt="DJ Effect – rendezvény DJ, disco, esküvő és céges rendezvény" loading="lazy"><span>DJ EFFECT <small>RENDEZVÉNY DJ</small></span></article>
+        <article class="partner-showcase-card"><img src="assets/dj-veronic.jpg" alt="DJ Veronic – rendezvény DJ, disco, esküvő és céges rendezvény" loading="lazy"><span>DJ VERONIC <small>RENDEZVÉNY DJ</small></span></article>
       </div>
       <div class="partner-strip"><div class="partner-logo"><img class="partner-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"></div><div class="partner-divider"></div><div class="partner-copy"><b>Legyél te is partnerünk!</b><span>Írj nekünk: <a href="mailto:partner@radio69.hu">partner@radio69.hu</a></span></div><a href="mailto:partner@radio69.hu" class="partner-arrow" aria-label="Partneri megkeresés küldése">↗</a></div>
     </section>
