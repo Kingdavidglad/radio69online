@@ -173,6 +173,33 @@
   .r69-horo-credit{text-align:right!important;font-size:7px!important}
 }
 </style>
+
+<style id="radio69-daily-jokes-styles">
+  .r69-jokes-section{padding-top:30px!important;padding-bottom:42px!important}
+  .r69-jokes-shell{position:relative;isolation:isolate;overflow:hidden;padding:clamp(18px,2.5vw,28px);border:1px solid rgba(193,164,255,.2);border-radius:23px;background:radial-gradient(ellipse at 8% 0%,rgba(124,58,237,.22),transparent 38%),radial-gradient(ellipse at 95% 100%,rgba(236,72,153,.12),transparent 36%),linear-gradient(130deg,#17112a 0%,#1b1733 48%,#10212e 100%);box-shadow:0 18px 48px rgba(8,7,22,.18)}
+  .r69-jokes-shell:before{content:"😂";position:absolute;z-index:-1;right:3%;top:-20px;font-size:clamp(90px,12vw,155px);opacity:.045;transform:rotate(12deg);pointer-events:none}
+  .r69-jokes-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}
+  .r69-jokes-title{min-width:0}
+  .r69-jokes-eyebrow{display:flex;align-items:center;gap:7px;color:#d5baff;font-size:9px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+  .r69-jokes-eyebrow span{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:8px;background:linear-gradient(135deg,rgba(124,58,237,.4),rgba(236,72,153,.3));font-size:14px}
+  .r69-jokes-heading h2{margin:5px 0 0;color:#fff;font-family:var(--font-heading,"Space Grotesk",sans-serif);font-size:clamp(21px,2.6vw,30px);line-height:1.12;letter-spacing:-.035em}
+  .r69-jokes-heading h2 span{background:linear-gradient(90deg,#d4b7ff,#76e7ed 65%,#ff9ac9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .r69-jokes-date{display:flex;flex:0 0 auto;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(255,255,255,.055);color:#e8e0f8;font-size:10px;font-weight:800;white-space:nowrap}
+  .r69-jokes-date i{width:7px;height:7px;border-radius:50%;background:#72e6d0;box-shadow:0 0 10px rgba(114,230,208,.6)}
+  .r69-jokes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+  .r69-joke-tile{position:relative;display:flex;flex-direction:column;min-width:0;min-height:128px;padding:15px 16px 14px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));box-shadow:inset 0 1px rgba(255,255,255,.035);transition:transform .18s ease,border-color .18s ease,background .18s ease}
+  .r69-joke-tile:hover{transform:translateY(-2px);border-color:rgba(125,225,235,.35);background:linear-gradient(145deg,rgba(124,58,237,.13),rgba(6,182,212,.07))}
+  .r69-joke-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+  .r69-joke-number{display:inline-grid;place-items:center;width:25px;height:25px;flex:0 0 25px;border-radius:8px;background:rgba(124,58,237,.22);color:#cbb4ff;font-size:10px;font-weight:900}
+  .r69-joke-tag{color:rgba(218,208,241,.58);font-size:8px;font-weight:900;letter-spacing:.11em;text-align:right}
+  .r69-joke-text{margin:0;color:rgba(250,247,255,.94);font-size:clamp(12px,1.05vw,14px);font-weight:650;line-height:1.65;overflow-wrap:anywhere}
+  .r69-jokes-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;color:rgba(223,215,243,.53);font-size:9px;line-height:1.45}
+  .r69-jokes-footer strong{color:#83e4e9;font-size:9px;letter-spacing:.08em}
+  @media(max-width:850px){.r69-jokes-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.r69-joke-tile:last-child{grid-column:1/-1;min-height:0}}
+  @media(max-width:560px){.r69-jokes-section{padding-top:21px!important;padding-bottom:30px!important}.r69-jokes-shell{padding:16px 13px;border-radius:19px}.r69-jokes-heading{align-items:flex-start;flex-direction:column;gap:9px;margin-bottom:12px}.r69-jokes-heading h2{font-size:22px}.r69-jokes-date{padding:7px 9px;font-size:9px}.r69-jokes-grid{grid-template-columns:minmax(0,1fr);gap:8px}.r69-joke-tile,.r69-joke-tile:last-child{grid-column:auto;min-height:0;padding:12px 13px}.r69-joke-top{margin-bottom:6px}.r69-joke-text{font-size:13px;line-height:1.55}.r69-jokes-footer{align-items:flex-start;flex-direction:column;gap:4px;font-size:8px}}
+  @media(prefers-reduced-motion:reduce){.r69-joke-tile{transition:none}}
+</style>
+
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -373,6 +400,25 @@
           </article>
         </div>
         <div class="r69-horo-credit">A horoszkóp adatforrása: <a href="https://api.astroway.info/" target="_blank" rel="noopener noreferrer">AstroWay API</a></div>
+      </div>
+    </section>
+
+
+    <section class="r69-jokes-section section-wrap" id="radio69DailyJokes" aria-labelledby="radio69JokesTitle">
+      <div class="r69-jokes-shell">
+        <div class="r69-jokes-heading">
+          <div class="r69-jokes-title">
+            <div class="r69-jokes-eyebrow"><span aria-hidden="true">😂</span> RÁDIÓ69 HUMORSAROK</div>
+            <h2 id="radio69JokesTitle">Nevess velünk! <span>Jöhet a mai adag?</span></h2>
+          </div>
+          <div class="r69-jokes-date"><i aria-hidden="true"></i><time id="radio69JokesDate">Mai viccek</time></div>
+        </div>
+        <div class="r69-jokes-grid" id="radio69JokesGrid" aria-live="polite" aria-relevant="text">
+          <article class="r69-joke-tile"><div class="r69-joke-top"><span class="r69-joke-number">01</span><span class="r69-joke-tag">NAPI MOSOLY</span></div><p class="r69-joke-text">A mai viccek hamarosan érkeznek…</p></article>
+          <article class="r69-joke-tile"><div class="r69-joke-top"><span class="r69-joke-number">02</span><span class="r69-joke-tag">JÓKEDV</span></div><p class="r69-joke-text">Egy kis nevetés mindenkinek jár!</p></article>
+          <article class="r69-joke-tile"><div class="r69-joke-top"><span class="r69-joke-number">03</span><span class="r69-joke-tag">RÁDIÓ69</span></div><p class="r69-joke-text">Minden nap új viccekkel várunk.</p></article>
+        </div>
+        <div class="r69-jokes-footer"><span id="radio69JokesStatus">A viccek naponta, budapesti idő szerint frissülnek.</span><strong>✦ JÓ ZENE • JÓ HANGULAT • JÓKEDV</strong></div>
       </div>
     </section>
 
@@ -712,6 +758,225 @@
     }
   }, 60 * 1000);
   root.dataset.lastDate = budapestDateParts();
+})();
+</script>
+
+
+<script id="radio69-daily-jokes-script">
+(() => {
+  "use strict";
+  const grid = document.getElementById("radio69JokesGrid");
+  const dateNode = document.getElementById("radio69JokesDate");
+  if (!grid || !dateNode || grid.dataset.initialized === "true") return;
+  grid.dataset.initialized = "true";
+
+  // Saját, családbarát magyar viccválogatás. A nap dátuma választja ki az aznapi hármast.
+  const dailySets = [
+    [
+      "A tanár megkérdezi: – Pistike, miért késtél el? – Mert azt álmodtam, hogy külföldön jártam, és sokáig tartott hazautazni.",
+      "– Miért visz a számítógép esernyőt? – Mert felhőbe menti az adatait.",
+      "– Doktor úr, mindenki átnéz rajtam! – Következő!"
+    ],
+    [
+      "– Miért nem veszekszik a naptár? – Mert minden napja be van osztva.",
+      "A könyvtárban: – Kérek egy könyvet a lustaságról! – Persze. – Kihozná nekem?",
+      "– Mit mond a nulla a nyolcasnak? – Szép öved van!"
+    ],
+    [
+      "– Miért vitt a telefon létrát a buliba? – Mert fel akart menni a hálózatra.",
+      "A pincér kérdezi: – Hogy ízlik a leves? – Nagyon finom, csak kicsit sok benne a tányér.",
+      "– Miért jó a villanykörtének a társaság? – Mert mindig fel tudja dobni a hangulatot."
+    ],
+    [
+      "– Mit csinál a kenyér a konditeremben? – Gyúr, hogy erősebb legyen a héja.",
+      "– Miért nem tud titkot tartani a szita? – Mert minden kiderül rajta.",
+      "A főnök: – Miért nézed az órát ilyen sűrűn? – Csak ellenőrzöm, hogy halad-e az idő a fizetésnap felé."
+    ],
+    [
+      "– Hogy hívják a jól nevelt halat? – Udvarias ponty.",
+      "– Miért nem fázik a számítógép? – Mert mindig van rajta Windows.",
+      "– Kérek egy kávét cukor nélkül! – Sajnos elfogyott a cukor. – Akkor tej nélkül kérem!"
+    ],
+    [
+      "– Miért vitt a csiga bőröndöt? – Mert költözött, de nem akart kapkodni.",
+      "– Mit mond a fal a másik falnak? – A sarkon találkozunk!",
+      "A barátom szerint a pénz nem boldogít. Én azért szívesen kipróbálnám, hogy biztos legyek benne."
+    ],
+    [
+      "– Miért jó matekból a pék? – Mert mindig tudja, hogyan kell osztani a tésztát.",
+      "– Miért nem tud a hóember titkot tartani? – Mert előbb-utóbb elolvad a szája.",
+      "– Milyen a gyors vonat? – Olyan, hogy mire megkérdezed, már el is ment."
+    ],
+    [
+      "– Miért nem internetezik a hal? – Mert fél a horoglinkektől.",
+      "A vendég: – Van vegetáriánus ételük? – Persze, a saláta. – És mi van benne? – Saláta.",
+      "– Mit csinál a ceruza, ha elfárad? – Lepihen, és kihegyezi magát."
+    ],
+    [
+      "– Miért vitt a porszívó uzsonnát? – Mert egész nap szívós munkája volt.",
+      "– Miért nem siet a teknős? – Mert tudja, hogy a célvonal nem szalad el.",
+      "– Főnök, kérhetek egy szabadnapot? – Miért? – Szeretném kipróbálni, milyen érzés hétfőn kipihentnek lenni."
+    ],
+    [
+      "– Miért szeret a ceruza kirándulni? – Mert mindig hegyezi az élményeket.",
+      "– Miért nem játszik bújócskát a villanykapcsoló? – Mert mindig leleplezi a sötétséget.",
+      "– Mit mond a lift, amikor elfárad? – Most egy kicsit leengedek."
+    ],
+    [
+      "– Miért jó lakótárs a hűtő? – Mert mindig hideg fejjel gondolkodik.",
+      "– Miért vitt a matematikus létrát az iskolába? – Mert magasabb szintre akart jutni.",
+      "– Hogy hívják a zenélő sajtot? – Rokfort, ha éppen rockot játszik."
+    ],
+    [
+      "– Miért nem veszekszik a két könyv? – Mert közös a történetük.",
+      "– Miért szeret a kávé reggel dolgozni? – Mert akkor van igazán elemében.",
+      "– Mit mond a zokni a mosógépnek? – Ne forgass ki ennyire!"
+    ],
+    [
+      "– Miért nem tud a papír titkot tartani? – Mert mindig kiszivárog belőle valami.",
+      "– Miért vitt a banán naptejet? – Mert nem akart meghámozódni a napon.",
+      "– Miért jó a tükörrel beszélgetni? – Mert mindig szembenéz veled."
+    ],
+    [
+      "– Mit csinál a zenész, ha elromlik az órája? – Ütemet téveszt.",
+      "– Miért nem kér a hóember limonádét? – Mert nem szeretne még jobban lehűlni.",
+      "– Miért szeret a pék korán kelni? – Mert neki a nap is frissen sül."
+    ],
+    [
+      "– Miért nem tud a hal sakkozni? – Mert mindig a víz alá akarja vinni a partit.",
+      "– Miért vitt a kertész könyvet a kertbe? – Mert szeretett volna elmerülni a történetben.",
+      "– Miért olyan nyugodt a hegy? – Mert nem lehet kihozni a csúcsból."
+    ],
+    [
+      "– Miért nem szereti a naptár a hétfőt? – Mert mindig vele kezdődik a munka.",
+      "– Mit mond a villamos, amikor vicces kedvében van? – Ez aztán sínre tett poén!",
+      "– Miért ment a számológép orvoshoz? – Mert túl sokat számolt, és elfáradtak a gombjai."
+    ],
+    [
+      "– Miért nem tud a felhő hazudni? – Mert előbb-utóbb kiderül, mi van benne.",
+      "– Mit mond a sajt, amikor megijed? – Ez már reszketős helyzet!",
+      "– Miért szeret a bicikli beszélgetni? – Mert mindig két keréken gurul a téma."
+    ],
+    [
+      "– Miért vitt a szakács vonalzót a konyhába? – Hogy pontosan kimérje a hangulatot.",
+      "– Mit csinál a telefon, ha unatkozik? – Hívja a barátait.",
+      "– Miért nem veszekszik a háromszög? – Mert inkább elsimítja a szögeket."
+    ],
+    [
+      "– Miért nem fut a kávé? – Mert már így is elég erős.",
+      "– Miért szeret a könyv utazni? – Mert minden oldalon új helyre jut.",
+      "– Mit mond a kés a kenyérnek? – Ne aggódj, mindjárt szeletelünk egy jót!"
+    ],
+    [
+      "– Miért vitt a macska szemüveget a moziba? – Hogy jobban lássa a cicás jeleneteket.",
+      "– Miért jó a zenekarban a dobos? – Mert mindig megadja az alaphangot.",
+      "– Miért nem tud a számítógép titokban nevetni? – Mert mindig kiírja magából."
+    ],
+    [
+      "– Miért vitt a cipő térképet? – Mert nem akart eltévedni a lábnyomok között.",
+      "– Miért nem siet a könyvelő? – Mert mindent csak lépésről lépésre számol el.",
+      "– Mit mond a rádió, ha elfárad? – Most jöhet egy kis adásszünet!"
+    ],
+    [
+      "– Miért jó a konyhai óra? – Mert mindig tudja, mikor jár le a főzési idő.",
+      "– Mit csinál a kutya a számítógép előtt? – Megkeresi a csontot a merevlemezen.",
+      "– Miért nem titkolózik a naptár? – Mert minden napja nyilvános."
+    ],
+    [
+      "– Miért vitt a festő napernyőt? – Mert színes napra készült.",
+      "– Miért szeret a villanyszerelő viccelődni? – Mert mindig van egy jó kapcsolata.",
+      "– Miért nem panaszkodik a párna? – Mert mindent a fejére vesz."
+    ],
+    [
+      "– Mit mond a vonat a síneknek? – Nélkületek nem jutnék sínre.",
+      "– Miért jó a könyvjelző? – Mert mindig tudja, hol tart a történet.",
+      "– Miért nem haragszik a paradicsom? – Mert hamar lehűti magát a salátában."
+    ],
+    [
+      "– Miért vitt a méhecske jegyzetfüzetet? – Hogy felírja, melyik virág a legjobb hely.",
+      "– Miért nem tud a létra titkot tartani? – Mert minden fokon továbbadja.",
+      "– Mit mond a mosogatószivacs? – Ne nyomassz, már így is tele vagyok!"
+    ],
+    [
+      "– Miért szeret a buszmegálló várakozni? – Mert ez a megállója.",
+      "– Miért vitt a szakács szemüveget? – Hogy jobban lássa, mi fő a fazékban.",
+      "– Mit mond a toll, amikor elfogy a tintája? – Ezt most nem tudom leírni."
+    ],
+    [
+      "– Miért jó a zsebóra? – Mert mindig kéznél van az idő.",
+      "– Miért nem vitatkozik a mágnes? – Mert mindenkit magához vonz.",
+      "– Mit csinál a szendvics, ha izgul? – Összeszorul a kenyérhéja."
+    ],
+    [
+      "– Miért vitt a focista ceruzát az edzésre? – Hogy felrajzolja a győzelmet.",
+      "– Miért szeret a napló írni? – Mert minden napra jut egy történet.",
+      "– Miért nem tud a fagyi sokáig titkot tartani? – Mert hamar elolvad a véleménye."
+    ],
+    [
+      "– Miért ment a párna dolgozni? – Mert végre szeretett volna valami puhát letenni az asztalra.",
+      "– Miért nem fárad el a hegedű? – Mert mindig vonóban van.",
+      "– Mit mond a csavar a csavarhúzónak? – Ne forgasd a szót, inkább tekerjünk!"
+    ],
+    [
+      "– Miért vitt a bagoly napszemüveget? – Mert nappal is szeretett volna bölcsnek látszani.",
+      "– Miért nem késik a homokóra? – Mert mindig pereg az idő.",
+      "– Mit mond a szappan a zuhany alatt? – Ne csússzunk el a részleteken!"
+    ],
+    [
+      "– Miért szeret a telefon töltőre járni? – Mert ott mindig feltöltődik.",
+      "– Miért nem unatkozik a sakktábla? – Mert mindig akad rajta egy lépés.",
+      "– Mit mond a pohár a víznek? – Töltsük együtt az estét!"
+    ]
+  ];
+
+  function budapestDateKey() {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Budapest", year: "numeric", month: "2-digit", day: "2-digit"
+    }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  }
+
+  function dayNumber(dateKey) {
+    const [year, month, day] = dateKey.split("-").map(Number);
+    return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+  }
+
+  function renderDailyJokes() {
+    const dateKey = budapestDateKey();
+    const dayIndex = ((dayNumber(dateKey) % dailySets.length) + dailySets.length) % dailySets.length;
+    const jokes = dailySets[dayIndex];
+    dateNode.dateTime = dateKey;
+    dateNode.textContent = new Intl.DateTimeFormat("hu-HU", {
+      timeZone: "Europe/Budapest", year: "numeric", month: "long", day: "numeric"
+    }).format(new Date(`${dateKey}T12:00:00Z`));
+    grid.replaceChildren();
+    jokes.forEach((joke, index) => {
+      const article = document.createElement("article");
+      article.className = "r69-joke-tile";
+      const top = document.createElement("div");
+      top.className = "r69-joke-top";
+      const number = document.createElement("span");
+      number.className = "r69-joke-number";
+      number.textContent = String(index + 1).padStart(2, "0");
+      const tag = document.createElement("span");
+      tag.className = "r69-joke-tag";
+      tag.textContent = ["NAPI MOSOLY", "JÓKEDV", "RÁDIÓ69-POÉN"][index];
+      top.append(number, tag);
+      const paragraph = document.createElement("p");
+      paragraph.className = "r69-joke-text";
+      paragraph.textContent = joke;
+      article.append(top, paragraph);
+      grid.append(article);
+    });
+    grid.dataset.date = dateKey;
+  }
+
+  renderDailyJokes();
+  // Ha a látogató éjfélkor is nyitva hagyja az oldalt, a dátumváltás után automatikusan cseréljük a vicceket.
+  window.setInterval(() => {
+    if (grid.dataset.date !== budapestDateKey()) renderDailyJokes();
+  }, 60 * 1000);
 })();
 </script>
 
