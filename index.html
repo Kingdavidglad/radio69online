@@ -603,7 +603,7 @@
 })();
 </script>
 
-<script>
+<script id="radio69-daily-horoscope-script">
 (() => {
   "use strict";
   const root = document.getElementById("radio69DailyHoroscope");
@@ -611,10 +611,12 @@
   root.dataset.initialized = "true";
 
   const signs = {
-    aries:{name:"Kos",symbol:"♈"}, taurus:{name:"Bika",symbol:"♉"}, gemini:{name:"Ikrek",symbol:"♊"},
-    cancer:{name:"Rák",symbol:"♋"}, leo:{name:"Oroszlán",symbol:"♌"}, virgo:{name:"Szűz",symbol:"♍"},
-    libra:{name:"Mérleg",symbol:"♎"}, scorpio:{name:"Skorpió",symbol:"♏"}, sagittarius:{name:"Nyilas",symbol:"♐"},
-    capricorn:{name:"Bak",symbol:"♑"}, aquarius:{name:"Vízöntő",symbol:"♒"}, pisces:{name:"Halak",symbol:"♓"}
+    aries:{hu:"Kos",en:"Aries",symbol:"♈"}, taurus:{hu:"Bika",en:"Taurus",symbol:"♉"},
+    gemini:{hu:"Ikrek",en:"Gemini",symbol:"♊"}, cancer:{hu:"Rák",en:"Cancer",symbol:"♋"},
+    leo:{hu:"Oroszlán",en:"Leo",symbol:"♌"}, virgo:{hu:"Szűz",en:"Virgo",symbol:"♍"},
+    libra:{hu:"Mérleg",en:"Libra",symbol:"♎"}, scorpio:{hu:"Skorpió",en:"Scorpio",symbol:"♏"},
+    sagittarius:{hu:"Nyilas",en:"Sagittarius",symbol:"♐"}, capricorn:{hu:"Bak",en:"Capricorn",symbol:"♑"},
+    aquarius:{hu:"Vízöntő",en:"Aquarius",symbol:"♒"}, pisces:{hu:"Halak",en:"Pisces",symbol:"♓"}
   };
   const byId = (id) => document.getElementById(id);
   const textNode = byId("radio69HoroscopeText");
@@ -623,6 +625,10 @@
   let selectedSign = "aries";
   let requestNumber = 0;
   let activeController = null;
+  let lastLanguage = null;
+
+  const language = () => document.documentElement.lang === "en" ? "en" : "hu";
+  const copy = (hu, en) => language() === "en" ? en : hu;
 
   function budapestDateParts() {
     const parts = new Intl.DateTimeFormat("en-CA", {
@@ -633,37 +639,73 @@
   }
 
   function updateDateLabel() {
-    dateNode.textContent = new Intl.DateTimeFormat("hu-HU", {
+    const lang = language();
+    dateNode.textContent = new Intl.DateTimeFormat(lang === "en" ? "en-GB" : "hu-HU", {
       timeZone:"Europe/Budapest", year:"numeric", month:"long", day:"numeric"
     }).format(new Date());
   }
 
   function setSelectedSign(sign) {
-    selectedSign = sign;
-    const item = signs[sign];
-    if (!item) return;
-    byId("radio69HoroscopeSignTitle").textContent = item.name;
+    selectedSign = signs[sign] ? sign : "aries";
+    const item = signs[selectedSign];
+    byId("radio69HoroscopeSignTitle").textContent = item[language()];
     byId("radio69HoroscopeSymbol").textContent = item.symbol;
     root.querySelectorAll("[data-horoscope-sign]").forEach((button) => {
-      const selected = button.dataset.horoscopeSign === sign;
+      const selected = button.dataset.horoscopeSign === selectedSign;
       button.setAttribute("aria-pressed", String(selected));
+      const name = button.querySelector(".r69-horo-sign-name");
+      if (name) name.textContent = signs[button.dataset.horoscopeSign][language()];
     });
   }
 
-  function setLoading(message) {
-    textNode.className = "r69-horo-copy is-loading";
-    textNode.textContent = message;
-    textNode.setAttribute("aria-busy", "true");
-    refreshButton.disabled = true;
-    refreshButton.innerHTML = '<span aria-hidden="true">↻</span> Betöltés…';
+  function updateLabels() {
+    const en = language() === "en";
+    const eyebrow = root.querySelector(".r69-horo-heading .eyebrow");
+    if (eyebrow) {
+      const ornament = eyebrow.querySelector(".eyebrow-line");
+      eyebrow.replaceChildren(ornament || document.createElement("span"));
+      eyebrow.append(document.createTextNode(en ? " A LITTLE GUIDANCE FOR YOUR DAY" : " EGY KIS ÚTMUTATÓ A NAPHOZ"));
+    }
+    const heading = byId("radio69HoroscopeTitle");
+    heading.firstChild.nodeValue = en ? "What do the stars " : "Mit üzennek ma ";
+    heading.querySelector("span").textContent = en ? "say today?" : "a csillagok?";
+    root.querySelector(".r69-horo-intro").textContent = en
+      ? "Choose your zodiac sign and read today's horoscope on Rádió69!"
+      : "Válaszd ki a csillagjegyedet, és olvasd el a mai horoszkópodat a Rádió69-en!";
+    root.querySelector(".r69-horo-picker-head strong").textContent = en ? "CHOOSE YOUR SIGN" : "VÁLASZD KI A JEGYED";
+    root.querySelector(".r69-horo-picker-head span").textContent = en ? "12 zodiac signs" : "12 csillagjegy";
+    byId("radio69HoroscopeSigns").setAttribute("aria-label", en ? "Choose a zodiac sign" : "Csillagjegy kiválasztása");
+    root.querySelector(".r69-horo-reading").setAttribute("aria-label", en ? "Daily horoscope for the selected zodiac sign" : "A kiválasztott csillagjegy napi horoszkópja");
+    root.querySelector(".r69-horo-sign-identity small").textContent = en ? "TODAY'S HOROSCOPE" : "MAI HOROSZKÓP";
+    refreshButton.setAttribute("aria-label", en ? "Refresh daily horoscope" : "Napi horoszkóp frissítése");
+    const footStrong = root.querySelector(".r69-horo-reading-foot strong");
+    footStrong.textContent = en ? "✦ RÁDIÓ69 • DAILY HOROSCOPE" : "✦ RÁDIÓ69 • NAPI HOROSZKÓP";
+    root.querySelector(".r69-horo-reading-foot span").textContent = en
+      ? "For entertainment and general guidance only."
+      : "Szórakoztató, általános útmutatás.";
+    const credit = root.querySelector(".r69-horo-credit");
+    credit.firstChild.nodeValue = en ? "Horoscope source: " : "A horoszkóp adatforrása: ";
+    setSelectedSign(selectedSign);
+    updateDateLabel();
   }
 
-  function setError(message) {
+  function setLoading() {
+    textNode.className = "r69-horo-copy is-loading";
+    textNode.textContent = copy("A mai horoszkóp betöltése…", "Loading today's horoscope…");
+    textNode.setAttribute("aria-busy", "true");
+    refreshButton.disabled = true;
+    refreshButton.innerHTML = `<span aria-hidden="true">↻</span> ${copy("Betöltés…", "Loading…")}`;
+  }
+
+  function setError() {
     textNode.className = "r69-horo-copy is-error";
-    textNode.textContent = message;
+    textNode.textContent = copy(
+      "A napi horoszkóp most nem érhető el. Kérjük, próbáld meg újra egy kicsit később!",
+      "Today's horoscope is temporarily unavailable. Please try again in a little while."
+    );
     textNode.setAttribute("aria-busy", "false");
     refreshButton.disabled = false;
-    refreshButton.innerHTML = '<span aria-hidden="true">↻</span> Újrapróbálom';
+    refreshButton.innerHTML = `<span aria-hidden="true">↻</span> ${copy("Újrapróbálom", "Try again")}`;
   }
 
   function setContent(message) {
@@ -671,7 +713,7 @@
     textNode.textContent = message;
     textNode.setAttribute("aria-busy", "false");
     refreshButton.disabled = false;
-    refreshButton.innerHTML = '<span aria-hidden="true">↻</span> Frissítés';
+    refreshButton.innerHTML = `<span aria-hidden="true">↻</span> ${copy("Frissítés", "Refresh")}`;
   }
 
   function readCache(key) {
@@ -684,21 +726,20 @@
   }
 
   function writeCache(key, data) {
-    try { localStorage.setItem(key, JSON.stringify({horoscope:data.horoscope, language:data.language || "hu", savedAt:Date.now()})); }
+    try { localStorage.setItem(key, JSON.stringify({horoscope:data.horoscope, language:data.language || language(), savedAt:Date.now()})); }
     catch (_) { /* Local storage may be disabled; live fetch still works. */ }
   }
 
   async function loadHoroscope(options = {}) {
     const sign = selectedSign;
-    const signInfo = signs[sign];
-    if (!signInfo) return;
+    if (!signs[sign]) return;
     const thisRequest = ++requestNumber;
     if (activeController) activeController.abort();
     const controller = new AbortController();
     activeController = controller;
     const date = budapestDateParts();
-    const language = "hu";
-    const cacheKey = `radio69-horoscope-${date}-${language}-${sign}`;
+    const lang = language();
+    const cacheKey = `radio69-horoscope-${date}-${lang}-${sign}`;
 
     if (!options.force) {
       const cached = readCache(cacheKey);
@@ -708,10 +749,10 @@
       }
     }
 
-    setLoading("A mai horoszkóp betöltése…");
+    setLoading();
     const timeout = window.setTimeout(() => controller.abort(), 20000);
     try {
-      const params = new URLSearchParams({sign, date, lang:language});
+      const params = new URLSearchParams({sign, date, lang});
       const response = await fetch(`https://api.astroway.info/v1/public/horoscope/daily?${params.toString()}`, {
         method:"GET", mode:"cors", cache:"no-store", headers:{Accept:"application/json"}, signal:controller.signal
       });
@@ -727,7 +768,7 @@
     } catch (error) {
       if (thisRequest !== requestNumber) return;
       console.warn("A napi horoszkóp betöltése nem sikerült:", error);
-      setError("A napi horoszkóp most nem érhető el. Kérjük, próbáld meg újra egy kicsit később!");
+      setError();
     } finally {
       window.clearTimeout(timeout);
       if (thisRequest === requestNumber && activeController) activeController = null;
@@ -744,11 +785,21 @@
   });
   refreshButton.addEventListener("click", () => loadHoroscope({force:true}));
 
-  setSelectedSign(selectedSign);
-  updateDateLabel();
+  function applyLanguage() {
+    const nextLanguage = language();
+    updateLabels();
+    if (nextLanguage !== lastLanguage) {
+      lastLanguage = nextLanguage;
+      loadHoroscope();
+    }
+  }
+  document.querySelectorAll(".language-button").forEach((button) => button.addEventListener("click", applyLanguage));
+
+  updateLabels();
+  lastLanguage = language();
+  root.dataset.lastDate = budapestDateParts();
   loadHoroscope();
 
-  // Re-check the Budapest date while the page remains open (including across midnight).
   window.setInterval(() => {
     const currentDate = budapestDateParts();
     if (root.dataset.lastDate !== currentDate) {
@@ -757,7 +808,6 @@
       loadHoroscope({force:true});
     }
   }, 60 * 1000);
-  root.dataset.lastDate = budapestDateParts();
 })();
 </script>
 
@@ -767,7 +817,8 @@
   "use strict";
   const grid = document.getElementById("radio69JokesGrid");
   const dateNode = document.getElementById("radio69JokesDate");
-  if (!grid || !dateNode || grid.dataset.initialized === "true") return;
+  const root = document.getElementById("radio69DailyJokes");
+  if (!grid || !dateNode || !root || grid.dataset.initialized === "true") return;
   grid.dataset.initialized = "true";
 
   // Saját, családbarát magyar viccválogatás. A nap dátuma választja ki az aznapi hármast.
@@ -929,6 +980,41 @@
     ]
   ];
 
+  // Equivalent English jokes for the same date-based daily rotation.
+  const dailySetsEnglish = [
+    ["Teacher: ‘Why are you late?’ ‘I dreamed I was travelling abroad, and the trip home took ages.’", "Why does a computer take an umbrella? It saves everything to the cloud.", "Doctor: ‘Everyone seems to look right through me!’ ‘Next patient!’"],
+    ["Why doesn't a calendar argue? Every day is already booked.", "At the library: ‘I'd like a book about laziness.’ ‘Certainly. Would you like me to bring it over?’", "What did zero say to eight? ‘Nice belt!’"],
+    ["Why did the phone bring a ladder to the party? It wanted better reception.", "The waiter asked, ‘How's the soup?’ ‘Delicious, although there's a little too much plate in it.’", "Why is a light bulb great company? It always brightens the mood."],
+    ["What does bread do at the gym? It works out to get a stronger crust.", "Why can't a sieve keep a secret? Everything leaks out.", "Boss: ‘Why do you keep checking the clock?’ ‘I'm making sure time is moving towards payday.’"],
+    ["What do you call a well-mannered fish? A polite carp.", "Why is a computer never cold? It always has Windows.", "‘A coffee without sugar, please!’ ‘Sorry, we're out of sugar.’ ‘Then make it without milk!’"],
+    ["Why did the snail pack a suitcase? It was moving house, but there was no need to rush.", "What did one wall say to the other? ‘I'll meet you at the corner!’", "My friend says money can't buy happiness. I'd still like to test that theory."],
+    ["Why is a baker good at maths? They know how to divide the dough.", "Why can't a snowman keep a secret? His mouth eventually melts.", "What's a fast train like? By the time you ask, it's already gone."],
+    ["Why don't fish use the internet? They're afraid of getting caught in the net.", "‘Do you have vegetarian food?’ ‘Of course, salad.’ ‘And what's in it?’ ‘Salad.’", "What does a pencil do when it's tired? It takes a break and sharpens up."],
+    ["Why did the vacuum cleaner pack a snack? It had a very demanding job ahead.", "Why doesn't a tortoise hurry? It knows the finish line isn't going anywhere.", "‘Boss, could I have a day off?’ ‘Why?’ ‘I'd like to know what it feels like to be well-rested on a Monday.’"],
+    ["Why does a pencil love hiking? It likes to make sharp memories.", "Why doesn't a light switch play hide-and-seek? It always gives the game away.", "What does an elevator say when it's tired? ‘I'm taking things down a level.’"],
+    ["Why is a fridge a good flatmate? It always keeps a cool head.", "Why did the mathematician bring a ladder to school? To reach a higher level.", "What do you call a cheese that plays music? Rock-fort."],
+    ["Why don't two books argue? They share the same story.", "Why does coffee like working in the morning? That's when it's in its element.", "What did the sock say to the washing machine? ‘Stop turning me inside out!’"],
+    ["Why can't paper keep a secret? Something always gets out.", "Why did the banana wear sunscreen? It didn't want to peel in the sun.", "Why is a mirror a good conversationalist? It always reflects on what you say."],
+    ["What does a musician do when their clock breaks? They lose the beat.", "Why doesn't a snowman order lemonade? It doesn't want to get any cooler.", "Why does a baker get up early? The day is always freshly baked."],
+    ["Why can't a fish play chess? It keeps trying to take the game underwater.", "Why did the gardener take a book into the garden? To get lost in a good story.", "Why is a mountain so calm? Nothing can get it worked up over a peak."],
+    ["Why doesn't the calendar like Mondays? That's when work always starts.", "What does a tram say when it's feeling funny? ‘Now that's a joke on the right track!’", "Why did the calculator visit the doctor? It had too many problems and its buttons were worn out."],
+    ["Why can't a cloud lie? Sooner or later, what's inside comes out.", "What did the cheese say when it got scared? ‘This is a grate situation!’", "Why does a bicycle enjoy a chat? The conversation is always rolling on two wheels."],
+    ["Why did the chef bring a ruler into the kitchen? To measure the mood precisely.", "What does a phone do when it's bored? It calls its friends.", "Why don't triangles argue? They prefer to smooth out the angles."],
+    ["Why doesn't coffee run? It's already strong enough.", "Why does a book love travelling? Every page takes it somewhere new.", "What did the knife say to the bread? ‘Don't worry, we'll slice up a good time!’"],
+    ["Why did the cat wear glasses to the cinema? To see the purr-fect scenes more clearly.", "Why is the drummer useful in a band? They always set the tone.", "Why can't a computer laugh quietly? It always has to output something."],
+    ["Why did the shoe bring a map? It didn't want to lose its way.", "Why doesn't an accountant rush? They prefer to take things step by step.", "What does a radio say when it's tired? ‘Time for a little break in transmission!’"],
+    ["Why is a kitchen clock useful? It always knows when cooking time is up.", "What does a dog do at a computer? Looks for the bone in the hard drive.", "Why doesn't a calendar keep secrets? Every day is public."],
+    ["Why did the painter bring a parasol? They were expecting a colourful day.", "Why does an electrician love jokes? They always have a good connection.", "Why doesn't a pillow complain? It takes everything lying down."],
+    ["What did the train say to the tracks? ‘I wouldn't get far without you!’", "Why is a bookmark so reliable? It always knows where the story stands.", "Why wasn't the tomato angry? It cooled off in the salad."],
+    ["Why did the bee bring a notebook? To write down which flower had the best location.", "Why can't a ladder keep a secret? It passes it on at every step.", "What did the sponge say? ‘Don't pressure me, I'm already full!’"],
+    ["Why does a bus stop love waiting? It's what it was made for.", "Why did the chef wear glasses? To get a better look at what was cooking.", "What does a pen say when it runs out of ink? ‘I can't put it into words right now.’"],
+    ["Why is a pocket watch handy? Time is always right there.", "Why doesn't a magnet argue? It attracts everyone to its point of view.", "What does a sandwich do when it's nervous? It gets a little crusty."],
+    ["Why did the footballer bring a pencil to training? To draw up a winning plan.", "Why does a diary love writing? Every day brings a new story.", "Why can't ice cream keep a secret for long? Its opinion melts away."],
+    ["Why did the pillow go to work? It wanted to put something soft on the table.", "Why doesn't a violin get tired? It's always in good bow shape.", "What did the screw say to the screwdriver? ‘Stop turning the conversation and let's get to work!’"],
+    ["Why did the owl wear sunglasses? It wanted to look wise even in daylight.", "Why is an hourglass never late? Time is always running through it.", "What did the soap say in the shower? ‘Let's not slip into the details!’"],
+    ["Why does a phone love its charger? It always feels recharged there.", "Why is a chessboard never bored? There's always another move to make.", "What did the glass say to the water? ‘Let's spend the evening together!’"]
+  ];
+
   function budapestDateKey() {
     const parts = new Intl.DateTimeFormat("en-CA", {
       timeZone: "Europe/Budapest", year: "numeric", month: "2-digit", day: "2-digit"
@@ -942,12 +1028,34 @@
     return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
   }
 
+  function updateJokesLabels() {
+    const en = document.documentElement.lang === "en";
+    const eyebrow = root.querySelector(".r69-jokes-eyebrow");
+    if (eyebrow) {
+      const icon = eyebrow.querySelector("span");
+      eyebrow.replaceChildren(icon || document.createElement("span"));
+      eyebrow.append(document.createTextNode(en ? " RÁDIÓ69 COMEDY CORNER" : " RÁDIÓ69 HUMORSAROK"));
+    }
+    const title = document.getElementById("radio69JokesTitle");
+    title.firstChild.nodeValue = en ? "Laugh with us! " : "Nevess velünk! ";
+    title.querySelector("span").textContent = en ? "Ready for today's dose?" : "Jöhet a mai adag?";
+    const footer = root.querySelector(".r69-jokes-footer");
+    footer.querySelector("strong").textContent = en
+      ? "✦ GOOD MUSIC • GOOD VIBES • GOOD MOOD"
+      : "✦ JÓ ZENE • JÓ HANGULAT • JÓKEDV";
+    document.getElementById("radio69JokesStatus").textContent = en
+      ? "New jokes every day, based on Budapest time."
+      : "A viccek naponta, budapesti idő szerint frissülnek.";
+    renderDailyJokes();
+  }
+
   function renderDailyJokes() {
     const dateKey = budapestDateKey();
     const dayIndex = ((dayNumber(dateKey) % dailySets.length) + dailySets.length) % dailySets.length;
-    const jokes = dailySets[dayIndex];
+    const en = document.documentElement.lang === "en";
+    const jokes = (en ? dailySetsEnglish : dailySets)[dayIndex];
     dateNode.dateTime = dateKey;
-    dateNode.textContent = new Intl.DateTimeFormat("hu-HU", {
+    dateNode.textContent = new Intl.DateTimeFormat(en ? "en-GB" : "hu-HU", {
       timeZone: "Europe/Budapest", year: "numeric", month: "long", day: "numeric"
     }).format(new Date(`${dateKey}T12:00:00Z`));
     grid.replaceChildren();
@@ -961,7 +1069,7 @@
       number.textContent = String(index + 1).padStart(2, "0");
       const tag = document.createElement("span");
       tag.className = "r69-joke-tag";
-      tag.textContent = ["NAPI MOSOLY", "JÓKEDV", "RÁDIÓ69-POÉN"][index];
+      tag.textContent = en ? ["DAILY SMILE", "GOOD MOOD", "RÁDIÓ69 PUN"][index] : ["NAPI MOSOLY", "JÓKEDV", "RÁDIÓ69-POÉN"][index];
       top.append(number, tag);
       const paragraph = document.createElement("p");
       paragraph.className = "r69-joke-text";
@@ -972,8 +1080,9 @@
     grid.dataset.date = dateKey;
   }
 
-  renderDailyJokes();
-  // Ha a látogató éjfélkor is nyitva hagyja az oldalt, a dátumváltás után automatikusan cseréljük a vicceket.
+  document.querySelectorAll(".language-button").forEach((button) => button.addEventListener("click", updateJokesLabels));
+  updateJokesLabels();
+  // Keep the daily rotation aligned to Budapest midnight, even when the page stays open.
   window.setInterval(() => {
     if (grid.dataset.date !== budapestDateKey()) renderDailyJokes();
   }, 60 * 1000);
