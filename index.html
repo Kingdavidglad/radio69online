@@ -11,6 +11,76 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/radio69-icon.png">
   <link rel="stylesheet" href="styles.css?v=radio69-weather-20261109">
+<style id="radio69-full-weather-card-styles">
+.hero-art.radio69-weather-hero{height:475px!important;overflow:visible!important;align-items:center!important}
+.hero-art.radio69-weather-hero::before,.hero-art.radio69-weather-hero::after{content:none!important;display:none!important}
+.studio-visual.radio69-weather-full-card{
+  position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:0!important;
+  width:100%!important;max-width:650px!important;height:430px!important;min-height:430px!important;padding:20px 23px 16px!important;
+  overflow:hidden!important;border:1px solid rgba(222,190,255,.34)!important;border-radius:24px!important;
+  background:radial-gradient(ellipse at 88% 8%,rgba(47,231,236,.19),transparent 34%),radial-gradient(ellipse at 8% 92%,rgba(255,69,181,.18),transparent 38%),linear-gradient(145deg,#251744 0%,#151129 52%,#101b2d 100%)!important;
+  box-shadow:0 32px 80px rgba(0,0,0,.43),0 0 45px rgba(132,84,255,.18),inset 0 1px rgba(255,255,255,.12)!important;color:#fff
+}
+.studio-visual.radio69-weather-full-card::before,.studio-visual.radio69-weather-full-card::after{content:none!important;display:none!important}
+.weather-card-topline,.weather-card-brand,.weather-card-live,.weather-card-location,.weather-card-metric,.weather-card-forecast-heading,.weather-card-footer{display:flex;align-items:center}
+.weather-card-topline{flex:0 0 auto;justify-content:space-between;gap:12px;min-height:34px}
+.weather-card-brand{gap:12px;min-width:0}
+.weather-card-brand img{display:block;width:137px;max-height:31px;object-fit:contain;object-position:left center}
+.weather-card-brand>span{padding-left:12px;border-left:1px solid rgba(255,255,255,.19);color:#bfa8e5;font:800 9px/1 'Space Grotesk',sans-serif;letter-spacing:2px}
+.weather-card-live{flex:0 0 auto;gap:7px;padding:7px 10px;border:1px solid rgba(83,239,208,.28);border-radius:999px;background:rgba(31,220,170,.08);color:#8cf5d3;font:900 8px/1 'Manrope',sans-serif;letter-spacing:1px}
+.weather-card-live i{width:7px;height:7px;border-radius:50%;background:#55efb8;box-shadow:0 0 11px rgba(85,239,184,.8);animation:radio69WeatherPulse 1.8s infinite}
+@keyframes radio69WeatherPulse{50%{opacity:.45;box-shadow:0 0 2px rgba(85,239,184,.35)}}
+.weather-card-location{flex:0 0 auto;justify-content:space-between;gap:12px;margin-top:8px;padding-top:9px;border-top:1px solid rgba(225,205,255,.13)}
+.weather-card-location>div{display:flex;flex-direction:column;gap:2px}
+.weather-card-location strong{color:#fff;font:800 13px/1.1 'Space Grotesk',sans-serif;letter-spacing:1.6px}
+.weather-card-location span{color:#a99bc4;font:600 8px/1.2 'Manrope',sans-serif;letter-spacing:.5px}
+.weather-card-location time{color:#b4a5cc;font:700 11px/1 'Space Grotesk',sans-serif;font-variant-numeric:tabular-nums}
+.weather-card-current{flex:0 0 auto;display:grid;grid-template-columns:78px minmax(112px,.9fr) minmax(120px,1fr);align-items:center;gap:12px;min-height:112px;padding:4px 0 2px}
+.weather-card-icon{display:block;font-size:65px;line-height:1;text-align:center;filter:drop-shadow(0 4px 14px rgba(255,204,113,.18))}
+.weather-card-temperature{display:flex;align-items:flex-start;white-space:nowrap}
+.weather-card-temperature strong{color:#fff;font:700 62px/.95 'Space Grotesk',sans-serif;letter-spacing:-4px;text-shadow:0 4px 25px rgba(255,255,255,.08)}
+.weather-card-temperature span{margin:7px 0 0 4px;color:#8debf0;font:600 19px/1 'Space Grotesk',sans-serif}
+.weather-card-condition{display:flex;flex-direction:column;gap:7px;min-width:0}
+.weather-card-condition strong{color:#fff;font:700 15px/1.2 'Space Grotesk',sans-serif}
+.weather-card-condition span{color:#a99cbe;font:600 9px/1.4 'Manrope',sans-serif}
+.weather-card-metrics{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:5px}
+.weather-card-metric{min-width:0;min-height:57px;gap:8px;padding:8px 9px;border:1px solid rgba(220,196,255,.15);border-radius:11px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.weather-card-metric-icon{flex:0 0 auto;font-size:18px}
+.weather-card-metric>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.weather-card-metric small{color:#a99bbc;font:900 7px/1.1 'Manrope',sans-serif;letter-spacing:.7px;white-space:nowrap}
+.weather-card-metric strong{color:#fff;font:700 13px/1.1 'Space Grotesk',sans-serif;white-space:nowrap}
+.weather-card-forecast-heading{flex:0 0 auto;justify-content:space-between;gap:10px;margin-top:13px;margin-bottom:7px}
+.weather-card-forecast-heading strong{color:#e9ddff;font:900 8px/1 'Manrope',sans-serif;letter-spacing:1.5px}
+.weather-card-forecast-heading span{color:#8f83a9;font:700 7px/1 'Manrope',sans-serif;letter-spacing:.5px;white-space:nowrap}
+.weather-card-forecast{flex:1 1 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-height:66px}
+.weather-card-forecast-day{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;align-items:center;gap:5px 7px;min-width:0;padding:8px 10px;border:1px solid rgba(220,196,255,.14);border-radius:10px;background:rgba(9,9,27,.28)}
+.weather-card-forecast-day>span{color:#b5a8c8;font:900 8px/1 'Manrope',sans-serif;letter-spacing:.7px;text-transform:uppercase}
+.weather-card-forecast-day>b{grid-row:1/3;grid-column:2;font-size:23px;font-weight:400}
+.weather-card-forecast-day>strong{color:#fff;font:700 13px/1 'Space Grotesk',sans-serif;white-space:nowrap}
+.weather-card-forecast-day>strong span{color:#9388a9;font-weight:500}
+.weather-card-footer{flex:0 0 auto;justify-content:space-between;gap:10px;margin-top:8px;color:#9588aa;font:600 7px/1.2 'Manrope',sans-serif}
+.weather-card-footer a{flex:0 0 auto;color:#71dfe8;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:850px){.studio-visual.radio69-weather-full-card{max-width:650px!important}}
+@media(max-width:650px){
+  .hero-art.radio69-weather-hero{height:405px!important;min-height:405px!important;margin:10px -3px 0!important;overflow:visible!important}
+  .studio-visual.radio69-weather-full-card{width:100%!important;height:390px!important;min-height:390px!important;padding:16px 15px 13px!important;border-radius:19px!important}
+  .weather-card-topline{min-height:28px}.weather-card-brand{gap:8px}.weather-card-brand img{width:108px;max-height:25px}
+  .weather-card-brand>span{padding-left:8px;font-size:7px;letter-spacing:1.2px}.weather-card-live{gap:5px;padding:6px 7px;font-size:6px;letter-spacing:.6px}.weather-card-live i{width:6px;height:6px}
+  .weather-card-location{margin-top:6px;padding-top:7px}.weather-card-location strong{font-size:11px}.weather-card-location span{font-size:7px}.weather-card-location time{font-size:10px}
+  .weather-card-current{grid-template-columns:55px minmax(90px,.8fr) minmax(90px,1fr);gap:7px;min-height:85px}
+  .weather-card-icon{font-size:47px}.weather-card-temperature strong{font-size:47px;letter-spacing:-3px}.weather-card-temperature span{font-size:15px;margin-top:5px}
+  .weather-card-condition{gap:5px}.weather-card-condition strong{font-size:12px}.weather-card-condition span{font-size:7px}
+  .weather-card-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:2px}
+  .weather-card-metric{min-height:47px;padding:6px 8px;gap:7px;border-radius:8px}.weather-card-metric-icon{font-size:16px}.weather-card-metric small{font-size:6px;letter-spacing:.5px}.weather-card-metric strong{font-size:11px}
+  .weather-card-forecast-heading{margin-top:9px;margin-bottom:6px}.weather-card-forecast-heading strong{font-size:7px;letter-spacing:1px}.weather-card-forecast-heading span{font-size:6px}
+  .weather-card-forecast{gap:5px;min-height:58px}.weather-card-forecast-day{gap:4px;padding:7px 6px;border-radius:8px}.weather-card-forecast-day>span{font-size:6px;letter-spacing:.25px}.weather-card-forecast-day>b{font-size:19px}.weather-card-forecast-day>strong{font-size:10px}.weather-card-footer{margin-top:6px;font-size:6px}
+}
+@media(max-width:390px){
+  .studio-visual.radio69-weather-full-card{padding-left:12px!important;padding-right:12px!important}.weather-card-brand img{width:98px}
+  .weather-card-current{grid-template-columns:47px minmax(80px,.8fr) minmax(82px,1fr);gap:5px}.weather-card-icon{font-size:42px}
+  .weather-card-temperature strong{font-size:43px}.weather-card-condition strong{font-size:11px}.weather-card-metric{padding-left:6px;padding-right:6px}
+}
+</style>
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -61,47 +131,46 @@
         </div>
         <div class="hero-proof"><span class="proof-icon">♫</span><span><b>Remix és Hits</b><small>Két csatorna, rengeteg kedvenc</small></span><span class="proof-divider"></span><span class="proof-icon proof-icon-pink">◉</span><span><b>Non-stop zene</b><small>Veled otthon és útközben is</small></span></div>
       </div>
-      <div class="hero-art" aria-label="Digitális rádióstúdió hangkeverőpulttal és élő hanghullámmal">
-        <div class="studio-visual">
-          <div class="studio-light"></div>
-          <div class="studio-screen">
-            <div class="screen-top"><span>RADIO 69 / BROADCAST SYSTEM</span><span class="screen-live">LIVE SIGNAL</span></div>
-            <div class="screen-wave" aria-hidden="true">
-              <i style="--bar:22%;--delay:.1s"></i><i style="--bar:45%;--delay:.2s"></i><i style="--bar:71%;--delay:.3s"></i><i style="--bar:36%;--delay:.4s"></i><i style="--bar:88%;--delay:.1s"></i><i style="--bar:56%;--delay:.5s"></i><i style="--bar:32%;--delay:.2s"></i><i style="--bar:79%;--delay:.3s"></i><i style="--bar:47%;--delay:.4s"></i><i style="--bar:94%;--delay:.2s"></i><i style="--bar:38%;--delay:.5s"></i><i style="--bar:68%;--delay:.3s"></i><i style="--bar:29%;--delay:.1s"></i><i style="--bar:83%;--delay:.4s"></i><i style="--bar:52%;--delay:.2s"></i><i style="--bar:73%;--delay:.3s"></i><i style="--bar:34%;--delay:.5s"></i><i style="--bar:91%;--delay:.2s"></i><i style="--bar:44%;--delay:.4s"></i><i style="--bar:66%;--delay:.1s"></i><i style="--bar:27%;--delay:.3s"></i><i style="--bar:78%;--delay:.2s"></i><i style="--bar:39%;--delay:.5s"></i><i style="--bar:59%;--delay:.1s"></i><i style="--bar:86%;--delay:.3s"></i><i style="--bar:48%;--delay:.2s"></i><i style="--bar:69%;--delay:.4s"></i><i style="--bar:31%;--delay:.5s"></i><i style="--bar:81%;--delay:.1s"></i><i style="--bar:55%;--delay:.3s"></i><i style="--bar:72%;--delay:.2s"></i><i style="--bar:40%;--delay:.4s"></i><i style="--bar:93%;--delay:.5s"></i><i style="--bar:51%;--delay:.1s"></i><i style="--bar:75%;--delay:.3s"></i><i style="--bar:33%;--delay:.2s"></i><i style="--bar:64%;--delay:.4s"></i><i style="--bar:43%;--delay:.5s"></i><i style="--bar:84%;--delay:.1s"></i></div>
-            <div class="screen-data"><span>INPUT 01 — REMIX</span><span>STEREO / 48 KHZ</span><span>OUTPUT: ACTIVE</span></div>
-            <section class="radio-weather" id="radioWeather" aria-label="Békéscsaba aktuális időjárása" aria-live="polite">
-              <div class="radio-weather-heading">
-                <span class="radio-weather-place">BÉKÉSCSABA · AKTUÁLIS IDŐJÁRÁS</span>
-                <span class="radio-weather-updated" id="weatherUpdated">ADATOK BETÖLTÉSE…</span>
-              </div>
-              <div class="radio-weather-body">
-                <div class="radio-weather-summary">
-                  <span class="radio-weather-icon" id="weatherIcon" aria-hidden="true">⛅</span>
-                  <strong class="radio-weather-temperature" id="weatherTemperature">--°C</strong>
-                  <span class="radio-weather-description" id="weatherDescription">Időjárási adatok betöltése…</span>
-                </div>
-                <div class="radio-weather-details">
-                  <span><small>HŐÉRZET</small><b id="weatherFeelsLike">--°C</b></span>
-                  <span><small>SZÉL</small><b id="weatherWind">-- km/h</b></span>
-                  <span><small>PÁRA</small><b id="weatherHumidity">--%</b></span>
-                </div>
-              </div>
-              <div class="radio-weather-footer">
-                <span id="weatherMinMax">Mai max. --° · min. --°</span>
-                <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Időjárási adatok: Open-Meteo</a>
-              </div>
-            </section>
+      <div class="hero-art radio69-weather-hero" aria-label="Békéscsaba aktuális időjárása és háromnapos előrejelzése">
+        <div class="studio-visual radio69-weather-full-card" id="radio69WeatherCard" role="region" aria-label="Békéscsaba aktuális időjárása és háromnapos előrejelzése">
+          <div class="weather-card-topline">
+            <div class="weather-card-brand">
+              <img src="assets/radio69-horizontal.png" alt="Rádió69">
+              <span data-weather-hu="IDŐJÁRÁS" data-weather-en="WEATHER">IDŐJÁRÁS</span>
+            </div>
+            <span class="weather-card-live"><i></i><span data-weather-hu="ÉLŐ ADATOK" data-weather-en="LIVE DATA">ÉLŐ ADATOK</span></span>
           </div>
-          <div class="console-unit">
-            <div class="console-heading"><span>MASTER CONTROL / AUDIO MIXER</span><span>CH 01 — 08</span></div>
-            <div class="console-channels" aria-hidden="true">
-              <div class="console-strip" style="--fader:28px"><span>MIC</span><b>-06</b><i></i></div><div class="console-strip" style="--fader:42px"><span>PLAY</span><b>-03</b><i></i></div><div class="console-strip" style="--fader:34px"><span>FX</span><b>-08</b><i></i></div><div class="console-strip" style="--fader:53px"><span>LINE</span><b>-02</b><i></i></div><div class="console-strip" style="--fader:38px"><span>MIC 2</span><b>-05</b><i></i></div><div class="console-strip" style="--fader:47px"><span>AUX</span><b>-04</b><i></i></div><div class="console-strip" style="--fader:31px"><span>BUS</span><b>-07</b><i></i></div><div class="console-strip" style="--fader:56px"><span>MAIN</span><b>0.0</b><i></i></div>
+          <div class="weather-card-location">
+            <div><strong>BÉKÉSCSABA</strong><span data-weather-hu="Békés vármegye" data-weather-en="Békés County">Békés vármegye</span></div>
+            <time id="radio69WeatherClock">--:--</time>
+          </div>
+          <div class="weather-card-current">
+            <span class="weather-card-icon" id="radio69WeatherIcon" aria-hidden="true">⛅</span>
+            <div class="weather-card-temperature"><strong id="radio69WeatherTemperature">--</strong><span>°C</span></div>
+            <div class="weather-card-condition">
+              <strong id="radio69WeatherDescription" data-weather-hu="Időjárási adatok betöltése…" data-weather-en="Loading weather data…">Időjárási adatok betöltése…</strong>
+              <span data-weather-hu="Jelenlegi hőmérséklet" data-weather-en="Current temperature">Jelenlegi hőmérséklet</span>
             </div>
           </div>
-          <div class="studio-caption"><img class="studio-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"><span>THE SOUND OF NOW / 24—7</span></div>
-          <div class="hero-sticker sticker-top">ON AIR <span>●</span></div>
-          <div class="hero-sticker sticker-bottom">DIGITAL BROADCAST • LIVE SOUND</div>
-          <div class="hero-eq" aria-hidden="true"><i style="--bar:8px;--delay:.1s"></i><i style="--bar:17px;--delay:.2s"></i><i style="--bar:11px;--delay:.3s"></i><i style="--bar:21px;--delay:.4s"></i><i style="--bar:13px;--delay:.5s"></i><i style="--bar:18px;--delay:.2s"></i><i style="--bar:9px;--delay:.3s"></i><i style="--bar:16px;--delay:.1s"></i><i style="--bar:12px;--delay:.4s"></i><i style="--bar:20px;--delay:.5s"></i></div>
+          <div class="weather-card-metrics">
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌡️</span><div><small data-weather-hu="HŐÉRZET" data-weather-en="FEELS LIKE">HŐÉRZET</small><strong id="radio69WeatherFeels">--°C</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💧</span><div><small data-weather-hu="PÁRATARTALOM" data-weather-en="HUMIDITY">PÁRATARTALOM</small><strong id="radio69WeatherHumidity">--%</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💨</span><div><small data-weather-hu="SZÉL" data-weather-en="WIND">SZÉL</small><strong id="radio69WeatherWind">-- km/h</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌧️</span><div><small data-weather-hu="CSAPADÉK · 15 PERC" data-weather-en="PRECIP. · 15 MIN">CSAPADÉK · 15 PERC</small><strong id="radio69WeatherRain">-- mm</strong></div></div>
+          </div>
+          <div class="weather-card-forecast-heading">
+            <strong data-weather-hu="3 NAPOS ELŐREJELZÉS" data-weather-en="3-DAY FORECAST">3 NAPOS ELŐREJELZÉS</strong>
+            <span id="radio69WeatherUpdated">ADATOK BETÖLTÉSE…</span>
+          </div>
+          <div class="weather-card-forecast" id="radio69WeatherForecast" aria-live="polite">
+            <div class="weather-card-forecast-day"><span data-weather-hu="MA" data-weather-en="TODAY">MA</span><b>⛅</b><strong>--° / --°</strong></div>
+            <div class="weather-card-forecast-day"><span data-weather-hu="HOLNAP" data-weather-en="TOMORROW">HOLNAP</span><b>⛅</b><strong>--° / --°</strong></div>
+            <div class="weather-card-forecast-day"><span>--</span><b>⛅</b><strong>--° / --°</strong></div>
+          </div>
+          <div class="weather-card-footer">
+            <span id="radio69WeatherStatus" data-weather-hu="Kapcsolódás az időjárási szolgáltatáshoz…" data-weather-en="Connecting to weather service…">Kapcsolódás az időjárási szolgáltatáshoz…</span>
+            <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+          </div>
         </div>
       </div>
     </section>
@@ -243,123 +312,108 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="supabase-config.js"></script>
   <script src="script.js"></script>
+
   <script>
-    // Békéscsaba élő időjárása – Open-Meteo, frissítés 10 percenként.
-    (() => {
-      const elements = {
-        icon: document.getElementById("weatherIcon"),
-        temperature: document.getElementById("weatherTemperature"),
-        description: document.getElementById("weatherDescription"),
-        feelsLike: document.getElementById("weatherFeelsLike"),
-        wind: document.getElementById("weatherWind"),
-        humidity: document.getElementById("weatherHumidity"),
-        minMax: document.getElementById("weatherMinMax"),
-        updated: document.getElementById("weatherUpdated"),
-        panel: document.getElementById("radioWeather")
-      };
+(() => {
+  "use strict";
+  const card = document.getElementById("radio69WeatherCard");
+  if (!card || card.dataset.weatherInitialized === "true") return;
+  card.dataset.weatherInitialized = "true";
+  const API_URL = "https://api.open-meteo.com/v1/forecast?latitude=46.6733&longitude=21.0877&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBudapest&forecast_days=3";
+  const byId = (id) => document.getElementById(id);
+  let latestWeather = null;
+  let isLoading = false;
+  const text = (hu, en) => document.documentElement.lang === "en" ? en : hu;
 
-      if (!elements.panel) return;
+  function updateLabels() {
+    const english = document.documentElement.lang === "en";
+    card.querySelectorAll("[data-weather-hu][data-weather-en]").forEach((element) => {
+      element.textContent = english ? element.dataset.weatherEn : element.dataset.weatherHu;
+    });
+    if (latestWeather) renderWeather(latestWeather);
+  }
 
-      const weatherDescriptions = {
-        0: ["Derült", "☀️", "🌙"],
-        1: ["Többnyire derült", "🌤️", "🌙"],
-        2: ["Részben felhős", "⛅", "☁️"],
-        3: ["Borult", "☁️", "☁️"],
-        45: ["Ködös", "🌫️", "🌫️"],
-        48: ["Dérköd", "🌫️", "🌫️"],
-        51: ["Enyhe szitálás", "🌦️", "🌧️"],
-        53: ["Szitálás", "🌦️", "🌧️"],
-        55: ["Erős szitálás", "🌧️", "🌧️"],
-        56: ["Ónos szitálás", "🌧️", "🌧️"],
-        57: ["Erős ónos szitálás", "🌧️", "🌧️"],
-        61: ["Enyhe eső", "🌦️", "🌧️"],
-        63: ["Eső", "🌧️", "🌧️"],
-        65: ["Erős eső", "🌧️", "🌧️"],
-        66: ["Ónos eső", "🌧️", "🌧️"],
-        67: ["Erős ónos eső", "🌧️", "🌧️"],
-        71: ["Enyhe havazás", "🌨️", "🌨️"],
-        73: ["Havazás", "🌨️", "🌨️"],
-        75: ["Erős havazás", "❄️", "❄️"],
-        77: ["Hószemcsék", "🌨️", "🌨️"],
-        80: ["Helyenként zápor", "🌦️", "🌧️"],
-        81: ["Záporok", "🌦️", "🌧️"],
-        82: ["Heves záporok", "⛈️", "⛈️"],
-        85: ["Hózápor", "🌨️", "🌨️"],
-        86: ["Erős hózápor", "❄️", "❄️"],
-        95: ["Zivatar", "⛈️", "⛈️"],
-        96: ["Zivatar jégesővel", "⛈️", "⛈️"],
-        99: ["Erős zivatar, jégesővel", "⛈️", "⛈️"]
-      };
+  function weatherInfo(code, isDay, language) {
+    const definitions = {
+      0:{hu:"Derült",en:"Clear sky",day:"☀️",night:"🌙"},1:{hu:"Túlnyomóan derült",en:"Mainly clear",day:"🌤️",night:"🌙"},
+      2:{hu:"Részben felhős",en:"Partly cloudy",day:"⛅",night:"☁️"},3:{hu:"Borult",en:"Overcast",day:"☁️",night:"☁️"},
+      45:{hu:"Ködös",en:"Fog",day:"🌫️",night:"🌫️"},48:{hu:"Zúzmarás köd",en:"Depositing rime fog",day:"🌫️",night:"🌫️"},
+      51:{hu:"Enyhe szitálás",en:"Light drizzle",day:"🌦️",night:"🌧️"},53:{hu:"Szitálás",en:"Drizzle",day:"🌦️",night:"🌧️"},55:{hu:"Erős szitálás",en:"Dense drizzle",day:"🌧️",night:"🌧️"},
+      56:{hu:"Ónos szitálás",en:"Freezing drizzle",day:"🌧️",night:"🌧️"},57:{hu:"Erős ónos szitálás",en:"Dense freezing drizzle",day:"🌧️",night:"🌧️"},
+      61:{hu:"Enyhe eső",en:"Light rain",day:"🌦️",night:"🌧️"},63:{hu:"Eső",en:"Rain",day:"🌧️",night:"🌧️"},65:{hu:"Erős eső",en:"Heavy rain",day:"🌧️",night:"🌧️"},
+      66:{hu:"Enyhe ónos eső",en:"Light freezing rain",day:"🌧️",night:"🌧️"},67:{hu:"Erős ónos eső",en:"Heavy freezing rain",day:"🌧️",night:"🌧️"},
+      71:{hu:"Enyhe havazás",en:"Light snow",day:"🌨️",night:"🌨️"},73:{hu:"Havazás",en:"Snow",day:"❄️",night:"❄️"},75:{hu:"Erős havazás",en:"Heavy snow",day:"🌨️",night:"🌨️"},77:{hu:"Hódara",en:"Snow grains",day:"🌨️",night:"🌨️"},
+      80:{hu:"Zápor",en:"Rain showers",day:"🌦️",night:"🌧️"},81:{hu:"Erős zápor",en:"Moderate rain showers",day:"🌧️",night:"🌧️"},82:{hu:"Heves zápor",en:"Violent rain showers",day:"🌧️",night:"🌧️"},
+      85:{hu:"Hózápor",en:"Snow showers",day:"🌨️",night:"🌨️"},86:{hu:"Erős hózápor",en:"Heavy snow showers",day:"🌨️",night:"🌨️"},
+      95:{hu:"Zivatar",en:"Thunderstorm",day:"⛈️",night:"⛈️"},96:{hu:"Zivatar jégesővel",en:"Thunderstorm with hail",day:"⛈️",night:"⛈️"},99:{hu:"Erős zivatar jégesővel",en:"Heavy thunderstorm with hail",day:"⛈️",night:"⛈️"}
+    };
+    const item = definitions[Number(code)] || {hu:"Változó időjárás",en:"Variable conditions",day:"🌤️",night:"☁️"};
+    return {description:language === "en" ? item.en : item.hu, icon:isDay ? item.day : item.night};
+  }
 
-      const setText = (element, value) => {
-        if (element) element.textContent = value;
-      };
+  function renderWeather(data) {
+    const current = data.current;
+    const daily = data.daily;
+    const language = document.documentElement.lang === "en" ? "en" : "hu";
+    if (!current || !daily || !Array.isArray(daily.time)) return;
+    const currentInfo = weatherInfo(current.weather_code, Number(current.is_day) === 1, language);
+    byId("radio69WeatherIcon").textContent = currentInfo.icon;
+    byId("radio69WeatherTemperature").textContent = Math.round(Number(current.temperature_2m));
+    byId("radio69WeatherDescription").textContent = currentInfo.description;
+    byId("radio69WeatherFeels").textContent = Math.round(Number(current.apparent_temperature)) + "°C";
+    byId("radio69WeatherHumidity").textContent = Math.round(Number(current.relative_humidity_2m)) + "%";
+    byId("radio69WeatherWind").textContent = Math.round(Number(current.wind_speed_10m)) + " km/h";
+    byId("radio69WeatherRain").textContent = Number(current.precipitation || 0).toLocaleString(language === "en" ? "en-GB" : "hu-HU", {maximumFractionDigits:1}) + " mm";
 
-      async function refreshRadioWeather() {
-        const endpoint = new URL("https://api.open-meteo.com/v1/forecast");
-        endpoint.search = new URLSearchParams({
-          latitude: "46.6733",
-          longitude: "21.0877",
-          current: "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m",
-          daily: "temperature_2m_max,temperature_2m_min",
-          temperature_unit: "celsius",
-          wind_speed_unit: "kmh",
-          timezone: "Europe/Budapest",
-          forecast_days: "1"
-        }).toString();
+    const now = new Date();
+    const timeOptions = {hour:"2-digit",minute:"2-digit",timeZone:"Europe/Budapest"};
+    byId("radio69WeatherClock").textContent = now.toLocaleTimeString(language === "en" ? "en-GB" : "hu-HU", timeOptions);
+    const updatedTime = current.time ? new Date(current.time).toLocaleTimeString(language === "en" ? "en-GB" : "hu-HU", timeOptions) : now.toLocaleTimeString("hu-HU", timeOptions);
+    byId("radio69WeatherUpdated").textContent = text("FRISSÍTVE", "UPDATED") + ": " + updatedTime;
+    byId("radio69WeatherStatus").textContent = text("Élő előrejelzés · frissül 10 percenként", "Live forecast · refreshes every 10 minutes");
 
-        try {
-          const response = await fetch(endpoint.toString(), { cache: "no-store" });
-          if (!response.ok) throw new Error(`Időjárás API hiba: ${response.status}`);
+    const forecast = byId("radio69WeatherForecast");
+    forecast.replaceChildren();
+    daily.time.slice(0,3).forEach((dateValue,index) => {
+      const date = new Date(dateValue + "T12:00:00");
+      const dayName = index === 0 ? text("MA","TODAY") : index === 1 ? text("HOLNAP","TOMORROW") : date.toLocaleDateString(language === "en" ? "en-GB" : "hu-HU", {weekday:"short"}).replace(".","").toUpperCase();
+      const info = weatherInfo(daily.weather_code[index], true, language);
+      const max = Math.round(Number(daily.temperature_2m_max[index]));
+      const min = Math.round(Number(daily.temperature_2m_min[index]));
+      const tile = document.createElement("div");
+      tile.className = "weather-card-forecast-day";
+      const day = document.createElement("span"); day.textContent = dayName;
+      const icon = document.createElement("b"); icon.textContent = info.icon; icon.setAttribute("aria-label", info.description);
+      const temperatures = document.createElement("strong"); temperatures.innerHTML = max + "° <span>/ " + min + "°</span>";
+      tile.append(day,icon,temperatures);
+      forecast.appendChild(tile);
+    });
+  }
 
-          const data = await response.json();
-          const current = data.current;
-          const daily = data.daily;
-          if (!current || !daily) throw new Error("Hiányos időjárási adatok érkeztek.");
-
-          const code = Number(current.weather_code);
-          const info = weatherDescriptions[code] || ["Változó idő", "🌤️", "☁️"];
-          const isDay = Number(current.is_day) === 1;
-          const icon = isDay ? info[1] : info[2];
-          const round = value => Math.round(Number(value));
-
-          setText(elements.icon, icon);
-          setText(elements.temperature, `${round(current.temperature_2m)}°C`);
-          setText(elements.description, info[0]);
-          setText(elements.feelsLike, `${round(current.apparent_temperature)}°C`);
-          setText(elements.wind, `${round(current.wind_speed_10m)} km/h`);
-          setText(elements.humidity, `${round(current.relative_humidity_2m)}%`);
-
-          const max = daily.temperature_2m_max && daily.temperature_2m_max[0];
-          const min = daily.temperature_2m_min && daily.temperature_2m_min[0];
-          if (typeof max === "number" && Number.isFinite(max) &&
-              typeof min === "number" && Number.isFinite(min)) {
-            setText(elements.minMax, `Mai max. ${round(max)}° · min. ${round(min)}°`);
-          }
-
-          const timeLabel = typeof current.time === "string"
-            ? current.time.slice(11, 16)
-            : new Intl.DateTimeFormat("hu-HU", {
-                hour: "2-digit",
-                minute: "2-digit",
-                timeZone: "Europe/Budapest"
-              }).format(new Date());
-          setText(elements.updated, `FRISSÍTVE ${timeLabel}`);
-          elements.panel.dataset.weatherState = "ready";
-        } catch (error) {
-          console.warn("A Rádió69 időjárásadatai most nem érhetők el:", error);
-          if (elements.panel.dataset.weatherState !== "ready") {
-            setText(elements.icon, "🌐");
-            setText(elements.description, "Az időjárási adatok átmenetileg nem érhetők el");
-            setText(elements.updated, "KAPCSOLÓDÁSI HIBA");
-          }
-          elements.panel.dataset.weatherState = "error";
-        }
+  async function loadWeather() {
+    if (isLoading) return;
+    isLoading = true;
+    try {
+      const response = await fetch(API_URL, {method:"GET",mode:"cors",cache:"no-store",headers:{Accept:"application/json"}});
+      if (!response.ok) throw new Error("Weather API HTTP " + response.status);
+      const data = await response.json();
+      if (!data.current || !data.daily || !Array.isArray(data.daily.time)) throw new Error("Weather API response is incomplete.");
+      latestWeather = data;
+      renderWeather(data);
+    } catch (error) {
+      console.warn("A békéscsabai időjárás lekérése nem sikerült:", error);
+      if (!latestWeather) {
+        byId("radio69WeatherDescription").textContent = text("Az időjárás most nem érhető el.", "Weather is temporarily unavailable.");
+        byId("radio69WeatherStatus").textContent = text("Ellenőrizd az internetkapcsolatot.", "Please check the internet connection.");
       }
+    } finally { isLoading = false; }
+  }
 
-      refreshRadioWeather();
-      window.setInterval(refreshRadioWeather, 10 * 60 * 1000);
-    })();
-  </script>
+  updateLabels();
+  document.querySelectorAll(".language-button").forEach((button) => button.addEventListener("click", updateLabels));
+  loadWeather();
+  window.setInterval(loadWeather, 10 * 60 * 1000);
+})();
+</script>
 </body>
 </html>
