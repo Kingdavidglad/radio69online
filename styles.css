@@ -1267,3 +1267,51 @@ body {
 .contact-copy{max-width:900px}
 .contact-copy h2{margin-top:10px}
 .contact-details{max-width:880px}
+
+
+/* Rádió69 külső rádiós platformok és közösségi ikonok a láblécben */
+.footer-discovery{
+  padding:25px 0 27px;
+  border-bottom:1px solid rgba(216,190,255,.14);
+  background:radial-gradient(ellipse at 12% 4%,rgba(128,42,202,.19),transparent 42%),radial-gradient(ellipse at 88% 100%,rgba(13,174,210,.09),transparent 38%);
+}
+.footer-discovery-heading{text-align:center;max-width:700px;margin:0 auto 19px}
+.footer-discovery-heading .eyebrow{color:#c5a0ff;font-size:9px;letter-spacing:2px;font-weight:900}
+.footer-discovery-heading h2{margin:7px 0 6px;color:#fff;font:800 clamp(21px,3vw,30px)/1.12 'Space Grotesk',sans-serif;letter-spacing:-.6px}
+.footer-discovery-heading h2 span{color:#ffd84c}
+.footer-discovery-heading p{margin:0;color:#b9accb;font-size:12px;line-height:1.6}
+.footer-platform-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;max-width:1050px;margin:0 auto}
+.footer-platform-card{position:relative;display:flex;align-items:center;gap:12px;min-width:0;min-height:74px;padding:11px 13px;border:1px solid rgba(203,176,255,.2);border-radius:13px;background:linear-gradient(135deg,rgba(37,25,58,.96),rgba(15,20,34,.96));color:#fff;text-decoration:none!important;box-shadow:0 8px 20px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.045);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.footer-platform-card:hover{transform:translateY(-2px);border-color:rgba(210,170,255,.62);box-shadow:0 12px 25px rgba(0,0,0,.25),0 0 18px rgba(151,66,255,.12)}
+.footer-platform-logo{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;border-radius:10px;color:#fff;background:#242338;box-shadow:inset 0 1px rgba(255,255,255,.2)}
+.footer-platform-logo svg{display:block;width:30px;height:30px}
+.platform-myonlineradio .footer-platform-logo{background:linear-gradient(145deg,#a52fd0,#54348e)}
+.platform-onlinestream .footer-platform-logo{background:linear-gradient(145deg,#e9edf4,#9ba6b9);color:#20283a}
+.platform-onlinestat .footer-platform-logo{background:linear-gradient(145deg,#00a99a,#126c80)}
+.platform-liveradio .footer-platform-logo{background:linear-gradient(145deg,#ef5046,#a51e27)}
+.platform-mytuner .footer-platform-logo{background:linear-gradient(145deg,#282044,#d52b62)}
+.platform-radiobox .footer-platform-logo{background:linear-gradient(145deg,#090b12,#272b3c)}
+.platform-magyaradio .footer-platform-logo{background:linear-gradient(145deg,#253246,#0e1726)}
+.platform-huradio .footer-platform-logo{background:linear-gradient(145deg,#1556b3,#092c72)}
+.platform-keepone .footer-platform-logo{background:linear-gradient(145deg,#181b24,#4b4962)}
+.footer-platform-copy{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0}
+.footer-platform-copy strong{color:#fff;font:800 12px/1.2 'Space Grotesk',sans-serif;letter-spacing:.1px;overflow-wrap:anywhere}
+.footer-platform-copy small{color:#a99ab9;font:600 9px/1.3 'Manrope',sans-serif}
+.footer-platform-arrow{flex:0 0 auto;color:#d0adff;font-size:16px;font-weight:800}
+.footer-follow-row{display:flex;align-items:center;justify-content:center;gap:15px;margin:22px auto 0}
+.footer-follow-title{color:#e6dff0;font-size:11px;font-weight:800}
+.footer-social-icons{display:flex;align-items:center;gap:11px}
+.footer-social-icons a{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(255,255,255,.13);border-radius:9px;background:rgba(255,255,255,.055);color:#fff;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.footer-social-icons a:hover{transform:translateY(-2px);background:rgba(141,83,215,.24);border-color:rgba(205,166,255,.55)}
+.footer-social-icons svg{width:16px;height:16px}
+@media(max-width:850px){.footer-platform-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:680px}}
+@media(max-width:560px){
+  .footer-discovery{padding:22px 0 23px}
+  .footer-discovery-heading{padding:0 8px;margin-bottom:15px}
+  .footer-discovery-heading p{font-size:11px}
+  .footer-platform-grid{grid-template-columns:1fr;gap:8px}
+  .footer-platform-card{min-height:65px;padding:9px 12px}
+  .footer-platform-logo{width:42px;height:42px;flex-basis:42px}
+  .footer-platform-copy strong{font-size:12px}
+  .footer-follow-row{gap:12px;margin-top:18px}
+}
