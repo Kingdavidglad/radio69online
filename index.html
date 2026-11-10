@@ -175,6 +175,73 @@
 
 /* A település felirata nélkül az óra a sor jobb oldalán marad. */
 .weather-card-location{justify-content:flex-end!important}
+
+/* Országos időjárás: 8 város, országos átlag és 3 napos összkép */
+.hero-art.radio69-weather-hero{height:auto!important;min-height:0!important;align-self:stretch!important;overflow:visible!important}
+.studio-visual.radio69-weather-full-card{height:auto!important;min-height:0!important;overflow:visible!important;padding:19px 21px 15px!important}
+.weather-card-location{justify-content:space-between!important;align-items:center!important}
+.weather-card-country-label{display:flex;flex-direction:column;gap:3px;min-width:0}
+.weather-card-country-label strong{font-size:13px!important;letter-spacing:1.6px!important}
+.weather-card-country-label span{color:#a99bc4;font:700 7px/1.3 'Manrope',sans-serif;letter-spacing:.55px}
+.weather-card-current{min-height:82px!important;grid-template-columns:65px minmax(100px,.72fr) minmax(160px,1.3fr)!important;gap:10px!important;padding:5px 0 2px!important}
+.weather-card-icon{font-size:52px!important}
+.weather-card-temperature strong{font-size:54px!important}
+.weather-card-condition strong{font-size:13px!important}
+.weather-card-condition span{font-size:8px!important}
+.weather-card-regions-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:5px 0 6px}
+.weather-card-regions-heading strong{color:#e9ddff;font:900 7px/1.2 'Manrope',sans-serif;letter-spacing:1px}
+.weather-card-regions-heading span{color:#8f83a9;font:800 7px/1 'Manrope',sans-serif;letter-spacing:.5px}
+.weather-card-regions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.weather-card-region{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:center;gap:3px 5px;min-width:0;min-height:42px;padding:6px 8px;border:1px solid rgba(220,196,255,.14);border-radius:9px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025))}
+.weather-card-region>span{grid-column:1;grid-row:1/3;align-self:center;color:#dcd1ee;font:800 8px/1.15 'Manrope',sans-serif;overflow-wrap:anywhere}
+.weather-card-region>b{grid-column:2;grid-row:1;font-size:15px;font-weight:400;line-height:1}
+.weather-card-region>strong{grid-column:2;grid-row:2;color:#fff;font:800 11px/1 'Space Grotesk',sans-serif;white-space:nowrap}
+.weather-card-metrics{margin-top:7px!important;gap:6px!important}
+.weather-card-metric{min-height:48px!important;padding:6px 8px!important;gap:6px!important}
+.weather-card-metric-icon{font-size:16px!important}
+.weather-card-metric small{font-size:6px!important;letter-spacing:.45px!important}
+.weather-card-metric strong{font-size:12px!important}
+.weather-card-forecast-heading{margin-top:10px!important;margin-bottom:6px!important}
+.weather-card-forecast{min-height:57px!important}
+.weather-card-forecast-day{padding:6px 8px!important}
+.weather-card-footer{margin-top:7px!important}
+@media(max-width:650px){
+  .hero-art.radio69-weather-hero{height:auto!important;min-height:0!important;margin:10px -3px 0!important}
+  .studio-visual.radio69-weather-full-card{height:auto!important;min-height:0!important;padding:15px 13px 12px!important}
+  .weather-card-country-label strong{font-size:11px!important}
+  .weather-card-country-label span{font-size:6px!important;letter-spacing:.2px}
+  .weather-card-current{grid-template-columns:49px minmax(77px,.7fr) minmax(110px,1.2fr)!important;gap:6px!important;min-height:68px!important}
+  .weather-card-icon{font-size:40px!important}
+  .weather-card-temperature strong{font-size:43px!important}
+  .weather-card-temperature span{font-size:14px!important;margin-top:4px!important}
+  .weather-card-condition strong{font-size:11px!important}
+  .weather-card-condition span{font-size:6px!important}
+  .weather-card-regions{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  .weather-card-region{min-height:39px;padding:5px 7px}
+  .weather-card-region>span{font-size:8px}
+  .weather-card-region>b{font-size:15px}
+  .weather-card-region>strong{font-size:11px}
+  .weather-card-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important}
+  .weather-card-metric{min-height:43px!important;padding:5px 7px!important}
+  .weather-card-metric small{font-size:6px!important}
+  .weather-card-metric strong{font-size:11px!important}
+  .weather-card-forecast-heading strong{font-size:6px!important;letter-spacing:.55px!important}
+  .weather-card-forecast-heading span{font-size:6px!important}
+  .weather-card-forecast-day{padding:6px 5px!important}
+  .weather-card-forecast-day>span{font-size:6px!important}
+  .weather-card-forecast-day>b{font-size:18px!important}
+  .weather-card-forecast-day>strong{font-size:9px!important}
+  .weather-card-footer{font-size:6px!important}
+}
+@media(max-width:390px){
+  .studio-visual.radio69-weather-full-card{padding-left:10px!important;padding-right:10px!important}
+  .weather-card-current{grid-template-columns:43px minmax(72px,.7fr) minmax(100px,1.2fr)!important;gap:5px!important}
+  .weather-card-icon{font-size:36px!important}
+  .weather-card-temperature strong{font-size:39px!important}
+  .weather-card-condition strong{font-size:10px!important}
+  .weather-card-region>span{font-size:7px}
+  .weather-card-metric-icon{font-size:14px!important}
+}
 </style>
 
 <style id="radio69-daily-jokes-styles">
@@ -364,11 +431,15 @@
           <div class="weather-card-topline">
             <div class="weather-card-brand">
               <img src="assets/radio69-horizontal.png" alt="Rádió69">
-              <span data-weather-hu="IDŐJÁRÁS" data-weather-en="WEATHER">IDŐJÁRÁS</span>
+              <span data-weather-hu="ORSZÁGOS IDŐJÁRÁS" data-weather-en="NATIONAL WEATHER">ORSZÁGOS IDŐJÁRÁS</span>
             </div>
             <span class="weather-card-live"><i></i><span data-weather-hu="ÉLŐ ADATOK" data-weather-en="LIVE DATA">ÉLŐ ADATOK</span></span>
           </div>
           <div class="weather-card-location">
+            <div class="weather-card-country-label">
+              <strong data-weather-hu="MAGYARORSZÁG" data-weather-en="HUNGARY">MAGYARORSZÁG</strong>
+              <span data-weather-hu="ORSZÁGOS ÁTTEKINTÉS · 8 VÁROS ADATAI ALAPJÁN" data-weather-en="NATIONAL OVERVIEW · BASED ON 8 CITIES">ORSZÁGOS ÁTTEKINTÉS · 8 VÁROS ADATAI ALAPJÁN</span>
+            </div>
             <time id="radio69WeatherClock">--:--</time>
           </div>
           <div class="weather-card-current">
@@ -376,17 +447,31 @@
             <div class="weather-card-temperature"><strong id="radio69WeatherTemperature">--</strong><span>°C</span></div>
             <div class="weather-card-condition">
               <strong id="radio69WeatherDescription" data-weather-hu="Időjárási adatok betöltése…" data-weather-en="Loading weather data…">Időjárási adatok betöltése…</strong>
-              <span data-weather-hu="Jelenlegi hőmérséklet" data-weather-en="Current temperature">Jelenlegi hőmérséklet</span>
+              <span data-weather-hu="ORSZÁGOS ÁTLAGHŐMÉRSÉKLET · 8 VÁROS" data-weather-en="NATIONAL AVERAGE TEMPERATURE · 8 CITIES">ORSZÁGOS ÁTLAGHŐMÉRSÉKLET · 8 VÁROS</span>
             </div>
           </div>
+          <div class="weather-card-regions-heading">
+            <strong data-weather-hu="AKTUÁLIS IDŐJÁRÁS AZ ORSZÁG KÜLÖNBÖZŐ RÉSZEIN" data-weather-en="CURRENT WEATHER ACROSS THE COUNTRY">AKTUÁLIS IDŐJÁRÁS AZ ORSZÁG KÜLÖNBÖZŐ RÉSZEIN</strong>
+            <span data-weather-hu="8 VÁROS" data-weather-en="8 CITIES">8 VÁROS</span>
+          </div>
+          <div class="weather-card-regions" id="radio69WeatherRegions" aria-live="polite">
+            <div class="weather-card-region"><span>Budapest</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Győr</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Szombathely</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Pécs</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Szeged</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Debrecen</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Miskolc</span><b>⛅</b><strong>--°</strong></div>
+            <div class="weather-card-region"><span>Nyíregyháza</span><b>⛅</b><strong>--°</strong></div>
+          </div>
           <div class="weather-card-metrics">
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌡️</span><div><small data-weather-hu="HŐÉRZET" data-weather-en="FEELS LIKE">HŐÉRZET</small><strong id="radio69WeatherFeels">--°C</strong></div></div>
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💧</span><div><small data-weather-hu="PÁRATARTALOM" data-weather-en="HUMIDITY">PÁRATARTALOM</small><strong id="radio69WeatherHumidity">--%</strong></div></div>
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💨</span><div><small data-weather-hu="SZÉL" data-weather-en="WIND">SZÉL</small><strong id="radio69WeatherWind">-- km/h</strong></div></div>
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌧️</span><div><small data-weather-hu="CSAPADÉK · 15 PERC" data-weather-en="PRECIP. · 15 MIN">CSAPADÉK · 15 PERC</small><strong id="radio69WeatherRain">-- mm</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌡️</span><div><small data-weather-hu="ÁTLAGOS HŐÉRZET" data-weather-en="AVERAGE FEELS LIKE">ÁTLAGOS HŐÉRZET</small><strong id="radio69WeatherFeels">--°C</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💧</span><div><small data-weather-hu="ÁTLAGOS PÁRATARTALOM" data-weather-en="AVERAGE HUMIDITY">ÁTLAGOS PÁRATARTALOM</small><strong id="radio69WeatherHumidity">--%</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💨</span><div><small data-weather-hu="ÁTLAGOS SZÉL" data-weather-en="AVERAGE WIND">ÁTLAGOS SZÉL</small><strong id="radio69WeatherWind">-- km/h</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌧️</span><div><small data-weather-hu="ÁTLAGOS CSAPADÉK" data-weather-en="AVERAGE PRECIPITATION">ÁTLAGOS CSAPADÉK</small><strong id="radio69WeatherRain">-- mm</strong></div></div>
           </div>
           <div class="weather-card-forecast-heading">
-            <strong data-weather-hu="3 NAPOS ELŐREJELZÉS" data-weather-en="3-DAY FORECAST">3 NAPOS ELŐREJELZÉS</strong>
+            <strong data-weather-hu="3 NAPOS ORSZÁGOS ELŐREJELZÉS" data-weather-en="3-DAY NATIONAL FORECAST">3 NAPOS ORSZÁGOS ELŐREJELZÉS</strong>
             <span id="radio69WeatherUpdated">ADATOK BETÖLTÉSE…</span>
           </div>
           <div class="weather-card-forecast" id="radio69WeatherForecast" aria-live="polite">
@@ -622,11 +707,41 @@
   const card = document.getElementById("radio69WeatherCard");
   if (!card || card.dataset.weatherInitialized === "true") return;
   card.dataset.weatherInitialized = "true";
-  const API_URL = "https://api.open-meteo.com/v1/forecast?latitude=46.6733&longitude=21.0877&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FBudapest&forecast_days=3";
+
+  // Több magyarországi város adataiból készül az országos áttekintés.
+  const WEATHER_LOCATIONS = [
+    { name: "Budapest", latitude: 47.4979, longitude: 19.0402 },
+    { name: "Győr", latitude: 47.6875, longitude: 17.6504 },
+    { name: "Szombathely", latitude: 47.2307, longitude: 16.6218 },
+    { name: "Pécs", latitude: 46.0727, longitude: 18.2323 },
+    { name: "Szeged", latitude: 46.2530, longitude: 20.1414 },
+    { name: "Debrecen", latitude: 47.5316, longitude: 21.6244 },
+    { name: "Miskolc", latitude: 48.1035, longitude: 20.7784 },
+    { name: "Nyíregyháza", latitude: 47.9495, longitude: 21.7244 }
+  ];
+  const API_URL = "https://api.open-meteo.com/v1/forecast?latitude="
+    + WEATHER_LOCATIONS.map((item) => item.latitude).join(",")
+    + "&longitude=" + WEATHER_LOCATIONS.map((item) => item.longitude).join(",")
+    + "&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m"
+    + "&daily=weather_code,temperature_2m_max,temperature_2m_min"
+    + "&timezone=Europe%2FBudapest&forecast_days=3";
+
   const byId = (id) => document.getElementById(id);
   let latestWeather = null;
   let isLoading = false;
   const text = (hu, en) => document.documentElement.lang === "en" ? en : hu;
+  const numberValues = (items) => items.map(Number).filter(Number.isFinite);
+  const average = (items) => {
+    const values = numberValues(items);
+    return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
+  };
+  const rounded = (value) => Number.isFinite(value) ? Math.round(value) : null;
+  const mode = (items) => {
+    const counts = new Map();
+    items.filter((value) => value !== null && value !== undefined && Number.isFinite(Number(value)))
+      .forEach((value) => counts.set(Number(value), (counts.get(Number(value)) || 0) + 1));
+    return counts.size ? [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0] : 3;
+  };
 
   function updateLabels() {
     const english = document.documentElement.lang === "en";
@@ -651,44 +766,89 @@
       95:{hu:"Zivatar",en:"Thunderstorm",day:"⛈️",night:"⛈️"},96:{hu:"Zivatar jégesővel",en:"Thunderstorm with hail",day:"⛈️",night:"⛈️"},99:{hu:"Erős zivatar jégesővel",en:"Heavy thunderstorm with hail",day:"⛈️",night:"⛈️"}
     };
     const item = definitions[Number(code)] || {hu:"Változó időjárás",en:"Variable conditions",day:"🌤️",night:"☁️"};
-    return {description:language === "en" ? item.en : item.hu, icon:isDay ? item.day : item.night};
+    return { description: language === "en" ? item.en : item.hu, icon: isDay ? item.day : item.night };
   }
 
-  function renderWeather(data) {
-    const current = data.current;
-    const daily = data.daily;
+  function renderRegionTiles(locations, language) {
+    const container = byId("radio69WeatherRegions");
+    if (!container) return;
+    container.replaceChildren();
+    WEATHER_LOCATIONS.forEach((place, index) => {
+      const location = locations[index];
+      const current = location && location.current;
+      if (!current) return;
+      const info = weatherInfo(current.weather_code, Number(current.is_day) === 1, language);
+      const tile = document.createElement("div");
+      tile.className = "weather-card-region";
+      tile.title = info.description;
+      const name = document.createElement("span");
+      name.textContent = place.name;
+      const icon = document.createElement("b");
+      icon.textContent = info.icon;
+      icon.setAttribute("aria-label", info.description);
+      const temperature = document.createElement("strong");
+      const value = rounded(Number(current.temperature_2m));
+      temperature.textContent = value === null ? "—" : value + "°";
+      tile.append(name, icon, temperature);
+      container.appendChild(tile);
+    });
+  }
+
+  function renderWeather(locations) {
+    if (!Array.isArray(locations) || !locations.length) return;
+    const currents = locations.map((location) => location && location.current).filter(Boolean);
+    const firstDaily = locations.find((location) => location && location.daily && Array.isArray(location.daily.time));
+    if (!currents.length || !firstDaily) return;
     const language = document.documentElement.lang === "en" ? "en" : "hu";
-    if (!current || !daily || !Array.isArray(daily.time)) return;
-    const currentInfo = weatherInfo(current.weather_code, Number(current.is_day) === 1, language);
-    byId("radio69WeatherIcon").textContent = currentInfo.icon;
-    byId("radio69WeatherTemperature").textContent = Math.round(Number(current.temperature_2m));
-    byId("radio69WeatherDescription").textContent = currentInfo.description;
-    byId("radio69WeatherFeels").textContent = Math.round(Number(current.apparent_temperature)) + "°C";
-    byId("radio69WeatherHumidity").textContent = Math.round(Number(current.relative_humidity_2m)) + "%";
-    byId("radio69WeatherWind").textContent = Math.round(Number(current.wind_speed_10m)) + " km/h";
-    byId("radio69WeatherRain").textContent = Number(current.precipitation || 0).toLocaleString(language === "en" ? "en-GB" : "hu-HU", {maximumFractionDigits:1}) + " mm";
+
+    const averageTemperature = rounded(average(currents.map((item) => item.temperature_2m)));
+    const averageFeels = rounded(average(currents.map((item) => item.apparent_temperature)));
+    const averageHumidity = rounded(average(currents.map((item) => item.relative_humidity_2m)));
+    const averageWind = rounded(average(currents.map((item) => item.wind_speed_10m)));
+    const averageRain = average(currents.map((item) => item.precipitation));
+    const commonCode = mode(currents.map((item) => item.weather_code));
+    const isDay = Number(mode(currents.map((item) => Number(item.is_day)))) === 1;
+    const commonInfo = weatherInfo(commonCode, isDay, language);
+
+    byId("radio69WeatherIcon").textContent = commonInfo.icon;
+    byId("radio69WeatherTemperature").textContent = averageTemperature === null ? "—" : averageTemperature;
+    byId("radio69WeatherDescription").textContent = text("A városok időjárása eltérő lehet", "Conditions vary by location");
+    byId("radio69WeatherFeels").textContent = averageFeels === null ? "—" : averageFeels + "°C";
+    byId("radio69WeatherHumidity").textContent = averageHumidity === null ? "—" : averageHumidity + "%";
+    byId("radio69WeatherWind").textContent = averageWind === null ? "—" : averageWind + " km/h";
+    byId("radio69WeatherRain").textContent = (averageRain === null ? "—" : averageRain.toLocaleString(language === "en" ? "en-GB" : "hu-HU", {maximumFractionDigits:1})) + " mm";
+
+    renderRegionTiles(locations, language);
 
     const now = new Date();
-    const timeOptions = {hour:"2-digit",minute:"2-digit",timeZone:"Europe/Budapest"};
-    byId("radio69WeatherClock").textContent = now.toLocaleTimeString(language === "en" ? "en-GB" : "hu-HU", timeOptions);
-    const updatedTime = current.time ? new Date(current.time).toLocaleTimeString(language === "en" ? "en-GB" : "hu-HU", timeOptions) : now.toLocaleTimeString("hu-HU", timeOptions);
+    const locale = language === "en" ? "en-GB" : "hu-HU";
+    const timeOptions = { hour:"2-digit", minute:"2-digit", timeZone:"Europe/Budapest" };
+    byId("radio69WeatherClock").textContent = now.toLocaleTimeString(locale, timeOptions);
+    const currentTime = currents[0].time;
+    const updatedTime = currentTime ? new Date(currentTime).toLocaleTimeString(locale, timeOptions) : now.toLocaleTimeString(locale, timeOptions);
     byId("radio69WeatherUpdated").textContent = text("FRISSÍTVE", "UPDATED") + ": " + updatedTime;
-    byId("radio69WeatherStatus").textContent = text("Élő előrejelzés · frissül 10 percenként", "Live forecast · refreshes every 10 minutes");
+    byId("radio69WeatherStatus").textContent = text("Országos áttekintés · 8 város adataiból · frissül 10 percenként", "National overview · data from 8 cities · refreshes every 10 minutes");
 
     const forecast = byId("radio69WeatherForecast");
     forecast.replaceChildren();
-    daily.time.slice(0,3).forEach((dateValue,index) => {
+    const dailyLocations = locations.map((location) => location && location.daily).filter(Boolean);
+    firstDaily.daily.time.slice(0, 3).forEach((dateValue, index) => {
       const date = new Date(dateValue + "T12:00:00");
-      const dayName = index === 0 ? text("MA","TODAY") : index === 1 ? text("HOLNAP","TOMORROW") : date.toLocaleDateString(language === "en" ? "en-GB" : "hu-HU", {weekday:"short"}).replace(".","").toUpperCase();
-      const info = weatherInfo(daily.weather_code[index], true, language);
-      const max = Math.round(Number(daily.temperature_2m_max[index]));
-      const min = Math.round(Number(daily.temperature_2m_min[index]));
+      const dayName = index === 0 ? text("MA", "TODAY") : index === 1 ? text("HOLNAP", "TOMORROW") : date.toLocaleDateString(locale, { weekday:"short" }).replace(".", "").toUpperCase();
+      const max = rounded(average(dailyLocations.map((daily) => daily.temperature_2m_max && daily.temperature_2m_max[index])));
+      const min = rounded(average(dailyLocations.map((daily) => daily.temperature_2m_min && daily.temperature_2m_min[index])));
+      const dailyCode = mode(dailyLocations.map((daily) => daily.weather_code && daily.weather_code[index]));
+      const info = weatherInfo(dailyCode, true, language);
       const tile = document.createElement("div");
       tile.className = "weather-card-forecast-day";
-      const day = document.createElement("span"); day.textContent = dayName;
-      const icon = document.createElement("b"); icon.textContent = info.icon; icon.setAttribute("aria-label", info.description);
-      const temperatures = document.createElement("strong"); temperatures.innerHTML = max + "° <span>/ " + min + "°</span>";
-      tile.append(day,icon,temperatures);
+      const day = document.createElement("span");
+      day.textContent = dayName;
+      const icon = document.createElement("b");
+      icon.textContent = info.icon;
+      icon.setAttribute("aria-label", info.description);
+      const temperatures = document.createElement("strong");
+      temperatures.textContent = (max === null ? "—" : max + "°") + " / " + (min === null ? "—" : min + "°");
+      tile.append(day, icon, temperatures);
       forecast.appendChild(tile);
     });
   }
@@ -697,19 +857,24 @@
     if (isLoading) return;
     isLoading = true;
     try {
-      const response = await fetch(API_URL, {method:"GET",mode:"cors",cache:"no-store",headers:{Accept:"application/json"}});
+      const response = await fetch(API_URL, { method:"GET", mode:"cors", cache:"no-store", headers:{ Accept:"application/json" } });
       if (!response.ok) throw new Error("Weather API HTTP " + response.status);
-      const data = await response.json();
-      if (!data.current || !data.daily || !Array.isArray(data.daily.time)) throw new Error("Weather API response is incomplete.");
-      latestWeather = data;
-      renderWeather(data);
+      const payload = await response.json();
+      const locations = Array.isArray(payload) ? payload : [payload];
+      if (locations.length !== WEATHER_LOCATIONS.length || locations.some((location) => !location.current || !location.daily || !Array.isArray(location.daily.time))) {
+        throw new Error("The national weather response is incomplete.");
+      }
+      latestWeather = locations;
+      renderWeather(locations);
     } catch (error) {
-      console.warn("Az időjárás lekérése nem sikerült:", error);
+      console.warn("Az országos időjárás lekérése nem sikerült:", error);
       if (!latestWeather) {
-        byId("radio69WeatherDescription").textContent = text("Az időjárás most nem érhető el.", "Weather is temporarily unavailable.");
+        byId("radio69WeatherDescription").textContent = text("Az országos időjárás most nem érhető el.", "National weather is temporarily unavailable.");
         byId("radio69WeatherStatus").textContent = text("Ellenőrizd az internetkapcsolatot.", "Please check the internet connection.");
       }
-    } finally { isLoading = false; }
+    } finally {
+      isLoading = false;
+    }
   }
 
   updateLabels();
@@ -717,382 +882,6 @@
   loadWeather();
   window.setInterval(loadWeather, 10 * 60 * 1000);
 })();
-</script>
-
-<script id="radio69-daily-horoscope-script">
-(() => {
-  "use strict";
-  const root = document.getElementById("radio69DailyHoroscope");
-  if (!root || root.dataset.initialized === "true") return;
-  root.dataset.initialized = "true";
-
-  const signs = {
-    aries:{hu:"Kos",en:"Aries",symbol:"♈"}, taurus:{hu:"Bika",en:"Taurus",symbol:"♉"},
-    gemini:{hu:"Ikrek",en:"Gemini",symbol:"♊"}, cancer:{hu:"Rák",en:"Cancer",symbol:"♋"},
-    leo:{hu:"Oroszlán",en:"Leo",symbol:"♌"}, virgo:{hu:"Szűz",en:"Virgo",symbol:"♍"},
-    libra:{hu:"Mérleg",en:"Libra",symbol:"♎"}, scorpio:{hu:"Skorpió",en:"Scorpio",symbol:"♏"},
-    sagittarius:{hu:"Nyilas",en:"Sagittarius",symbol:"♐"}, capricorn:{hu:"Bak",en:"Capricorn",symbol:"♑"},
-    aquarius:{hu:"Vízöntő",en:"Aquarius",symbol:"♒"}, pisces:{hu:"Halak",en:"Pisces",symbol:"♓"}
-  };
-  const byId = (id) => document.getElementById(id);
-  const textNode = byId("radio69HoroscopeText");
-  const refreshButton = byId("radio69HoroscopeRefresh");
-  const dateNode = byId("radio69HoroscopeDate");
-  let selectedSign = "aries";
-  let requestNumber = 0;
-  let activeController = null;
-  let lastLanguage = null;
-
-  const language = () => document.documentElement.lang === "en" ? "en" : "hu";
-  const copy = (hu, en) => language() === "en" ? en : hu;
-
-  function budapestDateParts() {
-    const parts = new Intl.DateTimeFormat("en-CA", {
-      timeZone:"Europe/Budapest", year:"numeric", month:"2-digit", day:"2-digit"
-    }).formatToParts(new Date());
-    const result = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-    return `${result.year}-${result.month}-${result.day}`;
-  }
-
-  function updateDateLabel() {
-    const lang = language();
-    dateNode.textContent = new Intl.DateTimeFormat(lang === "en" ? "en-GB" : "hu-HU", {
-      timeZone:"Europe/Budapest", year:"numeric", month:"long", day:"numeric"
-    }).format(new Date());
-  }
-
-  function setSelectedSign(sign) {
-    selectedSign = signs[sign] ? sign : "aries";
-    const item = signs[selectedSign];
-    byId("radio69HoroscopeSignTitle").textContent = item[language()];
-    byId("radio69HoroscopeSymbol").textContent = item.symbol;
-    root.querySelectorAll("[data-horoscope-sign]").forEach((button) => {
-      const selected = button.dataset.horoscopeSign === selectedSign;
-      button.setAttribute("aria-pressed", String(selected));
-      const name = button.querySelector(".r69-horo-sign-name");
-      if (name) name.textContent = signs[button.dataset.horoscopeSign][language()];
-    });
-  }
-
-  function updateLabels() {
-    const en = language() === "en";
-    const eyebrow = root.querySelector(".r69-horo-heading .eyebrow");
-    if (eyebrow) {
-      const ornament = eyebrow.querySelector(".eyebrow-line");
-      eyebrow.replaceChildren(ornament || document.createElement("span"));
-      eyebrow.append(document.createTextNode(en ? " A LITTLE GUIDANCE FOR YOUR DAY" : " EGY KIS ÚTMUTATÓ A NAPHOZ"));
-    }
-    const heading = byId("radio69HoroscopeTitle");
-    heading.firstChild.nodeValue = en ? "What do the stars " : "Mit üzennek ma ";
-    heading.querySelector("span").textContent = en ? "say today?" : "a csillagok?";
-    root.querySelector(".r69-horo-intro").textContent = en
-      ? "Choose your zodiac sign and read today's horoscope on Rádió69!"
-      : "Válaszd ki a csillagjegyedet, és olvasd el a mai horoszkópodat a Rádió69-en!";
-    root.querySelector(".r69-horo-picker-head strong").textContent = en ? "CHOOSE YOUR SIGN" : "VÁLASZD KI A JEGYED";
-    root.querySelector(".r69-horo-picker-head span").textContent = en ? "12 zodiac signs" : "12 csillagjegy";
-    byId("radio69HoroscopeSigns").setAttribute("aria-label", en ? "Choose a zodiac sign" : "Csillagjegy kiválasztása");
-    root.querySelector(".r69-horo-reading").setAttribute("aria-label", en ? "Daily horoscope for the selected zodiac sign" : "A kiválasztott csillagjegy napi horoszkópja");
-    root.querySelector(".r69-horo-sign-identity small").textContent = en ? "TODAY'S HOROSCOPE" : "MAI HOROSZKÓP";
-    refreshButton.setAttribute("aria-label", en ? "Refresh daily horoscope" : "Napi horoszkóp frissítése");
-    const footStrong = root.querySelector(".r69-horo-reading-foot strong");
-    footStrong.textContent = en ? "✦ RÁDIÓ69 • DAILY HOROSCOPE" : "✦ RÁDIÓ69 • NAPI HOROSZKÓP";
-    root.querySelector(".r69-horo-reading-foot span").textContent = en
-      ? "For entertainment and general guidance only."
-      : "Szórakoztató, általános útmutatás.";
-    const credit = root.querySelector(".r69-horo-credit");
-    credit.firstChild.nodeValue = en ? "Horoscope source: " : "A horoszkóp adatforrása: ";
-    setSelectedSign(selectedSign);
-    updateDateLabel();
-  }
-
-  function setLoading() {
-    textNode.className = "r69-horo-copy is-loading";
-    textNode.textContent = copy("A mai horoszkóp betöltése…", "Loading today's horoscope…");
-    textNode.setAttribute("aria-busy", "true");
-    refreshButton.disabled = true;
-    refreshButton.innerHTML = `<span aria-hidden="true">↻</span> ${copy("Betöltés…", "Loading…")}`;
-  }
-
-  function setError() {
-    textNode.className = "r69-horo-copy is-error";
-    textNode.textContent = copy(
-      "A napi horoszkóp most nem érhető el. Kérjük, próbáld meg újra egy kicsit később!",
-      "Today's horoscope is temporarily unavailable. Please try again in a little while."
-    );
-    textNode.setAttribute("aria-busy", "false");
-    refreshButton.disabled = false;
-    refreshButton.innerHTML = `<span aria-hidden="true">↻</span> ${copy("Újrapróbálom", "Try again")}`;
-  }
-
-  function setContent(message) {
-    textNode.className = "r69-horo-copy";
-    textNode.textContent = message;
-    textNode.setAttribute("aria-busy", "false");
-    refreshButton.disabled = false;
-    refreshButton.innerHTML = `<span aria-hidden="true">↻</span> ${copy("Frissítés", "Refresh")}`;
-  }
-
-  function readCache(key) {
-    try {
-      const saved = localStorage.getItem(key);
-      if (!saved) return null;
-      const parsed = JSON.parse(saved);
-      return parsed && typeof parsed.horoscope === "string" && parsed.horoscope.trim() ? parsed : null;
-    } catch (_) { return null; }
-  }
-
-  function writeCache(key, data) {
-    try { localStorage.setItem(key, JSON.stringify({horoscope:data.horoscope, language:data.language || language(), savedAt:Date.now()})); }
-    catch (_) { /* Local storage may be disabled; live fetch still works. */ }
-  }
-
-  async function loadHoroscope(options = {}) {
-    const sign = selectedSign;
-    if (!signs[sign]) return;
-    const thisRequest = ++requestNumber;
-    if (activeController) activeController.abort();
-    const controller = new AbortController();
-    activeController = controller;
-    const date = budapestDateParts();
-    const lang = language();
-    const cacheKey = `radio69-horoscope-${date}-${lang}-${sign}`;
-
-    if (!options.force) {
-      const cached = readCache(cacheKey);
-      if (cached) {
-        setContent(cached.horoscope);
-        return;
-      }
-    }
-
-    setLoading();
-    const timeout = window.setTimeout(() => controller.abort(), 20000);
-    try {
-      const params = new URLSearchParams({sign, date, lang});
-      const response = await fetch(`https://api.astroway.info/v1/public/horoscope/daily?${params.toString()}`, {
-        method:"GET", mode:"cors", cache:"no-store", headers:{Accept:"application/json"}, signal:controller.signal
-      });
-      if (!response.ok) throw new Error(`Horoscope API HTTP ${response.status}`);
-      const payload = await response.json();
-      const data = payload && payload.data;
-      if (!payload.ok || !data || typeof data.horoscope !== "string" || !data.horoscope.trim()) {
-        throw new Error("The horoscope response did not contain reading text.");
-      }
-      if (thisRequest !== requestNumber) return;
-      writeCache(cacheKey, data);
-      setContent(data.horoscope.trim());
-    } catch (error) {
-      if (thisRequest !== requestNumber) return;
-      console.warn("A napi horoszkóp betöltése nem sikerült:", error);
-      setError();
-    } finally {
-      window.clearTimeout(timeout);
-      if (thisRequest === requestNumber && activeController) activeController = null;
-    }
-  }
-
-  root.querySelectorAll("[data-horoscope-sign]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const sign = button.dataset.horoscopeSign;
-      if (!sign || !signs[sign] || sign === selectedSign) return;
-      setSelectedSign(sign);
-      loadHoroscope();
-    });
-  });
-  refreshButton.addEventListener("click", () => loadHoroscope({force:true}));
-
-  function applyLanguage() {
-    const nextLanguage = language();
-    updateLabels();
-    if (nextLanguage !== lastLanguage) {
-      lastLanguage = nextLanguage;
-      loadHoroscope();
-    }
-  }
-  document.querySelectorAll(".language-button").forEach((button) => button.addEventListener("click", applyLanguage));
-
-  updateLabels();
-  lastLanguage = language();
-  root.dataset.lastDate = budapestDateParts();
-  loadHoroscope();
-
-  window.setInterval(() => {
-    const currentDate = budapestDateParts();
-    if (root.dataset.lastDate !== currentDate) {
-      root.dataset.lastDate = currentDate;
-      updateDateLabel();
-      loadHoroscope({force:true});
-    }
-  }, 60 * 1000);
-})();
-</script>
-
-
-<script id="radio69-daily-jokes-script">
-(() => {
-  "use strict";
-  const root = document.getElementById("radio69DailyJokes");
-  if (!root || root.dataset.initialized === "true") return;
-  root.dataset.initialized = "true";
-
-  // The ViccesViccek.hu iframe provides the official Hungarian joke of the day.
-  // Its publisher states that it changes automatically at midnight.
-  const iframe = document.getElementById("radio69JokesIframe");
-  const widgetHu = document.getElementById("radio69JokesWidgetHu");
-  const englishPanel = document.getElementById("radio69JokesEnglishPanel");
-  const englishGrid = document.getElementById("radio69JokesEnglishGrid");
-  const dateNode = document.getElementById("radio69JokesDate");
-  const englishSets = [
-    ["Teacher: ‘Why are you late?’ ‘I dreamed I was travelling abroad, and the trip home took ages.’", "Why does a computer take an umbrella? It saves everything to the cloud.", "Doctor: ‘Everyone seems to look right through me!’ ‘Next patient!’"],
-    ["Why doesn't a calendar argue? Every day is already booked.", "At the library: ‘I'd like a book about laziness.’ ‘Certainly. Would you like me to bring it over?’", "What did zero say to eight? ‘Nice belt!’"],
-    ["Why did the phone bring a ladder to the party? It wanted better reception.", "The waiter asked, ‘How's the soup?’ ‘Delicious, although there's a little too much plate in it.’", "Why is a light bulb great company? It always brightens the mood."],
-    ["What does bread do at the gym? It works out to get a stronger crust.", "Why can't a sieve keep a secret? Everything leaks out.", "Boss: ‘Why do you keep checking the clock?’ ‘I'm making sure time is moving towards payday.’"],
-    ["What do you call a well-mannered fish? A polite carp.", "Why is a computer never cold? It always has Windows.", "‘A coffee without sugar, please!’ ‘Sorry, we're out of sugar.’ ‘Then make it without milk!’"],
-    ["Why did the snail pack a suitcase? It was moving house, but there was no need to rush.", "What did one wall say to the other? ‘I'll meet you at the corner!’", "My friend says money can't buy happiness. I'd still like to test that theory."],
-    ["Why is a baker good at maths? They know how to divide the dough.", "Why can't a snowman keep a secret? His mouth eventually melts.", "What's a fast train like? By the time you ask, it's already gone."],
-    ["Why don't fish use the internet? They're afraid of getting caught in the net.", "‘Do you have vegetarian food?’ ‘Of course, salad.’ ‘And what's in it?’ ‘Salad.’", "What does a pencil do when it's tired? It takes a break and sharpens up."],
-    ["Why did the vacuum cleaner pack a snack? It had a very demanding job ahead.", "Why doesn't a tortoise hurry? It knows the finish line isn't going anywhere.", "‘Boss, could I have a day off?’ ‘Why?’ ‘I'd like to know what it feels like to be well-rested on a Monday.’"],
-    ["Why does a pencil love hiking? It likes to make sharp memories.", "Why doesn't a light switch play hide-and-seek? It always gives the game away.", "What does an elevator say when it's tired? ‘I'm taking things down a level.’"],
-    ["Why is a fridge a good flatmate? It always keeps a cool head.", "Why did the mathematician bring a ladder to school? To reach a higher level.", "What do you call a cheese that plays music? Rock-fort."],
-    ["Why don't two books argue? They share the same story.", "Why does coffee like working in the morning? That's when it's in its element.", "What did the sock say to the washing machine? ‘Stop turning me inside out!’"],
-    ["Why can't paper keep a secret? Something always gets out.", "Why did the banana wear sunscreen? It didn't want to peel in the sun.", "Why is a mirror a good conversationalist? It always reflects on what you say."],
-    ["What does a musician do when their clock breaks? They lose the beat.", "Why doesn't a snowman order lemonade? It doesn't want to get any cooler.", "Why does a baker get up early? The day is always freshly baked."],
-    ["Why can't a fish play chess? It keeps trying to take the game underwater.", "Why did the gardener take a book into the garden? To get lost in a good story.", "Why is a mountain so calm? Nothing can get it worked up over a peak."],
-    ["Why doesn't the calendar like Mondays? That's when work always starts.", "What does a tram say when it's feeling funny? ‘Now that's a joke on the right track!’", "Why did the calculator visit the doctor? It had too many problems and its buttons were worn out."],
-    ["Why can't a cloud lie? Sooner or later, what's inside comes out.", "What did the cheese say when it got scared? ‘This is a grate situation!’", "Why does a bicycle enjoy a chat? The conversation is always rolling on two wheels."],
-    ["Why did the chef bring a ruler into the kitchen? To measure the mood precisely.", "What does a phone do when it's bored? It calls its friends.", "Why don't triangles argue? They prefer to smooth out the angles."],
-    ["Why doesn't coffee run? It's already strong enough.", "Why does a book love travelling? Every page takes it somewhere new.", "What did the knife say to the bread? ‘Don't worry, we'll slice up a good time!’"],
-    ["Why did the cat wear glasses to the cinema? To see the purr-fect scenes more clearly.", "Why is the drummer useful in a band? They always set the tone.", "Why can't a computer laugh quietly? It always has to output something."],
-    ["Why did the shoe bring a map? It didn't want to lose its way.", "Why doesn't an accountant rush? They prefer to take things step by step.", "What does a radio say when it's tired? ‘Time for a little break in transmission!’"],
-    ["Why is a kitchen clock useful? It always knows when cooking time is up.", "What does a dog do at a computer? Looks for the bone in the hard drive.", "Why doesn't a calendar keep secrets? Every day is public."],
-    ["Why did the painter bring a parasol? They were expecting a colourful day.", "Why does an electrician love jokes? They always have a good connection.", "Why doesn't a pillow complain? It takes everything lying down."],
-    ["What did the train say to the tracks? ‘I wouldn't get far without you!’", "Why is a bookmark so reliable? It always knows where the story stands.", "Why wasn't the tomato angry? It cooled off in the salad."],
-    ["Why did the bee bring a notebook? To write down which flower had the best location.", "Why can't a ladder keep a secret? It passes it on at every step.", "What did the sponge say? ‘Don't pressure me, I'm already full!’"],
-    ["Why does a bus stop love waiting? It's what it was made for.", "Why did the chef wear glasses? To get a better look at what was cooking.", "What does a pen say when it runs out of ink? ‘I can't put it into words right now.’"],
-    ["Why is a pocket watch handy? Time is always right there.", "Why doesn't a magnet argue? It attracts everyone to its point of view.", "What does a sandwich do when it's nervous? It gets a little crusty."],
-    ["Why did the footballer bring a pencil to training? To draw up a winning plan.", "Why does a diary love writing? Every day brings a new story.", "Why can't ice cream keep a secret for long? Its opinion melts away."],
-    ["Why did the pillow go to work? It wanted to put something soft on the table.", "Why doesn't a violin get tired? It's always in good bow shape.", "What did the screw say to the screwdriver? ‘Stop turning the conversation and let's get to work!’"],
-    ["Why did the owl wear sunglasses? It wanted to look wise even in daylight.", "Why is an hourglass never late? Time is always running through it.", "What did the soap say in the shower? ‘Let's not slip into the details!’"],
-    ["Why does a phone love its charger? It always feels recharged there.", "Why is a chessboard never bored? There's always another move to make.", "What did the glass say to the water? ‘Let's spend the evening together!’"]
-  ];
-
-  function budapestDateKey() {
-    const parts = new Intl.DateTimeFormat("en-CA", {
-      timeZone: "Europe/Budapest", year: "numeric", month: "2-digit", day: "2-digit"
-    }).formatToParts(new Date());
-    const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
-    return `${values.year}-${values.month}-${values.day}`;
-  }
-
-  function dayNumber(dateKey) {
-    const [year, month, day] = dateKey.split("-").map(Number);
-    return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
-  }
-
-  function renderEnglishJokes(dateKey) {
-    const index = ((dayNumber(dateKey) % englishSets.length) + englishSets.length) % englishSets.length;
-    englishGrid.replaceChildren();
-    englishSets[index].forEach((joke, i) => {
-      const tile = document.createElement("article");
-      tile.className = "r69-jokes-english-tile";
-      const number = document.createElement("span");
-      number.className = "r69-jokes-english-number";
-      number.textContent = String(i + 1).padStart(2, "0");
-      const text = document.createElement("p");
-      text.textContent = joke;
-      tile.append(number, text);
-      englishGrid.append(tile);
-    });
-  }
-
-  function updateJokesLanguage() {
-    const en = document.documentElement.lang === "en";
-    const eyebrow = document.getElementById("radio69JokesEyebrow");
-    const title = document.getElementById("radio69JokesTitle");
-    const intro = document.getElementById("radio69JokesIntro");
-    const source = document.getElementById("radio69JokesSource");
-    const widgetTitle = document.getElementById("radio69JokesWidgetTitle");
-    const englishTitle = document.getElementById("radio69JokesEnglishTitle");
-    const englishNote = document.getElementById("radio69JokesEnglishNote");
-
-    eyebrow.lastChild.textContent = en ? " RÁDIÓ69 COMEDY CORNER" : " RÁDIÓ69 HUMORSAROK";
-    title.firstChild.nodeValue = en ? "Daily laugh " : "A nap vicce ";
-    title.querySelector("span").textContent = en ? "a little smile for your day" : "egy kis mosoly a napodhoz";
-    intro.textContent = en
-      ? "A fresh laugh every day! The English edition features a separate Rádió69 joke selection."
-      : "Minden nap új poénnal várunk! A mai vicc a ViccesViccek.hu hivatalos, automatikusan frissülő dobozából érkezik.";
-    source.textContent = en ? "Hungarian original: ViccesViccek.hu ↗" : "Forrás: ViccesViccek.hu ↗";
-    widgetTitle.textContent = en ? "Daily laugh" : "A nap vicce";
-    englishTitle.textContent = en ? "Daily laugh" : "Napi angol válogatás";
-    englishNote.textContent = en
-      ? "The ViccesViccek.hu partner widget is available in Hungarian only. This is a separate Rádió69 English daily selection."
-      : "Az angol válogatás csak az angol nyelvű nézetben jelenik meg.";
-    widgetHu.hidden = en;
-    englishPanel.hidden = !en;
-    const dateKey = budapestDateKey();
-    dateNode.dateTime = dateKey;
-    dateNode.textContent = new Intl.DateTimeFormat(en ? "en-GB" : "hu-HU", {
-      timeZone: "Europe/Budapest", year: "numeric", month: "long", day: "numeric"
-    }).format(new Date(`${dateKey}T12:00:00Z`));
-    if (en) renderEnglishJokes(dateKey);
-  }
-
-  document.querySelectorAll(".language-button").forEach(button => button.addEventListener("click", updateJokesLanguage));
-  const languageObserver = new MutationObserver(updateJokesLanguage);
-  languageObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
-  updateJokesLanguage();
-
-  let lastDate = budapestDateKey();
-  window.setInterval(() => {
-    const currentDate = budapestDateKey();
-    if (currentDate === lastDate) return;
-    lastDate = currentDate;
-    updateJokesLanguage();
-    // Reload the official daily widget after midnight if the page stayed open.
-    if (document.documentElement.lang !== "en" && iframe) iframe.src = iframe.src;
-  }, 60 * 1000);
-})();
-</script>
-
-
-  <button id="radio69ScrollTop" type="button" aria-label="Vissza a tetejére" title="Vissza a tetejére" data-tooltip="Vissza a tetejére" aria-hidden="true" tabindex="-1">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 14.5 12 7.5l7 7"/><path d="M12 8v12"/></svg>
-  </button>
-  <script id="radio69-scroll-to-top-script">
-  (() => {
-    "use strict";
-    const button = document.getElementById("radio69ScrollTop");
-    if (!button) return;
-    const threshold = 360;
-    const languageButtons = document.querySelectorAll(".language-button");
-
-    function updateLanguage() {
-      const english = document.documentElement.lang === "en";
-      const label = english ? "Back to top" : "Vissza a tetejére";
-      button.setAttribute("aria-label", label);
-      button.setAttribute("title", label);
-      button.dataset.tooltip = label;
-    }
-
-    function updateVisibility() {
-      const visible = window.scrollY > threshold;
-      button.classList.toggle("is-visible", visible);
-      button.setAttribute("aria-hidden", String(!visible));
-      button.tabIndex = visible ? 0 : -1;
-    }
-
-    button.addEventListener("click", () => {
-      const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
-    });
-    window.addEventListener("scroll", updateVisibility, { passive: true });
-    window.addEventListener("pageshow", updateVisibility);
-    languageButtons.forEach((languageButton) => languageButton.addEventListener("click", updateLanguage));
-    const languageObserver = new MutationObserver(updateLanguage);
-    languageObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
-    updateLanguage();
-    updateVisibility();
-  })();
   </script>
 
 </body>
