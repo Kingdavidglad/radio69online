@@ -1315,3 +1315,12 @@ body {
   .footer-platform-copy strong{font-size:12px}
   .footer-follow-row{gap:12px;margin-top:18px}
 }
+
+
+/* Partnerkártyák – Cold & Warm, R-SZITA és KO-HA Sound */
+.partners-section .partner-showcase-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:16px}
+.partners-section .partner-showcase-card.partner-business-card{min-height:230px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#171226,#0d1727);border-color:rgba(203,176,255,.28)}
+.partners-section .partner-showcase-card.partner-business-card img{width:100%;height:230px;min-height:230px;max-height:230px;object-fit:contain!important;padding:10px!important;background:transparent!important}
+.partners-section .partner-showcase-card.partner-business-card>span{z-index:1}
+@media(max-width:900px){.partners-section .partner-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.partners-section .partner-showcase-grid{grid-template-columns:1fr}.partners-section .partner-showcase-card.partner-business-card{min-height:190px}.partners-section .partner-showcase-card.partner-business-card img{height:190px;min-height:190px;max-height:190px}}
