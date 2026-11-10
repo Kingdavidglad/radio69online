@@ -1324,3 +1324,31 @@ body {
 .partners-section .partner-showcase-card.partner-business-card>span{z-index:1}
 @media(max-width:900px){.partners-section .partner-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.partners-section .partner-showcase-grid{grid-template-columns:1fr}.partners-section .partner-showcase-card.partner-business-card{min-height:190px}.partners-section .partner-showcase-card.partner-business-card img{height:190px;min-height:190px;max-height:190px}}
+
+
+/* Jól látható lejátszásikonok a Remix és Hits csatornaválasztói előtt */
+.channel-tab .tab-play-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  padding-left: 2px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.72);
+  background: rgba(255,255,255,.13) !important;
+  color: #fff !important;
+  font-size: 12px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  box-shadow: 0 0 12px rgba(255,255,255,.10);
+}
+.channel-tab.active .tab-play-icon {
+  background: #fff !important;
+  color: #6d28a8 !important;
+  border-color: #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,.28);
+}
+@media (max-width: 650px) {
+  .channel-tab .tab-play-icon { width: 36px; height: 36px; flex-basis: 36px; font-size: 14px; }
+}
