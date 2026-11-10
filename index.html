@@ -1208,5 +1208,271 @@
 })();
   </script>
 
+
+<script id="radio69-horoscope-functionality">
+(() => {
+  "use strict";
+
+  const section = document.getElementById("radio69DailyHoroscope");
+  if (!section || section.dataset.horoscopeInitialized === "true") return;
+  section.dataset.horoscopeInitialized = "true";
+
+  // Az AstroWay nyilvános napi horoszkóp-végpontja nem igényel API-kulcsot.
+  const API_URL = "https://api.astroway.info/v1/public/horoscope/daily";
+  const buttons = Array.from(section.querySelectorAll("[data-horoscope-sign]"));
+  const dateElement = document.getElementById("radio69HoroscopeDate");
+  const textElement = document.getElementById("radio69HoroscopeText");
+  const symbolElement = document.getElementById("radio69HoroscopeSymbol");
+  const titleElement = document.getElementById("radio69HoroscopeSignTitle");
+  const refreshButton = document.getElementById("radio69HoroscopeRefresh");
+  const smallTitle = section.querySelector(".r69-horo-sign-identity small");
+  const footerText = section.querySelector(".r69-horo-reading-foot span");
+
+  if (!buttons.length || !dateElement || !textElement || !symbolElement ||
+      !titleElement || !refreshButton) {
+    console.error("A Rádió69 horoszkóp egy vagy több szükséges HTML-eleme hiányzik.");
+    return;
+  }
+
+  const signNames = {
+    hu: {
+      aries: "Kos", taurus: "Bika", gemini: "Ikrek", cancer: "Rák",
+      leo: "Oroszlán", virgo: "Szűz", libra: "Mérleg", scorpio: "Skorpió",
+      sagittarius: "Nyilas", capricorn: "Bak", aquarius: "Vízöntő", pisces: "Halak"
+    },
+    en: {
+      aries: "Aries", taurus: "Taurus", gemini: "Gemini", cancer: "Cancer",
+      leo: "Leo", virgo: "Virgo", libra: "Libra", scorpio: "Scorpio",
+      sagittarius: "Sagittarius", capricorn: "Capricorn", aquarius: "Aquarius", pisces: "Pisces"
+    }
+  };
+
+  const responseCache = new Map();
+  let selectedSign = buttons.find((button) => button.getAttribute("aria-pressed") === "true")
+    ?.dataset.horoscopeSign || buttons[0].dataset.horoscopeSign;
+  let activeController = null;
+  let requestNumber = 0;
+  let currentLanguage = getLanguage();
+
+  function getLanguage() {
+    return document.documentElement.lang === "en" ? "en" : "hu";
+  }
+
+  function getBudapestDate() {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Budapest",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  }
+
+  function updateDateLabel(language) {
+    const locale = language === "en" ? "en-GB" : "hu-HU";
+    dateElement.textContent = new Date().toLocaleDateString(locale, {
+      timeZone: "Europe/Budapest",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+    if (smallTitle) {
+      smallTitle.textContent = language === "en" ? "DAILY HOROSCOPE" : "MAI HOROSZKÓP";
+    }
+    if (footerText) {
+      footerText.textContent = language === "en"
+        ? "For entertainment only."
+        : "Szórakoztató, általános útmutatás.";
+    }
+  }
+
+  function updateSelectedSign() {
+    const language = getLanguage();
+    const names = signNames[language];
+    const selectedButton = buttons.find((button) => button.dataset.horoscopeSign === selectedSign);
+    if (!selectedButton) return;
+
+    buttons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.horoscopeSign === selectedSign));
+    });
+
+    const symbol = selectedButton.querySelector(".r69-horo-symbol");
+    const name = selectedButton.querySelector(".r69-horo-sign-name");
+    symbolElement.textContent = symbol ? symbol.textContent : "✦";
+    titleElement.textContent = names[selectedSign] || (name ? name.textContent : selectedSign);
+    refreshButton.setAttribute(
+      "aria-label",
+      language === "en" ? "Refresh daily horoscope" : "Napi horoszkóp frissítése"
+    );
+  }
+
+  function setLoading(language) {
+    textElement.classList.remove("is-error");
+    textElement.classList.add("is-loading");
+    textElement.setAttribute("aria-busy", "true");
+    textElement.textContent = language === "en"
+      ? "Loading today's horoscope…"
+      : "A mai horoszkóp betöltése…";
+  }
+
+  function setError(language, message) {
+    textElement.classList.remove("is-loading");
+    textElement.classList.add("is-error");
+    textElement.setAttribute("aria-busy", "false");
+    textElement.textContent = message || (language === "en"
+      ? "The horoscope is temporarily unavailable. Please try again with the Refresh button."
+      : "A horoszkóp most átmenetileg nem érhető el. Próbáld újra a Frissítés gombbal.");
+  }
+
+  function showHoroscope(value) {
+    textElement.classList.remove("is-loading", "is-error");
+    textElement.setAttribute("aria-busy", "false");
+    textElement.textContent = value;
+  }
+
+  function extractHoroscope(payload) {
+    const data = payload && payload.data;
+    if (!data) return "";
+
+    if (typeof data.horoscope === "string" && data.horoscope.trim()) {
+      return data.horoscope.trim();
+    }
+
+    // Tartalék megoldás arra az esetre, ha a szolgáltató csak a szakaszokat küldi.
+    if (data.sections && typeof data.sections === "object") {
+      const labels = {
+        overview: { hu: "Áttekintés", en: "Overview" },
+        love: { hu: "Szerelem", en: "Love" },
+        career: { hu: "Munka", en: "Career" },
+        health: { hu: "Közérzet", en: "Well-being" },
+        finance: { hu: "Pénzügyek", en: "Finance" },
+        advice: { hu: "Útravaló", en: "Advice" }
+      };
+      const language = getLanguage();
+      return Object.entries(data.sections)
+        .filter(([, value]) => typeof value === "string" && value.trim())
+        .map(([key, value]) => `${labels[key]?.[language] || key}\n${value.trim()}`)
+        .join("\n\n");
+    }
+
+    return "";
+  }
+
+  async function loadHoroscope(forceRefresh = false) {
+    const language = getLanguage();
+    const dateKey = getBudapestDate();
+    const cacheKey = `${dateKey}:${language}:${selectedSign}`;
+    updateDateLabel(language);
+    updateSelectedSign();
+
+    if (!forceRefresh && responseCache.has(cacheKey)) {
+      showHoroscope(responseCache.get(cacheKey));
+      return;
+    }
+
+    if (activeController) activeController.abort();
+    const controller = new AbortController();
+    activeController = controller;
+    const thisRequest = ++requestNumber;
+    refreshButton.disabled = true;
+    setLoading(language);
+
+    const url = new URL(API_URL);
+    url.searchParams.set("sign", selectedSign);
+    url.searchParams.set("lang", language);
+
+    const timeoutId = window.setTimeout(() => controller.abort(), 20000);
+
+    try {
+      const response = await fetch(url.toString(), {
+        method: "GET",
+        mode: "cors",
+        cache: "no-store",
+        headers: {
+          "Accept": "application/json",
+          "Accept-Language": language
+        },
+        signal: controller.signal
+      });
+
+      if (!response.ok) {
+        let apiMessage = "";
+        try {
+          const errorPayload = await response.json();
+          apiMessage = String(errorPayload?.error?.message || errorPayload?.message || "").trim();
+        } catch { /* A válasz nem feltétlenül JSON. */ }
+
+        if (response.status === 429) {
+          throw new Error(language === "en"
+            ? "The horoscope service has reached its hourly request limit. Please try again later."
+            : "A horoszkópszolgáltatás elérte az óránkénti lekérési korlátot. Kérlek, próbáld újra később.");
+        }
+        throw new Error(apiMessage || `HTTP ${response.status}`);
+      }
+
+      const payload = await response.json();
+      if (payload?.ok === false) {
+        throw new Error(String(payload?.error?.message || ""));
+      }
+
+      const horoscope = extractHoroscope(payload);
+      if (!horoscope) {
+        throw new Error(language === "en"
+          ? "The service returned no horoscope text."
+          : "A szolgáltatás nem küldött horoszkópszöveget.");
+      }
+
+      if (thisRequest !== requestNumber) return;
+      responseCache.set(cacheKey, horoscope);
+      showHoroscope(horoscope);
+    } catch (error) {
+      if (thisRequest !== requestNumber) return;
+      if (error && error.name === "AbortError") {
+        setError(language, language === "en"
+          ? "The horoscope request took too long. Please try again."
+          : "A horoszkóp lekérése túl sokáig tartott. Próbáld újra.");
+      } else {
+        console.warn("A Rádió69 horoszkóp betöltése nem sikerült:", error);
+        setError(language, error instanceof Error ? error.message : "");
+      }
+    } finally {
+      window.clearTimeout(timeoutId);
+      if (thisRequest === requestNumber) {
+        refreshButton.disabled = false;
+        activeController = null;
+      }
+    }
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const sign = button.dataset.horoscopeSign;
+      if (!sign || sign === selectedSign) return;
+      selectedSign = sign;
+      loadHoroscope(false);
+    });
+  });
+
+  refreshButton.addEventListener("click", () => loadHoroscope(true));
+
+  // A nyelvváltó a teljes oldal nyelv-attribútumát módosítja.
+  const languageObserver = new MutationObserver(() => {
+    const nextLanguage = getLanguage();
+    if (nextLanguage === currentLanguage) return;
+    currentLanguage = nextLanguage;
+    loadHoroscope(true);
+  });
+  languageObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["lang"]
+  });
+
+  updateDateLabel(getLanguage());
+  updateSelectedSign();
+  loadHoroscope(false);
+})();
+</script>
+
 </body>
 </html>
