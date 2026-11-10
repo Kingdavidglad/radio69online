@@ -67,6 +67,7 @@ const schedule = [
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Hangposta – Kívánság műsor", ""],
+    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
   ],
   // Vasárnap
   [
@@ -74,6 +75,7 @@ const schedule = [
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Magyar Top 40", "Műsorvezető: Szabolcsi Dávid (Dave)"],
+    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
     ["18:00", "ClubChart", "Műsorvezető: Frenkl András"],
     ["19:00", "Zsiványok Podcast (ismétlés)", "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)"],
     ["20:00", "Kangoo Jam", ""]
@@ -483,8 +485,6 @@ const RADIO69_I18N = {
     "Magyar": "Hungarian",
     "Digitális rádióstúdió hangkeverőpulttal és élő hanghullámmal": "Digital radio studio with an audio mixing console and live sound wave",
     "Rádió69 online rádió – Remix, Hits és zenei műsorok": "Rádió69 online radio – Remix, Hits and music shows",
-    "A jó zene": "Good music",
-    "összeköt.": "brings us together.",
     "A múlt és a jelen egy helyen! Kapcsold be a Rádió69-et, és legyen mindig veled a kedvenc zenéd.": "The past and the present in one place! Tune in to Rádió69 and take your favourite music with you, wherever you go.",
     "Remix és Hits": "Remix & Hits",
     "Két csatorna, rengeteg kedvenc": "Two channels, countless favourites",
