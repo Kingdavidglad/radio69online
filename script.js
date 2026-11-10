@@ -67,7 +67,6 @@ const schedule = [
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Hangposta – Kívánság műsor", ""],
-    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."]
   ],
   // Vasárnap
   [
@@ -75,7 +74,6 @@ const schedule = [
     ["10:00", "Delelő – A délelőtt hangja", ""],
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["12:00", "Magyar Top 40", "Műsorvezető: Szabolcsi Dávid (Dave)"],
-    ["16:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
     ["18:00", "ClubChart", "Műsorvezető: Frenkl András"],
     ["19:00", "Zsiványok Podcast (ismétlés)", "Október 1. és május 31. között • Műsorvezető: Szabolcsi Dávid (Dave)"],
     ["20:00", "Kangoo Jam", ""]
@@ -452,144 +450,7 @@ mainNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", (
   menuToggle.setAttribute("aria-expanded", "false");
 }));
 
-function setFormFeedback(elementId, message, kind = "") {
-  const element = document.getElementById(elementId);
-  element.textContent = message;
-  element.classList.remove("is-success", "is-error");
-  if (kind) element.classList.add(kind);
-}
-
-function getSupabaseConfig() {
-  const config = window.RADIO69_SUPABASE_CONFIG || {};
-  const url = String(config.url || "").trim().replace(/\/+$/, "");
-  const key = String(config.anonKey || config.publishableKey || "").trim();
-  if (!url || !key || /YOUR[-_ ]|PASTE[-_ ]/i.test(url + key)) return null;
-  try {
-    const parsed = new URL(url);
-    if (parsed.protocol !== "https:") return null;
-  } catch {
-    return null;
-  }
-  return { url, key };
-}
-
-async function sendToRadioInbox(payload) {
-  const config = getSupabaseConfig();
-  if (!config) {
-    throw new Error("A webes üzenetküldéshez még be kell állítani a Supabase projekt URL-jét és publikus kulcsát a supabase-config.js fájlban.");
-  }
-
-  const headers = {
-    apikey: config.key,
-    "Content-Type": "application/json",
-    Prefer: "return=minimal"
-  };
-  // A régebbi anon JWT kulcs Authorization fejlécet is használ. Az új,
-  // sb_publishable_ formátumú publikus kulcsot kizárólag apikey-ként küldjük.
-  if (config.key.split(".").length === 3) {
-    headers.Authorization = `Bearer ${config.key}`;
-  }
-
-  const response = await fetch(`${config.url}/rest/v1/radio69_messages`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(payload)
-  });
-
-  if (!response.ok) {
-    let details = "";
-    try { details = await response.text(); } catch { /* nincs olvasható válasz */ }
-    console.error("Rádió69 Supabase beküldési hiba:", response.status, details);
-    if (response.status === 401 || response.status === 403) {
-      throw new Error("A szerver elutasította a beküldést. Ellenőrizd a Supabase kulcsot és az adatbázis jogosultságait.");
-    }
-    if (response.status === 404) {
-      throw new Error("Az üzenettáblát még nem hoztuk létre a Supabase adatbázisban.");
-    }
-    throw new Error("Most nem sikerült elküldeni az üzenetet. Kérjük, próbáld meg később.");
-  }
-}
-
-function isLikelySpam(form, honeypotId) {
-  const trap = document.getElementById(honeypotId);
-  const openedAt = Number(form.dataset.openedAt || 0);
-  return Boolean(trap && trap.value.trim()) || (openedAt > 0 && Date.now() - openedAt < 1800);
-}
-
-function prepareForm(form) {
-  form.dataset.openedAt = String(Date.now());
-}
-
-const wishForm = document.getElementById("wishForm");
-const contactForm = document.getElementById("contactForm");
-prepareForm(wishForm);
-prepareForm(contactForm);
-
-wishForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  if (!wishForm.reportValidity()) return;
-  if (isLikelySpam(wishForm, "wishWebsite")) {
-    wishForm.reset();
-    prepareForm(wishForm);
-    return;
-  }
-
-  const submitButton = wishForm.querySelector('button[type="submit"]');
-  const originalLabel = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.textContent = "Küldés…";
-  setFormFeedback("wishFeedback", "A kívánságodat továbbítjuk a Rádió69-nek…");
-
-  try {
-    await sendToRadioInbox({
-      message_type: "music_request",
-      name: document.getElementById("wishName").value.trim(),
-      song: document.getElementById("wishSong").value.trim()
-    });
-    wishForm.reset();
-    prepareForm(wishForm);
-    setFormFeedback("wishFeedback", "Köszönjük! A zenei kívánságod sikeresen megérkezett a Rádió69-hez.", "is-success");
-  } catch (error) {
-    setFormFeedback("wishFeedback", error.message || "Nem sikerült elküldeni a kívánságot.", "is-error");
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalLabel;
-  }
-});
-
-contactForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  if (!contactForm.reportValidity()) return;
-  if (isLikelySpam(contactForm, "contactWebsite")) {
-    contactForm.reset();
-    prepareForm(contactForm);
-    return;
-  }
-
-  const submitButton = contactForm.querySelector('button[type="submit"]');
-  const originalLabel = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.textContent = "Küldés…";
-  setFormFeedback("contactFeedback", "Az üzenetedet továbbítjuk a Rádió69-nek…");
-
-  try {
-    await sendToRadioInbox({
-      message_type: "contact",
-      name: document.getElementById("contactName").value.trim(),
-      email: document.getElementById("contactEmail").value.trim(),
-      message: document.getElementById("contactMessage").value.trim()
-    });
-    contactForm.reset();
-    prepareForm(contactForm);
-    setFormFeedback("contactFeedback", "Köszönjük! Az üzeneted sikeresen megérkezett a Rádió69-hez.", "is-success");
-  } catch (error) {
-    setFormFeedback("contactFeedback", error.message || "Nem sikerült elküldeni az üzenetet.", "is-error");
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalLabel;
-  }
-});
-
+// A kívánság- és üzenetküldő űrlapok eltávolítva; a kapcsolati adatok megmaradnak.
 document.getElementById("copyAccount").addEventListener("click", async () => {
   const account = "53500841-10044685";
   try {
@@ -609,14 +470,15 @@ const RADIO69_I18N = {
     "Élő rádió": "Live Radio",
     "Műsoraink": "Our Shows",
     "Műsorvezetők": "Presenters",
-    "Kívánságdoboz": "Music Requests",
     "Partnerek": "Partners",
     "Támogatás": "Support",
     "Kapcsolat": "Contact",
+    "ELÉRHETŐSÉGEINK": "CONTACT DETAILS",
+    "Kapcsolat a": "Contact",
+    "Rádió69-cel": "Rádió69",
+    "Telefonon, e-mailben és közösségi oldalainkon is elérsz bennünket.": "Reach us by phone, email or through our social channels.",
     "Hallgasd élőben": "Listen Live",
-    "ONLINE RÁDIÓ • BÉKÉS VÁRMEGYE": "ONLINE RADIO • BÉKÉS COUNTY",
-    "BÉKÉS VÁRMEGYE": "BÉKÉS COUNTY",
-    "DJ Sáv": "DJ Set",
+    "ONLINE RÁDIÓ • NON-STOP HANGULAT": "ONLINE RADIO • NON-STOP VIBES",
     "Nyelvválasztó": "Language selection",
     "Magyar": "Hungarian",
     "Digitális rádióstúdió hangkeverőpulttal és élő hanghullámmal": "Digital radio studio with an audio mixing console and live sound wave",
@@ -662,9 +524,6 @@ const RADIO69_I18N = {
     "Hallgatom": "Listen",
     "PÖRGŐS ÜTEMEK": "UPBEAT RHYTHMS",
     "Klubhangulat, friss remixek és táncolható kedvencek – folyamatosan.": "Club vibes, fresh remixes and dancefloor favourites – around the clock.",
-    "A DJ-K VESZIK ÁT AZ IRÁNYÍTÁST": "THE DJS TAKE OVER",
-    "Pörgős mixek és energikus zenei blokkok a Rádió69 DJ-itől.": "Up-tempo mixes and energetic music sessions from the Rádió69 DJs.",
-    "Mikor hallható?": "When can you hear it?",
     "HETI PROGRAM": "WEEKLY SCHEDULE",
     "Heti": "Weekly",
     "műsorrend": "schedule",
@@ -1062,8 +921,8 @@ function radio69SetLanguage(language) {
   const description = document.querySelector('meta[name="description"]');
   if (description) {
     description.content = radio69Language === "en"
-      ? "Rádió69 – online radio from Békés County, Hungary. Listen live to the Remix and Hits channels, discover our shows and meet the team!"
-      : "Rádió69 – online rádió Békés vármegyéből. Hallgasd élőben a Remix és Hits csatornát, nézd meg műsorainkat és ismerd meg a csapatot!";
+      ? "Rádió69 – online radio. Listen live to the Remix and Hits channels, discover our shows and meet the team!"
+      : "Rádió69 – online rádió. Hallgasd élőben a Remix és Hits csatornát, nézd meg műsorainkat és ismerd meg a csapatot!";
   }
   radio69TranslateTree(document.body);
   radio69UpdateNameDayLanguage();
