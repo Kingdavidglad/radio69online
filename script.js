@@ -30,6 +30,7 @@ const schedule = [
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "Retró körút (ismétlés)", "Műsorvezető: Dombi Ákos"],
     ["18:00", "MagyarOK", ""],
+    ["19:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
     ["20:00", "ClubChart (ismétlés)", "Műsorvezető: Frenkl András"]
   ],
   // Szerda
@@ -49,6 +50,7 @@ const schedule = [
     ["12:00", "Délutáni Lazító", "Kapcsolj ki, mi bekapcsolunk."],
     ["15:00", "MagyarOK (ismétlés)", ""],
     ["18:00", "Retró körút", "Műsorvezető: Dombi Ákos"],
+    ["19:00", "DJ Sáv", "A Rádió69 DJ-i veszik át az irányítást energikus mixekkel."],
     ["20:00", "Back in Time (ismétlés)", "Műsorvezető: Balu"]
   ],
   // Péntek
