@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080713">
   <meta name="description" content="Rádió69 – online rádió. Hallgasd élőben a Remix és Hits csatornát, nézd meg műsorainkat és ismerd meg a csapatot!">
-  <title>Rádió69 - A múlt és a jelen egy helyen!</title>
+  <title>Rádió69 – A múlt és a jelen egy helyen!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -172,6 +172,9 @@
   .r69-horo-reading-foot strong{font-size:7px!important}
   .r69-horo-credit{text-align:right!important;font-size:7px!important}
 }
+
+/* A település felirata nélkül az óra a sor jobb oldalán marad. */
+.weather-card-location{justify-content:flex-end!important}
 </style>
 
 <style id="radio69-daily-jokes-styles">
@@ -293,69 +296,6 @@
       </div>
     </section>
 
-    <section class="hero section-wrap" id="kezdolap">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> ONLINE RÁDIÓ • NON-STOP HANGULAT</div>
-        <p class="hero-lead">A múlt és a jelen egy helyen! Kapcsold be a Rádió69-et, és legyen mindig veled a kedvenc zenéd.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#elo"><span class="button-play">▶</span> Hallgasd élőben</a>
-          <a class="button button-ghost" href="#musorok">Műsoraink <span>↗</span></a>
-        </div>
-        <div class="hero-proof"><span class="proof-icon">♫</span><span><b>Remix és Hits</b><small>Két csatorna, rengeteg kedvenc</small></span><span class="proof-divider"></span><span class="proof-icon proof-icon-pink">◉</span><span><b>Non-stop zene</b><small>Veled otthon és útközben is</small></span></div>
-      </div>
-      <div class="hero-art radio69-weather-hero" aria-label="Békéscsaba aktuális időjárása és háromnapos előrejelzése">
-        <div class="studio-visual radio69-weather-full-card" id="radio69WeatherCard" role="region" aria-label="Békéscsaba aktuális időjárása és háromnapos előrejelzése">
-          <div class="weather-card-topline">
-            <div class="weather-card-brand">
-              <img src="assets/radio69-horizontal.png" alt="Rádió69">
-              <span data-weather-hu="IDŐJÁRÁS" data-weather-en="WEATHER">IDŐJÁRÁS</span>
-            </div>
-            <span class="weather-card-live"><i></i><span data-weather-hu="ÉLŐ ADATOK" data-weather-en="LIVE DATA">ÉLŐ ADATOK</span></span>
-          </div>
-          <div class="weather-card-location">
-            <div><strong>BÉKÉSCSABA</strong></div>
-            <time id="radio69WeatherClock">--:--</time>
-          </div>
-          <div class="weather-card-current">
-            <span class="weather-card-icon" id="radio69WeatherIcon" aria-hidden="true">⛅</span>
-            <div class="weather-card-temperature"><strong id="radio69WeatherTemperature">--</strong><span>°C</span></div>
-            <div class="weather-card-condition">
-              <strong id="radio69WeatherDescription" data-weather-hu="Időjárási adatok betöltése…" data-weather-en="Loading weather data…">Időjárási adatok betöltése…</strong>
-              <span data-weather-hu="Jelenlegi hőmérséklet" data-weather-en="Current temperature">Jelenlegi hőmérséklet</span>
-            </div>
-          </div>
-          <div class="weather-card-metrics">
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌡️</span><div><small data-weather-hu="HŐÉRZET" data-weather-en="FEELS LIKE">HŐÉRZET</small><strong id="radio69WeatherFeels">--°C</strong></div></div>
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💧</span><div><small data-weather-hu="PÁRATARTALOM" data-weather-en="HUMIDITY">PÁRATARTALOM</small><strong id="radio69WeatherHumidity">--%</strong></div></div>
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💨</span><div><small data-weather-hu="SZÉL" data-weather-en="WIND">SZÉL</small><strong id="radio69WeatherWind">-- km/h</strong></div></div>
-            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌧️</span><div><small data-weather-hu="CSAPADÉK · 15 PERC" data-weather-en="PRECIP. · 15 MIN">CSAPADÉK · 15 PERC</small><strong id="radio69WeatherRain">-- mm</strong></div></div>
-          </div>
-          <div class="weather-card-forecast-heading">
-            <strong data-weather-hu="3 NAPOS ELŐREJELZÉS" data-weather-en="3-DAY FORECAST">3 NAPOS ELŐREJELZÉS</strong>
-            <span id="radio69WeatherUpdated">ADATOK BETÖLTÉSE…</span>
-          </div>
-          <div class="weather-card-forecast" id="radio69WeatherForecast" aria-live="polite">
-            <div class="weather-card-forecast-day"><span data-weather-hu="MA" data-weather-en="TODAY">MA</span><b>⛅</b><strong>--° / --°</strong></div>
-            <div class="weather-card-forecast-day"><span data-weather-hu="HOLNAP" data-weather-en="TOMORROW">HOLNAP</span><b>⛅</b><strong>--° / --°</strong></div>
-            <div class="weather-card-forecast-day"><span>--</span><b>⛅</b><strong>--° / --°</strong></div>
-          </div>
-          <div class="weather-card-footer">
-            <span id="radio69WeatherStatus" data-weather-hu="Kapcsolódás az időjárási szolgáltatáshoz…" data-weather-en="Connecting to weather service…">Kapcsolódás az időjárási szolgáltatáshoz…</span>
-            <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="broadcast-ticker" aria-label="Rádió69 online rádió – Remix, Hits és zenei műsorok">
-      <div class="ticker-track" aria-hidden="true">
-        <span><img class="ticker-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"> <b>✦</b> ONLINE RADIO <b>✦</b> REMIX <b>✦</b> HITS <b>✦</b> NON-STOP HANGULAT <b>✦</b> NON-STOP MUSIC <b>✦</b></span>
-        <span><img class="ticker-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"> <b>✦</b> ONLINE RADIO <b>✦</b> REMIX <b>✦</b> HITS <b>✦</b> NON-STOP HANGULAT <b>✦</b> NON-STOP MUSIC <b>✦</b></span>
-      </div>
-    </div>
-
-
-
     <section class="live-section section-wrap" id="elo">
       <div class="section-heading heading-row">
         <div><div class="eyebrow"><span class="live-dot"></span> MOST IS SZÓLUNK</div><h2>Válaszd ki a <span class="gradient-text">hangulatod!</span></h2></div>
@@ -408,6 +348,70 @@
         </aside>
       </div>
     </section>
+
+    <section class="hero section-wrap" id="kezdolap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ONLINE RÁDIÓ • NON-STOP HANGULAT</div>
+        <p class="hero-lead">A múlt és a jelen egy helyen! Kapcsold be a Rádió69-et, és legyen mindig veled a kedvenc zenéd.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#elo"><span class="button-play">▶</span> Hallgasd élőben</a>
+          <a class="button button-ghost" href="#musorok">Műsoraink <span>↗</span></a>
+        </div>
+        <div class="hero-proof"><span class="proof-icon">♫</span><span><b>Remix és Hits</b><small>Két csatorna, rengeteg kedvenc</small></span><span class="proof-divider"></span><span class="proof-icon proof-icon-pink">◉</span><span><b>Non-stop zene</b><small>Veled otthon és útközben is</small></span></div>
+      </div>
+      <div class="hero-art radio69-weather-hero" aria-label="Aktuális időjárás és háromnapos előrejelzés">
+        <div class="studio-visual radio69-weather-full-card" id="radio69WeatherCard" role="region" aria-label="Aktuális időjárás és háromnapos előrejelzés">
+          <div class="weather-card-topline">
+            <div class="weather-card-brand">
+              <img src="assets/radio69-horizontal.png" alt="Rádió69">
+              <span data-weather-hu="IDŐJÁRÁS" data-weather-en="WEATHER">IDŐJÁRÁS</span>
+            </div>
+            <span class="weather-card-live"><i></i><span data-weather-hu="ÉLŐ ADATOK" data-weather-en="LIVE DATA">ÉLŐ ADATOK</span></span>
+          </div>
+          <div class="weather-card-location">
+            <time id="radio69WeatherClock">--:--</time>
+          </div>
+          <div class="weather-card-current">
+            <span class="weather-card-icon" id="radio69WeatherIcon" aria-hidden="true">⛅</span>
+            <div class="weather-card-temperature"><strong id="radio69WeatherTemperature">--</strong><span>°C</span></div>
+            <div class="weather-card-condition">
+              <strong id="radio69WeatherDescription" data-weather-hu="Időjárási adatok betöltése…" data-weather-en="Loading weather data…">Időjárási adatok betöltése…</strong>
+              <span data-weather-hu="Jelenlegi hőmérséklet" data-weather-en="Current temperature">Jelenlegi hőmérséklet</span>
+            </div>
+          </div>
+          <div class="weather-card-metrics">
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌡️</span><div><small data-weather-hu="HŐÉRZET" data-weather-en="FEELS LIKE">HŐÉRZET</small><strong id="radio69WeatherFeels">--°C</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💧</span><div><small data-weather-hu="PÁRATARTALOM" data-weather-en="HUMIDITY">PÁRATARTALOM</small><strong id="radio69WeatherHumidity">--%</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">💨</span><div><small data-weather-hu="SZÉL" data-weather-en="WIND">SZÉL</small><strong id="radio69WeatherWind">-- km/h</strong></div></div>
+            <div class="weather-card-metric"><span class="weather-card-metric-icon" aria-hidden="true">🌧️</span><div><small data-weather-hu="CSAPADÉK · 15 PERC" data-weather-en="PRECIP. · 15 MIN">CSAPADÉK · 15 PERC</small><strong id="radio69WeatherRain">-- mm</strong></div></div>
+          </div>
+          <div class="weather-card-forecast-heading">
+            <strong data-weather-hu="3 NAPOS ELŐREJELZÉS" data-weather-en="3-DAY FORECAST">3 NAPOS ELŐREJELZÉS</strong>
+            <span id="radio69WeatherUpdated">ADATOK BETÖLTÉSE…</span>
+          </div>
+          <div class="weather-card-forecast" id="radio69WeatherForecast" aria-live="polite">
+            <div class="weather-card-forecast-day"><span data-weather-hu="MA" data-weather-en="TODAY">MA</span><b>⛅</b><strong>--° / --°</strong></div>
+            <div class="weather-card-forecast-day"><span data-weather-hu="HOLNAP" data-weather-en="TOMORROW">HOLNAP</span><b>⛅</b><strong>--° / --°</strong></div>
+            <div class="weather-card-forecast-day"><span>--</span><b>⛅</b><strong>--° / --°</strong></div>
+          </div>
+          <div class="weather-card-footer">
+            <span id="radio69WeatherStatus" data-weather-hu="Kapcsolódás az időjárási szolgáltatáshoz…" data-weather-en="Connecting to weather service…">Kapcsolódás az időjárási szolgáltatáshoz…</span>
+            <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="broadcast-ticker" aria-label="Rádió69 online rádió – Remix, Hits és zenei műsorok">
+      <div class="ticker-track" aria-hidden="true">
+        <span><img class="ticker-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"> <b>✦</b> ONLINE RADIO <b>✦</b> REMIX <b>✦</b> HITS <b>✦</b> NON-STOP HANGULAT <b>✦</b> NON-STOP MUSIC <b>✦</b></span>
+        <span><img class="ticker-brand-logo" src="assets/radio69-horizontal.png" alt="Rádió69"> <b>✦</b> ONLINE RADIO <b>✦</b> REMIX <b>✦</b> HITS <b>✦</b> NON-STOP HANGULAT <b>✦</b> NON-STOP MUSIC <b>✦</b></span>
+      </div>
+    </div>
+
+
+
+    
 
     <section class="r69-horo-section section-wrap" id="radio69DailyHoroscope" aria-labelledby="radio69HoroscopeTitle">
       <div class="r69-horo-shell">
@@ -700,7 +704,7 @@
       latestWeather = data;
       renderWeather(data);
     } catch (error) {
-      console.warn("A békéscsabai időjárás lekérése nem sikerült:", error);
+      console.warn("Az időjárás lekérése nem sikerült:", error);
       if (!latestWeather) {
         byId("radio69WeatherDescription").textContent = text("Az időjárás most nem érhető el.", "Weather is temporarily unavailable.");
         byId("radio69WeatherStatus").textContent = text("Ellenőrizd az internetkapcsolatot.", "Please check the internet connection.");
